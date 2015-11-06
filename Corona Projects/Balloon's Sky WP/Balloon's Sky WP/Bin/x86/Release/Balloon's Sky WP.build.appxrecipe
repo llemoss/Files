@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>ZETHBOOK</Machine>
+    <WindowsUser>Gildásio Zeth</WindowsUser>
+    <TargetPlatformIdentifier>Windows Phone</TargetPlatformIdentifier>
+    <SolutionConfiguration>Release|x86</SolutionConfiguration>
+    <PackageArchitecture>x86</PackageArchitecture>
+    <PackageIdentityName>da0c486c-e391-4b0b-8fc0-75f1b99fa189</PackageIdentityName>
+    <IntermediateOutputPath>C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\obj\x86\Release\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Bin\x86\Release\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Bin\x86\Release\BalloonsSky WP.dll">
+      <PackagePath>BalloonsSky WP.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\CoronaLabs.Corona.Framework\15.0.2705.0\References\CommonConfiguration\neutral\CoronaLabs.Corona.Controls.DotNet.dll">
+      <PackagePath>CoronaLabs.Corona.Controls.DotNet.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\CoronaLabs.Corona.Framework\15.0.2705.0\References\CommonConfiguration\neutral\CoronaLabs.Corona.DotNet.dll">
+      <PackagePath>CoronaLabs.Corona.DotNet.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\CoronaLabs.Corona.Framework\15.0.2705.0\References\CommonConfiguration\neutral\CoronaLabs.Corona.Controls.DotNet.xml">
+      <PackagePath>CoronaLabs.Corona.Controls.DotNet.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\CoronaLabs.Corona.Framework\15.0.2705.0\References\CommonConfiguration\neutral\CoronaLabs.xml">
+      <PackagePath>CoronaLabs.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\CoronaLabs.Corona.Framework\15.0.2705.0\References\CommonConfiguration\neutral\CoronaLabs.winmd">
+      <PackagePath>CoronaLabs.winmd</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\CoronaLabs.Corona.Framework\15.0.2705.0\References\CommonConfiguration\neutral\OpenAL.winmd">
+      <PackagePath>OpenAL.winmd</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\CoronaLabs.Corona.Framework\15.0.2705.0\Redist\CommonConfiguration\x86\almixer.dll">
+      <PackagePath>almixer.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\CoronaLabs.Corona.Framework\15.0.2705.0\Redist\CommonConfiguration\x86\CoronaLabs.Corona.Component.dll">
+      <PackagePath>CoronaLabs.Corona.Component.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\CoronaLabs.Corona.Framework\15.0.2705.0\Redist\CommonConfiguration\x86\libEGL_phone.dll">
+      <PackagePath>libEGL_phone.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\CoronaLabs.Corona.Framework\15.0.2705.0\Redist\CommonConfiguration\x86\libGLESv2_phone.dll">
+      <PackagePath>libGLESv2_phone.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\CoronaLabs.Corona.Framework\15.0.2705.0\Redist\CommonConfiguration\x86\lua.dll">
+      <PackagePath>lua.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\CoronaLabs.Corona.Framework\15.0.2705.0\Redist\CommonConfiguration\x86\OpenAL.dll">
+      <PackagePath>OpenAL.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\CoronaLabs.Corona.Framework\15.0.2705.0\Redist\CommonConfiguration\x86\pthreads.dll">
+      <PackagePath>pthreads.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\BadgeLogo.png">
+      <PackagePath>Assets\BadgeLogo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\blue_balloon.png">
+      <PackagePath>Assets\Corona\blue_balloon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\bomb.png">
+      <PackagePath>Assets\Corona\bomb.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\bombzero.png">
+      <PackagePath>Assets\Corona\bombzero.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Default-568h%402x.png">
+      <PackagePath>Assets\Corona\Default-568h%402x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon%402x.png">
+      <PackagePath>Assets\Corona\Icon%402x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-60%402x.png">
+      <PackagePath>Assets\Corona\Icon-60%402x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-60%403x.png">
+      <PackagePath>Assets\Corona\Icon-60%403x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-60.png">
+      <PackagePath>Assets\Corona\Icon-60.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-72%402x.png">
+      <PackagePath>Assets\Corona\Icon-72%402x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-72.png">
+      <PackagePath>Assets\Corona\Icon-72.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-76%402x.png">
+      <PackagePath>Assets\Corona\Icon-76%402x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-76.png">
+      <PackagePath>Assets\Corona\Icon-76.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-hdpi.png">
+      <PackagePath>Assets\Corona\Icon-hdpi.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-ldpi.png">
+      <PackagePath>Assets\Corona\Icon-ldpi.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-mdpi.png">
+      <PackagePath>Assets\Corona\Icon-mdpi.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-Small%402x.png">
+      <PackagePath>Assets\Corona\Icon-Small%402x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-Small%403x.png">
+      <PackagePath>Assets\Corona\Icon-Small%403x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-Small-40%402x.png">
+      <PackagePath>Assets\Corona\Icon-Small-40%402x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-Small-40%403x.png">
+      <PackagePath>Assets\Corona\Icon-Small-40%403x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-Small-40.png">
+      <PackagePath>Assets\Corona\Icon-Small-40.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-Small-50%402x.png">
+      <PackagePath>Assets\Corona\Icon-Small-50%402x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-Small-50.png">
+      <PackagePath>Assets\Corona\Icon-Small-50.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-Small.png">
+      <PackagePath>Assets\Corona\Icon-Small.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-xhdpi.png">
+      <PackagePath>Assets\Corona\Icon-xhdpi.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-xxhdpi.png">
+      <PackagePath>Assets\Corona\Icon-xxhdpi.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-xxxhdpi.png">
+      <PackagePath>Assets\Corona\Icon-xxxhdpi.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon-xxxxhdpi.png">
+      <PackagePath>Assets\Corona\Icon-xxxxhdpi.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Icon.png">
+      <PackagePath>Assets\Corona\Icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\iconNatal.png">
+      <PackagePath>Assets\Corona\iconNatal.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\logoballoon1.png">
+      <PackagePath>Assets\Corona\logoballoon1.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\logoballoon2.png">
+      <PackagePath>Assets\Corona\logoballoon2.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\nuvem1.png">
+      <PackagePath>Assets\Corona\nuvem1.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\nuvem2.png">
+      <PackagePath>Assets\Corona\nuvem2.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\purple_balloon.png">
+      <PackagePath>Assets\Corona\purple_balloon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\purple_balloon2.png">
+      <PackagePath>Assets\Corona\purple_balloon2.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\red_balloon.png">
+      <PackagePath>Assets\Corona\red_balloon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\templateIcon-xxxhdpi.png">
+      <PackagePath>Assets\Corona\templateIcon-xxxhdpi.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\WideLogo.png">
+      <PackagePath>Assets\WideLogo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\AlignmentGrid.png">
+      <PackagePath>Assets\AlignmentGrid.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\ApplicationIcon.png">
+      <PackagePath>Assets\ApplicationIcon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Logo.png">
+      <PackagePath>Assets\Logo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\SplashScreen.png">
+      <PackagePath>Assets\SplashScreen.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\SquareTile150x150.png">
+      <PackagePath>Assets\SquareTile150x150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\SquareTile71x71.png">
+      <PackagePath>Assets\SquareTile71x71.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Tiles\FlipCycleTileLarge.png">
+      <PackagePath>Assets\Tiles\FlipCycleTileLarge.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Tiles\FlipCycleTileMedium.png">
+      <PackagePath>Assets\Tiles\FlipCycleTileMedium.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Tiles\FlipCycleTileSmall.png">
+      <PackagePath>Assets\Tiles\FlipCycleTileSmall.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Tiles\IconicTileMediumLarge.png">
+      <PackagePath>Assets\Tiles\IconicTileMediumLarge.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Tiles\IconicTileSmall.png">
+      <PackagePath>Assets\Tiles\IconicTileSmall.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\amain.lua">
+      <PackagePath>Assets\Corona\amain.lua</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\config.lua">
+      <PackagePath>Assets\Corona\config.lua</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\loadsave.lua">
+      <PackagePath>Assets\Corona\loadsave.lua</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\main.lua">
+      <PackagePath>Assets\Corona\main.lua</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\balloon.wav">
+      <PackagePath>Assets\Corona\balloon.wav</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\bomb.wav">
+      <PackagePath>Assets\Corona\bomb.wav</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\bonus.wav">
+      <PackagePath>Assets\Corona\bonus.wav</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\music.wav">
+      <PackagePath>Assets\Corona\music.wav</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\akaDylanPlain.ttf">
+      <PackagePath>Assets\Corona\akaDylanPlain.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\alterebro-pixel-font.ttf">
+      <PackagePath>Assets\Corona\alterebro-pixel-font.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\Roboto-Regular.ttf">
+      <PackagePath>Assets\Corona\Roboto-Regular.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\icons.rar">
+      <PackagePath>Assets\Corona\icons.rar</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Assets\Corona\world.jpg">
+      <PackagePath>Assets\Corona\world.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gildásio Zeth\Google Drive\Documents\Corona Projects\Balloon%27s Sky WP\Balloon%27s Sky WP\Bin\x86\Release\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
