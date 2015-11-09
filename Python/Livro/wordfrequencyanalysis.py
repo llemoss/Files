@@ -1,5 +1,8 @@
 import string
+
 livro = open("livro3.txt")
+arquivo = open("wordlist.txt")
+
 linhas = []
 palavras = []
 
@@ -94,5 +97,4 @@ def compareWordList(arquivo, palavrasLivro):
             escolha = raw_input("Deseja saber quais sao? (Y/N): ")
             escolha.lower()
 
-arquivo = open("wordlist.txt")
 compareWordList(arquivo, palavras)
