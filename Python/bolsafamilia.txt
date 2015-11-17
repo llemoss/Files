@@ -1,0 +1,5 @@
+2;Roger;12345678910;Maria,Ana,Joao;Basica;300
+23;Gil;98765432101;Julia,Rebeca;Media;500
+10;Teste;13561874681;Fulano,Fulana,Cicrano;Basica;300
+4;Abcde;146438585735;A,B,C,D,E;Alta;700
+13;Fulano;1234587981;A,B,C;Basica;300
