@@ -1,8 +1,0 @@
-﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="BalloonsSky WP" EntryPointType="Balloon_s_Sky_WP.App" RuntimeVersion="6.7.50308.0">
-  <Deployment.Parts>
-    <AssemblyPart x:Name="BalloonsSky WP" Source="BalloonsSky WP.dll" />
-    <AssemblyPart x:Name="CoronaLabs.Corona.Controls.DotNet" Source="CoronaLabs.Corona.Controls.DotNet.dll" />
-    <AssemblyPart x:Name="CoronaLabs.Corona.DotNet" Source="CoronaLabs.Corona.DotNet.dll" />
-    <AssemblyPart Source="pt-BR/BalloonsSky WP.resources.dll" />
-  </Deployment.Parts>
-</Deployment>
