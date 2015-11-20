@@ -1,6 +1,6 @@
 import string
 
-livro = open("livro3.txt")
+livro = open("livro4.txt")
 arquivo = open("wordlist.txt")
 
 linhas = []
@@ -33,6 +33,13 @@ for i in linhas:
     for j in i: #Criacao do vetor de palavras em si
         palavras.append(j)
 
+for i in palavras:
+    if i == "":
+        palavras.remove(i)
+for i in palavras:
+    if i == " ":
+        palavras.remove(i)
+
 print "Quantidade de palavras no livro (com repeticoes):", len(palavras)
 print "Computando e comparando palavras..."
 
@@ -44,7 +51,8 @@ for i in palavras:
         if i == e:
             c += 1
     palavra = [i, c]
-    contagem += [palavra]
+    if palavra not in contagem:
+        contagem += [palavra]
     c = 0
 
 def _cpm_by_c(x, y): return cmp(x[1], y[1])
@@ -55,7 +63,7 @@ def removeCopy(l): #Funcao para retirada de copias no vetor
             if i == e:
                 l.remove(i)
 
-for i in range(3): removeCopy(contagem)
+#for i in range(3): removeCopy(contagem)
 
 contagem.sort(_cpm_by_c, reverse=True) #Sort customizado via vezes repetidas
 
@@ -77,7 +85,8 @@ def compareWordList(arquivo, palavrasLivro):
     for item in palavrasLivro:
         for palavra in wordlist: #Comparacao geral e contagem de palavras
             if item != palavra:
-                resultado.append(item)
+                if item not in resultado:
+                    resultado.append(item)
                 quantidade += 1
 
     for i in range(2): removeCopy(resultado) #Remocao de copias
@@ -92,6 +101,7 @@ def compareWordList(arquivo, palavrasLivro):
         if escolha == "y":
             print "Lista de palavras que nao estao: "
             for i in range(len(resultado)): print "%s" % resultado[i]
+            break
         elif escolha == "n":
             break
 
