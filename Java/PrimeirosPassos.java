@@ -6,7 +6,7 @@ public class PrimeirosPassos {
 
 		int matricula = 123;
 		double nota = 3;
-		double nota2= 8;
+		double nota2 = 8;
 		float media = (float)(nota+nota2);
 		String nome = "Rogerio da Silva";
 		boolean passou = false;
