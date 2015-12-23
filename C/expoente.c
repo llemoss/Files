@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 int expo(int x, int y){
     if(y==0){return 1;}
