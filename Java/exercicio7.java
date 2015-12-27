@@ -1,25 +1,30 @@
-/*print "Ex. 7"
-L = input()
-while L > 0:
-	i = 0
-	V1 = [int(g) for g in raw_input("").split(" ")]
-	V1.sort(reverse=True)
-	if V1[0] < 10:
-		print "1"
-	if V1[0] >= 10 and V1[0] < 20:
-		print "2"
-	if V1[0] >= 20:
-		print "3"
-	i = i + 1
-	L = input()
-	if L < 0:
-		break*/
-
 import java.util.Scanner;
 
 public class exercicio7{
 	public static void main(String[] args){
 		Scanner input = new Scanner(System.in);
-		
+		int n = input.nextInt();
+		while(n > 0){
+			int[] lista = new int[n];
+			int d = 0;
+			for(int i = 0; i < n; i++){
+				lista[i] = input.nextInt();
+				input.nextLine();
+			}
+			while(d<n){
+				for(int a = 0;a < n-1;a++){
+					if (lista[a] < lista[a+1]){
+							int holder = lista[a+1];
+							lista[a+1] = lista[a];
+							lista[a] = holder;}
+					}
+				d++;
+			}
+			if(lista[0] < 10){System.out.println("1");}
+			if(lista[0] > 10 && lista[0] < 20){System.out.println("2");}
+			if(lista[0] >= 20){System.out.println("3");}
+		n = input.nextInt();
+		if (n < 0){break;}
+		}
 	}
 }
