@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class exercicio8{
+public class exercicio14{
 	public static void main(String[] args){
 		Scanner input = new Scanner(System.in);
 		int n, soma, i;
