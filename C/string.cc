@@ -13,11 +13,16 @@ using namespace std;
 
 int main()
 {
-    char c[256], l[1];
-    int i, qtd;
+    string c, l, cmp;
+    int i = 0, qtd = 0, sizeStr;
     cin >> c >> l;
-    while (i < c.length()){if(c[i] == l){qtd++;} i++;}
-    cout << c << "\n" << l;
+    sizeStr = c.length();
+    while (i < sizeStr){
+        cmp = c[i];
+        if(cmp == l){
+            qtd++;}
+        i++;}
+    cout << c << " tem " << l << " repetida " << qtd << " vezes " << "\n" ;
 
 
     return 0;

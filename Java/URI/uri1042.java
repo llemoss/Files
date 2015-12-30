@@ -5,11 +5,8 @@ public class uri1042{
 		Scanner scanner = new Scanner(System.in);
 
 		int a = scanner.nextInt();
-		scanner.nextLine();
 		int b = scanner.nextInt();
-		scanner.nextLine();
 		int c = scanner.nextInt();
-		scanner.nextLine();
 
 		int lista [] = {a, b, c};
     
