@@ -9,8 +9,9 @@ public class exercicio7{
 			int d = 0;
 			for(int i = 0; i < n; i++){
 				lista[i] = input.nextInt();
-				input.nextLine();
+				
 			}
+			input.nextLine();
 			while(d<n){
 				for(int a = 0;a < n-1;a++){
 					if (lista[a] < lista[a+1]){
