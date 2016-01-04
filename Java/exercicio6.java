@@ -8,10 +8,7 @@ public class exercicio6{
 		n = input.nextInt();
 		while(i<n){
 			q = input.nextInt();
-			input.nextLine();
 			t = input.next().charAt(0);
-			//input.nextLine();
-			//System.out.println(t);
 			qt += q;
 			if(t=='C'){c+=q;}
 			if(t=='R'){r+=q;}
