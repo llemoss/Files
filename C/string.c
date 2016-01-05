@@ -3,14 +3,13 @@
 #include <string.h>
 
 
-int counterString(char palavra[256], char letra[2]){
+int counterString(char palavra[256], char letra[2], int i){
+    i = strlen(palavra);
     int count = 0;
-    int i = strlen(palavra);
     if (palavra[i] == letra){
-        i--;
         return 1;
     }
-    count += counterString(palavra, letra);
+    count += counterString(palavra, letra, i--);
     return count;
 }
 
@@ -18,7 +17,7 @@ int main(){
     char palavra[256];
     char letra[2];
     scanf("%s %s", palavra, letra);
-    printf("A palavra %s tem %d letras %s", palavra, counterString(palavra, letra), letra);
+    printf("A palavra %s tem %d letras %s", palavra, counterString(palavra, letra, 1), letra);
 
 
     return 0;}
