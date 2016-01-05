@@ -3,8 +3,12 @@
 using namespace std;
 
 int main(){
-    
-    string line;
+
+
+       while(1==1){cout << '\a';}
+
+
+    /*string line;
     int A, B, C;
     while(getline(cin, line)){
     A = line[0];
@@ -15,6 +19,6 @@ int main(){
     else if (C != A && C != B){cout << "C" << endl;}
     else if (A == B && B == C && A == C){cout << "*" << endl;}
     cin.clear();
-    }
+    }*/
     return 0;
 }
