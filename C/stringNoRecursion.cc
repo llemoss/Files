@@ -24,6 +24,5 @@ int main()
         i++;}
     cout << c << " tem " << l << " repetida " << qtd << " vezes " << "\n" ;
 
-
     return 0;
 }
