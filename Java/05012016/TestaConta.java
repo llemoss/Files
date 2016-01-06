@@ -1,7 +1,9 @@
 class TestaConta{
 	public static void main(String[] args){
-		Conta conta1 = new Conta(1, "Rogerio da Silva");
-		Conta conta2 = new Conta(2, "Valeria Costa");
+		Cliente c1 = new Cliente("Rogerio Silva", "123456789", "Teresina");
+		Cliente c2 = new Cliente("Valeria Costa", "123456788", "Teresina");
+		Conta conta1 = new Conta(c1);
+		Conta conta2 = new Conta(c2);
 
 		conta1.depositar(1000);
 		conta2.depositar(1000);
