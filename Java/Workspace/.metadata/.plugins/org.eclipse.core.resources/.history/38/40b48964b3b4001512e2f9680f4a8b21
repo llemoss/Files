@@ -9,10 +9,6 @@ class Conta{
 		return ++contador;
 	}
 	
-	public Cliente getCliente(){
-		return cliente;
-	}
-	
 	public Conta(){}
 	public Conta(Cliente cliente){
 		this.cliente = cliente;

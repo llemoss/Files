@@ -9,10 +9,6 @@ class Conta{
 		return ++contador;
 	}
 	
-	public Cliente getCliente(){
-		return cliente;
-	}
-	
 	public Conta(){}
 	public Conta(Cliente cliente){
 		this.cliente = cliente;
@@ -46,6 +42,7 @@ class Conta{
 			return false;}
 	}
 
+	
 	public void transferir(double valor, Conta destino){
 		if(sacar(valor)){
 			destino.depositar(valor);

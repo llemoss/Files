@@ -10,7 +10,7 @@ class TestaConta{
 
 		conta2.transferir(600, conta1);
 		
-		System.out.println(conta1.getCliente().getNome());
+		conta1.getCliente().getNome();
 		
 		System.out.print(conta1 + "\n");
 		System.out.print(conta2 + "\n");
