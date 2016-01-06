@@ -1,7 +1,7 @@
 package caelum;
-//Questao 1 e 2:
 class Funcionario{
 	private String nome;
+	private static int identificador;
 	private double salario;
 	private Data dataEntrada;
 	private String rg;
@@ -11,6 +11,24 @@ class Funcionario{
 		return "Nome: " + nome + "\n" + "Salario: " + salario + "\n" + "Data de entrada: " + dataEntrada + "\n" + "RG: " + rg;
 	}
 
+	public Funcionario() {
+		Funcionario.identificador = Funcionario.setIdentificador();
+	}
+
+	public static int setIdentificador()
+	{
+		return ++identificador;
+	}
+
+	public int getIdentificador(){
+		return identificador;
+	}
+	
+	public Funcionario(String nome) {
+		this.nome = nome;
+		Funcionario.identificador = Funcionario.setIdentificador();
+	}
+	
 	public String getNome() {
 		return nome;
 	}

@@ -11,13 +11,6 @@ class TestaFuncionario{
 		f1.setData(dataf1);
 		f1.setRg("123456789");
 
-		/*Funcionario f2 = new Funcionario();
-		Data dataf2 = new Data();
-		f2.nome = "Gil";
-		f2.salario = 800;
-		f2.dataEntrada = dataf2;
-		f2.rg = "123456789";*/
-
 		System.out.println(f1);
 
 		f1.recebeAumento(500);
