@@ -1,0 +1,41 @@
+class Conta{
+	private int numero;
+	private String titular;
+	private String cpf;
+	private double saldo;
+	private String extrato = "Extrato:\n";
+	
+	public Conta(){}
+	public Conta(int numero, String titular){}
+	public Conta(int numero, String titular, double saldoInicial){}
+
+	public void depositar(double valor){
+		saldo += valor;
+		String info = valor + " foi depositado em " + numero + "\n";
+		extrato += info;}
+
+	public boolean sacar(double valor){
+		if(valor <= saldo){
+			saldo -= valor;
+			String info = valor + " foi sacado de " + this.numero + "\n";
+			extrato += info;
+			return true;
+		}
+		else{
+			return false;}
+	}
+
+	public void transferir(double valor, Conta destino){
+		if(sacar(valor)){
+			destino.depositar(valor);
+		}
+	}
+
+	public void extrato(){
+		System.out.println(extrato);
+	}
+
+	public String toString(){
+		return "Conta: " + this.numero + " // Saldo: " + this.saldo;
+	}
+}
