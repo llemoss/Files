@@ -11,12 +11,7 @@ int soma(int n){
 int main() {
 
     int n;
-    //do{
-    //printf("Digite um numero (0 para encerrar): ");
     scanf("%d", &n);
-    //if(n==0){break;}
-    //else{printf(soma(n));}
-    //}while(1);
     printf("%d", soma(n));
 
     return 0;

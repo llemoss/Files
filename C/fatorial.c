@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int fat(int n){
+double fat(int n){
     if(n==0){
         return 1;
     }
@@ -19,7 +19,7 @@ int main() {
         printf("Digite um numero ou negativo (ou 0) para sair: ");
         scanf("%d", &n);
         if(n<=0){break;}
-        else{printf("O fatorial de %d eh %d\n", n, fat(n));}
+        else{printf("O fatorial de %d eh %.2f\n", n, fat(n));}
     }while(1==1);
 
     return 0;

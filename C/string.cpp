@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 
-int counterString(char palavra[256], char letra){
+int counterString(char palavra[], char letra){
     if(palavra[0] == '\0'){
         return 0;
     }
@@ -14,12 +13,11 @@ int counterString(char palavra[256], char letra){
 }
 
 int main(){
-    char palavra[256];
+    char palavra[30];
     char letra;
     gets(palavra);
-    fflush(stdin);
     letra = getchar();
-    printf("A palavra: %s // letra: %c // repetidas: %d", palavra, letra, counterString(palavra, letra));
+    printf("String: %s // Letra: %c // Vezes repetida: %d", palavra, letra, counterString(palavra, letra));
 
 
     return 0;}
