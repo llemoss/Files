@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_WE7o8bPkEeW15OEM_-URAQ" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_WE7o8rPkEeW15OEM_-URAQ" bindingContexts="_WE8QALPkEeW15OEM_-URAQ">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;exercicio1.java&quot; tooltip=&quot;C:\Users\Gild&#xe1;sio\Google Drive\GitHub\Java\23122015\exercicio1.java&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Gild&#xe1;sio/Google%20Drive/GitHub/Java/23122015/exercicio1.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TestaFuncionario.java&quot; tooltip=&quot;C:\Users\Gild&#xe1;sio\Google Drive\GitHub\Workspace\src\caelum\TestaFuncionario.java&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Gild&#xe1;sio/Google%20Drive/GitHub/Workspace/src/caelum/TestaFuncionario.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Funcionario.java&quot; tooltip=&quot;C:\Users\Gild&#xe1;sio\Google Drive\GitHub\Workspace\src\caelum\Funcionario.java&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Gild&#xe1;sio/Google%20Drive/GitHub/Workspace/src/caelum/Funcionario.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Data.java&quot; tooltip=&quot;C:\Users\Gild&#xe1;sio\Google Drive\GitHub\Workspace\src\caelum\Data.java&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Gild&#xe1;sio/Google%20Drive/GitHub/Workspace/src/caelum/Data.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;exercicio1.java&quot; tooltip=&quot;C:\Users\Gild&#xe1;sio\Google Drive\GitHub\Java\23122015\exercicio1.java&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Gild&#xe1;sio/Google%20Drive/GitHub/Java/23122015/exercicio1.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
   <children xsi:type="basic:TrimmedWindow" xmi:id="_WE7o8rPkEeW15OEM_-URAQ" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_WXTLUrPkEeW15OEM_-URAQ" label="%trimmedwindow.label.eclipseSDK" x="78" y="78" width="1024" height="768">
@@ -12,10 +12,8 @@
     <persistedState key="aggregateWorkingSetId" value="Aggregate for window 1452022906616"/>
     <tags>topLevel</tags>
     <tags>shellMaximized</tags>
-    <children xsi:type="basic:PartSashContainer" xmi:id="_WXTLUrPkEeW15OEM_-URAQ" selectedElement="_WXTyYbPkEeW15OEM_-URAQ" horizontal="true">
-      <children xsi:type="advanced:PerspectiveStack" xmi:id="_WXTyYLPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.ide.perspectivestack" visible="false" containerData="7500" selectedElement="_WrtVEbPkEeW15OEM_-URAQ">
-        <tags>Minimized</tags>
-        <tags>MinimizedByZoom</tags>
+    <children xsi:type="basic:PartSashContainer" xmi:id="_WXTLUrPkEeW15OEM_-URAQ" selectedElement="_WXTyYLPkEeW15OEM_-URAQ" horizontal="true">
+      <children xsi:type="advanced:PerspectiveStack" xmi:id="_WXTyYLPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.ide.perspectivestack" containerData="7500" selectedElement="_WrtVEbPkEeW15OEM_-URAQ">
         <children xsi:type="advanced:Perspective" xmi:id="_WrtVEbPkEeW15OEM_-URAQ" elementId="org.eclipse.jdt.ui.JavaPerspective" selectedElement="_Wrt8ILPkEeW15OEM_-URAQ" label="Java" iconURI="platform:/plugin/org.eclipse.jdt.ui/$nl$/icons/full/eview16/jperspective.png">
           <persistedState key="persp.hiddenItems" value="persp.hideToolbarSC:org.eclipse.debug.ui.commands.RunToLine,persp.hideToolbarSC:org.eclipse.jdt.ui.actions.OpenProjectWizard,persp.hideToolbarSC:print,persp.hideToolbarSC:org.eclipse.ui.edit.text.toggleShowSelectedElementOnly,"/>
           <tags>persp.actionSet:org.eclipse.mylyn.doc.actionSet</tags>
@@ -94,12 +92,13 @@
             <children xsi:type="basic:PartSashContainer" xmi:id="_Wrt8LLPkEeW15OEM_-URAQ" containerData="7500" selectedElement="_Wrt8LbPkEeW15OEM_-URAQ">
               <children xsi:type="basic:PartSashContainer" xmi:id="_Wrt8LbPkEeW15OEM_-URAQ" containerData="7500" selectedElement="_Wrt8LrPkEeW15OEM_-URAQ" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_Wrt8LrPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.editorss" containerData="7500" ref="_WrUTgLPkEeW15OEM_-URAQ"/>
-                <children xsi:type="basic:PartSashContainer" xmi:id="_Wrt8L7PkEeW15OEM_-URAQ" containerData="2500">
+                <children xsi:type="basic:PartSashContainer" xmi:id="_Wrt8L7PkEeW15OEM_-URAQ" containerData="2500" selectedElement="_Wrt8MrPkEeW15OEM_-URAQ">
                   <children xsi:type="basic:PartStack" xmi:id="_Wrt8MLPkEeW15OEM_-URAQ" elementId="org.eclipse.mylyn.tasks.ui.views.tasksMStack" containerData="5000" selectedElement="_Wrt8MbPkEeW15OEM_-URAQ">
                     <children xsi:type="advanced:Placeholder" xmi:id="_Wrt8MbPkEeW15OEM_-URAQ" elementId="org.eclipse.mylyn.tasks.ui.views.tasks" ref="_WrsG8LPkEeW15OEM_-URAQ"/>
                   </children>
                   <children xsi:type="basic:PartStack" xmi:id="_Wrt8MrPkEeW15OEM_-URAQ" elementId="right" containerData="5000" selectedElement="_Wrt8M7PkEeW15OEM_-URAQ">
                     <tags>org.eclipse.e4.secondaryNavigationStack</tags>
+                    <tags>active</tags>
                     <children xsi:type="advanced:Placeholder" xmi:id="_Wrt8M7PkEeW15OEM_-URAQ" elementId="org.eclipse.ui.views.ContentOutline" ref="_WriV8rPkEeW15OEM_-URAQ"/>
                     <children xsi:type="advanced:Placeholder" xmi:id="_Wrt8NLPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.texteditor.TemplatesView" toBeRendered="false" ref="_Wri9ALPkEeW15OEM_-URAQ"/>
                     <children xsi:type="advanced:Placeholder" xmi:id="_Wrt8NbPkEeW15OEM_-URAQ" elementId="org.eclipse.ant.ui.views.AntView" toBeRendered="false" ref="_WrqRwLPkEeW15OEM_-URAQ"/>
@@ -120,11 +119,9 @@
           </children>
         </children>
       </children>
-      <children xsi:type="basic:PartStack" xmi:id="_WXTyYbPkEeW15OEM_-URAQ" elementId="stickyFolderRight" containerData="2500" selectedElement="_WXTyY7PkEeW15OEM_-URAQ">
-        <tags>Maximized</tags>
-        <tags>active</tags>
+      <children xsi:type="basic:PartStack" xmi:id="_WXTyYbPkEeW15OEM_-URAQ" elementId="stickyFolderRight" toBeRendered="false" containerData="2500">
         <children xsi:type="advanced:Placeholder" xmi:id="_WXTyYrPkEeW15OEM_-URAQ" elementId="org.eclipse.help.ui.HelpView" toBeRendered="false" ref="_WXQvELPkEeW15OEM_-URAQ"/>
-        <children xsi:type="advanced:Placeholder" xmi:id="_WXTyY7PkEeW15OEM_-URAQ" elementId="org.eclipse.ui.internal.introview" ref="_WXTLULPkEeW15OEM_-URAQ"/>
+        <children xsi:type="advanced:Placeholder" xmi:id="_WXTyY7PkEeW15OEM_-URAQ" elementId="org.eclipse.ui.internal.introview" toBeRendered="false" ref="_WXTLULPkEeW15OEM_-URAQ"/>
         <children xsi:type="advanced:Placeholder" xmi:id="_WXTyZLPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.cheatsheets.views.CheatSheetView" toBeRendered="false" ref="_WXTLUbPkEeW15OEM_-URAQ"/>
       </children>
     </children>
@@ -136,22 +133,39 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view>&#xD;&#xA;&lt;presentation currentPage=&quot;root&quot; restore=&quot;true&quot;/>&#xD;&#xA;&lt;standbyPart/>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
-      <tags>active</tags>
       <tags>activeOnClose</tags>
       <menus xmi:id="_YhvCkLPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.internal.introview">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
       </menus>
-      <toolbar xmi:id="_YhvCkbPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.internal.introview"/>
+      <toolbar xmi:id="_YhvCkbPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.internal.introview" visible="false"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_WXTLUbPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.cheatsheets.views.CheatSheetView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Cheat Sheets" iconURI="platform:/plugin/org.eclipse.ui.cheatsheets/icons/view16/cheatsheet_view.gif" tooltip="" closeable="true">
       <tags>View</tags>
       <tags>categoryTag:Help</tags>
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_WrUTgLPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.editorss" selectedElement="_WrUTgbPkEeW15OEM_-URAQ">
-      <children xsi:type="basic:PartStack" xmi:id="_WrUTgbPkEeW15OEM_-URAQ" elementId="org.eclipse.e4.primaryDataStack">
+      <children xsi:type="basic:PartStack" xmi:id="_WrUTgbPkEeW15OEM_-URAQ" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_0hsxsLTGEeWGX9mvdjx0bQ">
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
+        <children xsi:type="basic:Part" xmi:id="_xd0J8LTGEeWGX9mvdjx0bQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Data.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Data.java&quot; partName=&quot;Data.java&quot; title=&quot;Data.java&quot; tooltip=&quot;C:\Users\Gild&#xe1;sio\Google Drive\GitHub\Workspace\src\caelum\Data.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/C:/Users/Gild&#xe1;sio/Google%20Drive/GitHub/Workspace/src/caelum/Data.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_0e6jcLTGEeWGX9mvdjx0bQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Funcionario.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Funcionario.java&quot; partName=&quot;Funcionario.java&quot; title=&quot;Funcionario.java&quot; tooltip=&quot;C:\Users\Gild&#xe1;sio\Google Drive\GitHub\Workspace\src\caelum\Funcionario.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/C:/Users/Gild&#xe1;sio/Google%20Drive/GitHub/Workspace/src/caelum/Funcionario.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_0hsxsLTGEeWGX9mvdjx0bQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="TestaFuncionario.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TestaFuncionario.java&quot; partName=&quot;TestaFuncionario.java&quot; title=&quot;TestaFuncionario.java&quot; tooltip=&quot;C:\Users\Gild&#xe1;sio\Google Drive\GitHub\Workspace\src\caelum\TestaFuncionario.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/C:/Users/Gild&#xe1;sio/Google%20Drive/GitHub/Workspace/src/caelum/TestaFuncionario.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;6&quot; selectionOffset=&quot;8&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
       </children>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_WreEgLPkEeW15OEM_-URAQ" elementId="org.eclipse.jdt.ui.PackageExplorer" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Package Explorer" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/eview16/package.png" tooltip="" closeable="true">
@@ -214,6 +228,8 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
+      <tags>active</tags>
+      <tags>activeOnClose</tags>
       <menus xmi:id="_W_RxULPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.views.ContentOutline">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -261,7 +277,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_WZotoLPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_WZ2JALPkEeW15OEM_-URAQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_WF7Hh7PkEeW15OEM_-URAQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_spjwwLTGEeWGX9mvdjx0bQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_WF7Hh7PkEeW15OEM_-URAQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_WZpUsLPkEeW15OEM_-URAQ" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -285,7 +301,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_WZpUtLPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_WZ4lQLPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_WF4rM7PkEeW15OEM_-URAQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_sps6sLTGEeWGX9mvdjx0bQ" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_WF4rM7PkEeW15OEM_-URAQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_WZp7wLPkEeW15OEM_-URAQ" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -319,8 +335,8 @@
         <tags>Draggable</tags>
       </children>
     </trimBars>
-    <trimBars xmi:id="_Wj1LcLPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.trim.vertical1" side="Left">
-      <children xsi:type="menu:ToolControl" xmi:id="_Ylh9cLPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.ide.perspectivestack(minimized)" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.TrimStack">
+    <trimBars xmi:id="_Wj1LcLPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.trim.vertical1" toBeRendered="false" side="Left">
+      <children xsi:type="menu:ToolControl" xmi:id="_Ylh9cLPkEeW15OEM_-URAQ" elementId="org.eclipse.ui.ide.perspectivestack(minimized)" toBeRendered="false" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.TrimStack">
         <persistedState key="XSize" value="1343"/>
         <persistedState key="YSize" value="665"/>
         <tags>TrimStack</tags>
