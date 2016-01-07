@@ -46,7 +46,7 @@ void incluir(){
 void mostrar(){
     int i;
     for(i = 0; i < pos; i++){
-        printf("\nNome da conta = %s // Saldo = %d // Limite = %d // Numero = %d\n", banco[i].nomeCliente, banco[i].saldoCartao, banco[i].limiteCartao, banco[i].numeroCartao);
+        printf("POS: %d\nNome da conta = %s // Saldo = %d // Limite = %d // Numero = %d\n", pos ,banco[i].nomeCliente, banco[i].saldoCartao, banco[i].limiteCartao, banco[i].numeroCartao);
     }
     printf("\n");
 }
@@ -55,7 +55,7 @@ Cliente maiorLimite(){
     int i, d;
     while(d<5){
         for(i = 0;i < pos;i++){
-                if (banco[i].limiteCartao < banco[i].limiteCartao){
+                if (banco[i].limiteCartao < banco[i+1].limiteCartao){
                     int holder = banco[i+1].limiteCartao;
                     banco[i+1].limiteCartao = banco[i].limiteCartao;
                     banco[i].limiteCartao = holder;
@@ -70,7 +70,7 @@ Cliente menorSaldo(){
     int i, d;
     while(d<5){
         for(i = 0;i < pos;i++){
-                if (banco[i].saldoCartao > banco[i].saldoCartao){
+                if (banco[i].saldoCartao > banco[i+1].saldoCartao){
                     int holder = banco[i+1].saldoCartao;
                     banco[i+1].saldoCartao = banco[i].saldoCartao;
                     banco[i].saldoCartao = holder;
@@ -78,8 +78,7 @@ Cliente menorSaldo(){
         }
         d++;
         }
-    strcpy(banco[0].nomeCliente, banco[pos].nomeCliente);
-    return banco[0];
+    return banco[pos-1];
 }
 
 int main(){
