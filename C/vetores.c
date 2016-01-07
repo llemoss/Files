@@ -25,8 +25,9 @@ void incluir(){
 
         while(1==1){
             if(resp == 'N' || resp == 'n'){break;}
-            else if(resp == 'Y' || resp == 'y'){pos++;
-            break;}
+            else if(resp == 'Y' || resp == 'y'){
+                    if(pos<9){pos++;}
+                    break;}
             else{
                 printf("Deseja continuar? Y/N: ");
                 scanf("%s", &resp);
