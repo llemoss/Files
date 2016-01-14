@@ -14,7 +14,6 @@ public class Mesa{
 	private Pedido[] pedidos;
 	private int qtdMaxDePedidosAtual = MAX_PEDIDOS;
 	private int contadorDePedidos = 0;
-	private double conta = 0;
 	private boolean comTaxa;
 	private double rateio = 1;
 	private Mesa mesaJuntada;
@@ -46,11 +45,10 @@ public class Mesa{
 	}
 	
 	public void adicionarPedido(Pedido pedido){
-		if (this.status != Mesa.OCUPADA)
-			return;
+		if (this.status != Mesa.OCUPADA) return;
 		
 		pedidos[contadorDePedidos++] = pedido;
-		this.conta += pedido.getValor();
+		
 		if (contadorDePedidos == qtdMaxDePedidosAtual){
 			qtdMaxDePedidosAtual += MAX_PEDIDOS;
 			Pedido[] temp = this.pedidos;
@@ -65,16 +63,33 @@ public class Mesa{
 	public double conta() {
 		double valor = 0;
 		
-		for (Pedido pedido : this.pedidos) {
-			if (pedido == null) break;
-			valor += pedido.getValor();
+		if ((this.tipo == Mesa.PRINCIPAL && mesaJuntada != null) || (this.tipo == Mesa.SECUNDARIA)){
+			for (Pedido pedido : this.pedidos) {
+				if (pedido == null) break;
+				valor += pedido.getValor();
+			}
+			for (Pedido pedido : mesaJuntada.pedidos) {
+				if (pedido == null) break;
+				valor += pedido.getValor();
+			}
+		}else{
+			for (Pedido pedido : this.pedidos) {
+				if (pedido == null) break;
+				valor += pedido.getValor();
+			}
 		}
 		
 		if (comTaxa) valor = valor*1.1;
 		
-		//Fazer o juntar mesas funcionar
-		
 		return valor;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public Pedido[] getPedidos() {

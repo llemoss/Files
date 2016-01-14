@@ -17,6 +17,8 @@ public class TestaRestaurante {
 		a.adicionarPedido(p1);
 		p1 = new Pedido("Suco", 7.5);
 		a.adicionarPedido(p1);
+		p1 = new Pedido("Suco", 7.5);
+		a.adicionarPedido(p1);
 		
 		restaurante.abrirMesa(9);
 		Mesa b = restaurante.getMesas()[8];
@@ -24,16 +26,14 @@ public class TestaRestaurante {
 		b.adicionarPedido(p2);
 		p2 = new Pedido("Suco", 7);
 		b.adicionarPedido(p2);
+		p2 = new Pedido("Suco", 7);
+		b.adicionarPedido(p2);
 		
 		a.juntar(b);
 		
+		System.out.println(a);
 		
-		
-		
-		System.out.println(restaurante);
-		
-		for (Mesa mesa : restaurante.getMesas()) {
-			if(mesa.getStatus() == Mesa.OCUPADA){System.out.println(mesa);}
-		}
+		System.out.println("Conta de a: " + a.conta());
+		System.out.println("Conta de b: " + b.conta());
 	}
 }

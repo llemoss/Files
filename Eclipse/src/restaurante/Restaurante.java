@@ -47,7 +47,9 @@ public class Restaurante{
 				contOcupada++;
 			if (mesa.getStatus() == Mesa.RESERVADA)
 				contReservada++;
-			valorTotalAtual += mesa.conta();
+			if (mesa.getTipo() == Mesa.PRINCIPAL){
+				valorTotalAtual += mesa.conta();
+			}
 		}
 		
 		

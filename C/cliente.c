@@ -46,7 +46,7 @@ void incluir(){
 void mostrar(){
     int i;
     for(i = 0; i < pos; i++){
-        printf("POS: %d\nNome da conta = %s // Saldo = %d // Limite = %d // Numero = %d\n", pos ,banco[i].nomeCliente, banco[i].saldoCartao, banco[i].limiteCartao, banco[i].numeroCartao);
+        printf("Nome da conta = %s // Saldo = %d // Limite = %d // Numero = %d\n", banco[i].nomeCliente, banco[i].saldoCartao, banco[i].limiteCartao, banco[i].numeroCartao);
     }
     printf("\n");
 }
@@ -81,11 +81,27 @@ Cliente menorSaldo(){
     return banco[pos-1];
 }
 
+Cliente deletar(char nome[50]){
+	Cliente temp[5];
+	int i;
+	int posDel;
+	for(i = 0;i < pos;i++){
+		if (banco[i].nomeCliente == nome){
+			posDel = i;
+		}
+	}
+	for(i = posDel - 1; i < pos - 1; i++){
+		banco[i] = banco[i+1];
+	}
+	banco = temp;
+	return temp;
+}
+
 int main(){
 
     while(1==1){
             int opcao;
-        printf("Opcoes:\n1 - Cadastrar cliente\n2 - Mostrar clientes\n3 - Maior limite\n4 - Menor saldo\n5 - Sair\n");
+        printf("Opcoes:\n1 - Cadastrar cliente\n2 - Mostrar clientes\n3 - Maior limite\n4 - Menor saldo\n5 - Deletar cliente\n0 - Sair\n");
         scanf("%d", &opcao);
         if(opcao == 1){
             incluir();
@@ -104,6 +120,15 @@ int main(){
             printf("O cliente %s tem o menor saldo de: %d\n", menorCliente.nomeCliente, menorCliente.saldoCartao);
         }
         else if(opcao == 5){
+			mostrar();
+			char n[50];
+			printf("Digite nome do cliente a ser deletado: ");
+			fflush(stdin);
+			gets(n);
+			banco = deletar(n);
+			mostrar()
+		}
+        else if(opcao == 0){
             break;
         }
     }
