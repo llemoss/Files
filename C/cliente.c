@@ -81,20 +81,28 @@ Cliente menorSaldo(){
     return banco[pos-1];
 }
 
-Cliente deletar(char nome[50]){
-	Cliente temp[5];
-	int i;
-	int posDel;
-	for(i = 0;i < pos;i++){
-		if (banco[i].nomeCliente == nome){
-			posDel = i;
+void deletarSubs(char nome[50]){
+	int i, p;
+	for (i = 0; i < pos; i++){
+		if (strcmp(banco[i].nomeCliente, nome) == 0){
+			p = i;
 		}
 	}
-	for(i = posDel - 1; i < pos - 1; i++){
-		banco[i] = banco[i+1];
+	
+	banco[p] = banco[pos-1];
+	pos--;
+}
+
+void deletarMov(char nome[50]){
+	int i, p;
+	for (i = 0; i < pos; i++){
+		if (strcmp(banco[i].nomeCliente, nome) == 0){
+			p = i;
+		}
 	}
-	banco = temp;
-	return temp;
+	for (i = p; i < pos - 1; i++)
+	{banco[i] = banco[i+1];}
+	pos--;
 }
 
 int main(){
@@ -125,9 +133,13 @@ int main(){
 			printf("Digite nome do cliente a ser deletado: ");
 			fflush(stdin);
 			gets(n);
-			banco = deletar(n);
-			mostrar()
+			deletarSubs(n);
+			printf("\nNova lista de clientes:\n");
+			mostrar();
 		}
+        else if(opcao == 10){
+            printf("POS: %d\n", pos);
+        }
         else if(opcao == 0){
             break;
         }
