@@ -43,6 +43,56 @@ void incluir(){
     }
 }
 
+void incluir2(){
+    char resp;
+    while(1==1){
+        if(pos<5){
+  	    Cliente input;
+  	    int i = 0, p = -1;
+        
+		printf("Digite nome do cliente: ");
+        fflush(stdin);
+        gets(input.nomeCliente);
+        printf("Digite numero do cartao: ");
+        scanf("%d", &input.numeroCartao);
+        printf("Digite saldo do cartao: ");
+        scanf("%d", &input.saldoCartao);
+        printf("Digite limite do cartao: ");
+        scanf("%d", &input.limiteCartao);
+		
+		for (i = 0; i < pos; i++){
+			if (input.numeroCartao < banco[i].numeroCartao){
+				p = i;
+				break;
+			}
+		}
+		
+		if (p == -1){
+			banco[pos] = input;
+			pos++;
+		}else{
+			for (i = pos; i > p; i--){banco[i] = banco[i-1];}
+        	banco[p] = input;
+			pos++;}
+
+        printf("Deseja continuar? Y/N: ");
+        scanf("%s", &resp);
+
+        while(1==1){
+            if(resp == 'N' || resp == 'n'){break;}
+            else if(resp == 'Y' || resp == 'y'){
+                    break;}
+            else{
+                printf("Deseja continuar? Y/N: ");
+                scanf("%s", &resp);
+            }
+        }
+		
+        if(resp == 'N' || resp == 'n'){break;}
+		}
+    }
+}
+
 void mostrar(){
     int i;
     for(i = 0; i < pos; i++){
@@ -59,7 +109,7 @@ Cliente maiorLimite(){
                     int holder = banco[i+1].limiteCartao;
                     banco[i+1].limiteCartao = banco[i].limiteCartao;
                     banco[i].limiteCartao = holder;
-                    }
+					}
         }
         d++;
         }
@@ -112,7 +162,7 @@ int main(){
         printf("Opcoes:\n1 - Cadastrar cliente\n2 - Mostrar clientes\n3 - Maior limite\n4 - Menor saldo\n5 - Deletar cliente\n0 - Sair\n");
         scanf("%d", &opcao);
         if(opcao == 1){
-            incluir();
+            incluir2();
         }
         else if(opcao == 2){
             mostrar();
