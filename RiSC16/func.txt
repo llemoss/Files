@@ -1,0 +1,36 @@
+//codigo para xpto(){b=a}
+
+addi 1,0,1
+sw 1,0,a
+movi 2,xpto
+jalr 7,2
+halt
+xpto: lw 1,0,a
+      sw 1,0,b
+      jalr 0,7
+a: .fill 0
+b: .fill 0
+
+//codigo para xpto(){if(a-- == 0){xpto();}}
+
+addi 1,0,1
+sw 1,0,a
+movi 2,xpto
+jalr 7,2
+halt
+xpto: movi 1,topo #comeco do overhead1
+      sw 7,1,0
+      addi 1,1,1
+      sw 1,0,topo #final do overhead1
+      lw 1,0,a
+      addi 2,1,-1
+      sw 2,0,a
+      beq 1,0,return
+      movi 2,xpto
+      jalr 7,2
+      movi 1,topo #comeco do overhead2
+      lw 7,1,topo
+      addi 7,7,-1
+      sw 7,1,0 #final do overhead2
+return: jalr 0,7
+a: .fill 0

@@ -1,0 +1,4 @@
+#do{eaheaheah}while(x==0);
+do: #conteudo
+calculoX: ...
+beq 0,x,do

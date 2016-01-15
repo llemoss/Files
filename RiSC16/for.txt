@@ -1,0 +1,11 @@
+#for(init;condicao;incremento) -> init; while(condicao){aehahaeh; inc;}
+init: ...
+while: calculodeX
+beq x,0,nono #x==0
+beq 0,0,endwhile #{
+nono: ... #conteudo do while + inc
+beq 0,0,while#}
+beq 0,1,endwhile
+endwhile: ...
+
+x: .fill 2
