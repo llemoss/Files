@@ -34,3 +34,5 @@ xpto: movi 1,topo #comeco do overhead1
       sw 7,1,0 #final do overhead2
 return: jalr 0,7
 a: .fill 0
+topo: .fill pilha
+pilha:
