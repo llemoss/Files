@@ -39,6 +39,11 @@ void incluir(){
 				p = i;
 				break;
 			}
+			else{
+				if (input.numeroCartao < banco[i].numeroCartao){
+					break;
+				}
+			}
 		}
 		
 		if (p == -1){
