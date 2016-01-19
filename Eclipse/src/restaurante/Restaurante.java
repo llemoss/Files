@@ -23,12 +23,6 @@ public class Restaurante{
 		m.setStatus(Mesa.OCUPADA);
 		return m;
 	}
-
-	public void juntarMesa(int x, int y){
-		Mesa a = this.mesas[x-1];
-		Mesa b = this.mesas[y-1];
-		b = a;
-	}
 	
 	public Mesa[] getMesas() {
 		return mesas;

@@ -5,7 +5,7 @@ class Data {
 	private int mes;
 	private int ano;
 
-	public setData(dia, mes, ano){
+	public void setData(int dia, int mes, int ano){
 		this.dia = dia;
 		this.mes = mes;
 		this.ano = ano;

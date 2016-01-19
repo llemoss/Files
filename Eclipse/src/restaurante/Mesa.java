@@ -131,7 +131,7 @@ public class Mesa{
 		str += "----------------------\nConta: " + this.conta() + "\n";
 		
 		if (this.rateio > 1){
-			str += "Rateio: " + conta()/rateio + "\n";
+			str += "Rateio: " + this.conta()/rateio + "\n";
 		}
 		
 		return str;

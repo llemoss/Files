@@ -6,7 +6,7 @@ public class TestaRestaurante {
 		
 		restaurante.abrirMesa(10);
 		Mesa a = restaurante.getMesas()[9];
-		a.setRateio(2);
+		//a.setRateio(2);
 		Pedido p1 = new Pedido("Água s/ gas", 2);
 		a.adicionarPedido(p1);
 		p1 = new Pedido("Suco", 7);
@@ -15,9 +15,9 @@ public class TestaRestaurante {
 		a.adicionarPedido(p1);
 		p1 = new Pedido("Suco", 7);
 		a.adicionarPedido(p1);
-		p1 = new Pedido("Suco", 7.5);
+		p1 = new Pedido("Suco", 7);
 		a.adicionarPedido(p1);
-		p1 = new Pedido("Suco", 7.5);
+		p1 = new Pedido("Suco", 7);
 		a.adicionarPedido(p1);
 		
 		restaurante.abrirMesa(9);
@@ -32,6 +32,8 @@ public class TestaRestaurante {
 		a.juntar(b);
 		
 		System.out.println(a);
+		System.out.println(b);
+		System.out.println(restaurante);
 		
 		System.out.println("Conta de a: " + a.conta());
 		System.out.println("Conta de b: " + b.conta());

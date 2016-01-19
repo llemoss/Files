@@ -3,9 +3,7 @@ class TestaFuncionario{
 	public static void main(String[] args){
 		Funcionario f1 = new Funcionario();
 		Data dataf1 = new Data();
-		dataf1.dia = 06;
-		dataf1.mes = 01;
-		dataf1.ano = 2016;
+		dataf1.setData(06, 01, 2016);
 		f1.setNome("Gil");
 		f1.setSalario(800);
 		f1.setData(dataf1);
