@@ -1,4 +1,4 @@
-package aula5;
+package ativdAula5;
 
 public class AtualizadorDeContas {
 	private double saldoTotal = 0;
