@@ -2,7 +2,7 @@ package ativdAula5;
 
 public class Banco {
 	
-	Conta[] contas;
+	private Conta[] contas;
 	private int count = 0;
 	
 	public Banco(){

@@ -1,6 +1,7 @@
 package ativdAula5;
 
 public class AtualizadorDeContas extends Conta {
+	
 	private double saldoTotal = 0;
 	private double selic;
 	
