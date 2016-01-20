@@ -19,13 +19,13 @@ public class TestaContas {
 		Conta c5 = new ContaPoupanca();
 		banco.adicionar(c5);
 
-		for (Conta conta : banco.contas) {
+		for (Conta conta : banco.getContas()) {
 			conta.depositar(1000);
 		}
 		
 		AtualizadorDeContas adc = new AtualizadorDeContas(0.01);
 		
-		for (Conta conta : banco.contas) {
+		for (Conta conta : banco.getContas()) {
 			adc.roda(conta);
 		}
 		

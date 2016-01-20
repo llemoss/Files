@@ -12,6 +12,10 @@ public class Banco {
 		}
 	}
 	
+	public Conta[] getContas() {
+		return contas;
+	}
+	
 	public void adicionar(Conta c){
 		contas[count++] = c;
 	}
