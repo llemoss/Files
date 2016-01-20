@@ -1,7 +1,5 @@
 package ativdAula5;
 
-import restaurante.Mesa;
-
 public class Banco {
 	
 	Conta[] contas;
