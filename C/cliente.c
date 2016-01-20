@@ -143,15 +143,11 @@ void deletarSubs(char nome[50]){
 	pos--;
 }
 
-void deletarMov(char nome[50]){
-	int i, p;
-	for (i = 0; i < pos; i++){
-		if (strcmp(banco[i].nomeCliente, nome) == 0){
-			p = i;
-		}
+void deletarMov(int p){
+	int i = 0;
+	for (i = p; i < pos; i++){
+		banco[i] = banco[i+1];
 	}
-	for (i = p; i < pos - 1; i++)
-	{banco[i] = banco[i+1];}
 	pos--;
 }
 
@@ -186,6 +182,14 @@ int main(){
 			deletarSubs(n);
 			printf("\nNova lista de clientes:\n");
 			mostrar();
+		}
+		else if(opcao == 6){
+			int posicao;
+			printf("Digite posicao a ser deletada: ");
+			scanf("%d", &posicao);
+			deletarMov(posicao);
+			mostrar();
+			
 		}
         else if(opcao == 10){
             printf("POS: %d\n", pos);
