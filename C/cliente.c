@@ -23,8 +23,6 @@ void incluir(){
         scanf("%d", &banco[pos].numeroCartao);
         printf("Digite saldo do cartao: ");
         scanf("%d", &banco[pos].saldoCartao);
-        printf("Digite limite do cartao: ");
-        scanf("%d", &banco[pos].limiteCartao);
         pos++;
         printf("Deseja continuar? Y/N: ");
         scanf("%s", &resp);}else{break;}
@@ -57,8 +55,6 @@ void incluir2(){
         scanf("%d", &input.numeroCartao);
         printf("Digite saldo do cartao: ");
         scanf("%d", &input.saldoCartao);
-        printf("Digite limite do cartao: ");
-        scanf("%d", &input.limiteCartao);
 		
 		for (i = 0; i < pos; i++){
 			if (input.numeroCartao < banco[i].numeroCartao){
@@ -79,7 +75,7 @@ void incluir2(){
         scanf("%s", &resp);
 
         while(1==1){
-            if(resp == 'N' || resp == 'n'){break;}
+            if(resp == 'N' || resp == 'n'){printf("\n\n"); break;}
             else if(resp == 'Y' || resp == 'y'){
                     break;}
             else{
@@ -88,7 +84,9 @@ void incluir2(){
             }
         }
 		
-        if(resp == 'N' || resp == 'n'){break;}
+        if(resp == 'N' || resp == 'n'){
+			printf("\n\n");
+			break;}
 		}
     }
 }
@@ -96,17 +94,17 @@ void incluir2(){
 void mostrar(){
     int i;
     for(i = 0; i < pos; i++){
-        printf("Nome da conta = %s // Saldo = %d // Limite = %d // Numero = %d\n", banco[i].nomeCliente, banco[i].saldoCartao, banco[i].limiteCartao, banco[i].numeroCartao);
+        printf("Nome da conta = %s // Saldo = %d // Numero = %d\n", banco[i].nomeCliente, banco[i].saldoCartao, banco[i].numeroCartao);
     }
     printf("\n");
 }
 
-Cliente maiorLimite(){ //Bubble Sort
+Cliente maiorSaldo(){ //Bubble Sort
     int i, j, troca;
     for(i = pos-1; i >= 1; i--){
     	troca = 0;
         for(j = 0; j < i; j++){
-                if (banco[j].limiteCartao < banco[j+1].limiteCartao){
+                if (banco[j].saldoCartao < banco[j+1].saldoCartao){
                 	troca = 1;
                     Cliente holder = banco[j];
                     banco[j] = banco[j+1];
@@ -156,29 +154,57 @@ void deletarMov(int p){
 	pos--;
 }
 
+void pesquisaBinaria(Cliente *vet, int elem){
+	int ini = 0;
+	int fim = pos-1;
+	
+	while(ini <= fim){
+		int meio = (ini + fim) / 2;
+		if (elem < vet[meio].numeroCartao){
+			fim = meio - 1;
+		}
+		else if (elem > vet[meio].numeroCartao){
+			ini = meio + 1;
+		}
+		else{
+			printf("O nome do cliente com numero %d, eh: %s\n", elem, vet[meio].nomeCliente);
+			break;
+		}
+		
+		printf("Cliente nao encontrado");
+	}
+}
+
+
+
 int main(){
 
     while(1==1){
             int opcao;
-        printf("Opcoes:\n1 - Cadastrar cliente\n2 - Mostrar clientes\n3 - Maior limite\n4 - Menor saldo\n5 - Deletar cliente\n0 - Sair\n");
+        printf("Opcoes:\n1 - Cadastrar cliente\n2 - Mostrar clientes\n3 - Ordenar maior -> menor saldo\n4 - Ordenar menor -> maior saldo\n5 - Deletar cliente por nome\n6 - Deletar cliente por posicao\n7 - Pesquisar cliente por numero de cartao\n0 - Sair\nQual opcao? - ");
         scanf("%d", &opcao);
         if(opcao == 1){
+        	printf("\n");
             incluir();
         }
         else if(opcao == 2){
+        	printf("\n");
             mostrar();
         }
         else if(opcao == 3){
-            Cliente maiorLimiteCliente;
-            maiorLimiteCliente = maiorLimite();
-            printf("O cliente %s tem o maior limite de: %d\n", maiorLimiteCliente.nomeCliente, maiorLimiteCliente.limiteCartao);
+        	printf("\n");
+            Cliente maiorCliente;
+            maiorCliente = maiorSaldo();
+            printf("O cliente %s tem o maior saldo de: %d\n", maiorCliente.nomeCliente, maiorCliente.saldoCartao);
         }
         else if(opcao == 4){
+        	printf("\n");
             Cliente menorCliente;
             menorCliente = menorSaldo();
             printf("O cliente %s tem o menor saldo de: %d\n", menorCliente.nomeCliente, menorCliente.saldoCartao);
         }
         else if(opcao == 5){
+        	printf("\n");
 			mostrar();
 			char n[50];
 			printf("Digite nome do cliente a ser deletado: ");
@@ -187,6 +213,7 @@ int main(){
 			deletarSubs(n);
 			printf("\nNova lista de clientes:\n");
 			mostrar();
+			printf("\n");
 		}
 		else if(opcao == 6){
 			int posicao;
@@ -194,10 +221,17 @@ int main(){
 			scanf("%d", &posicao);
 			deletarMov(posicao);
 			mostrar();
-			
+			printf("\n");
+		}
+		else if(opcao == 7){
+			int n;
+			printf("Digite numero do cartao a ser encontrado: ");
+			scanf("%d", &n);
+			pesquisaBinaria(banco, n);
 		}
         else if(opcao == 10){
             printf("POS: %d\n", pos);
+            printf("\n");
         }
         else if(opcao == 0){
             break;
