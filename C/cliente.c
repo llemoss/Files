@@ -25,9 +25,9 @@ void incluir(){
         scanf("%d", &banco[pos].saldoCartao);
         printf("Digite limite do cartao: ");
         scanf("%d", &banco[pos].limiteCartao);
-        pos++;}
+        pos++;
         printf("Deseja continuar? Y/N: ");
-        scanf("%s", &resp);
+        scanf("%s", &resp);}else{break;}
 
         while(1==1){
             if(resp == 'N' || resp == 'n'){break;}
@@ -101,34 +101,39 @@ void mostrar(){
     printf("\n");
 }
 
-Cliente maiorLimite(){
-    int i, d;
-    while(d<5){
-        for(i = 0;i < pos;i++){
-                if (banco[i].limiteCartao < banco[i+1].limiteCartao){
-                    int holder = banco[i+1].limiteCartao;
-                    banco[i+1].limiteCartao = banco[i].limiteCartao;
-                    banco[i].limiteCartao = holder;
-					}
+Cliente maiorLimite(){ //Bubble Sort
+    int i, j, troca;
+    for(i = pos-1; i >= 1; i--){
+    	troca = 0;
+        for(j = 0; j < i; j++){
+                if (banco[j].limiteCartao < banco[j+1].limiteCartao){
+                	troca = 1;
+                    Cliente holder = banco[j];
+                    banco[j] = banco[j+1];
+                    banco[j+1] = holder;
+				}
         }
-        d++;
-        }
+        if(troca == 0){break;}
+	}
     return banco[0];
 }
 
-Cliente menorSaldo(){
-    int i, d;
-    while(d<5){
-        for(i = 0;i < pos;i++){
-                if (banco[i].saldoCartao > banco[i+1].saldoCartao){
-                    int holder = banco[i+1].saldoCartao;
-                    banco[i+1].saldoCartao = banco[i].saldoCartao;
-                    banco[i].saldoCartao = holder;
-                    }
+Cliente menorSaldo(){ //Bubble Sort
+    int i, j, troca;
+    for(i = pos-1; i >= 1; i--){
+    	troca = 0;
+        for(j = 0;j < i;j++){
+                if (banco[j].saldoCartao > banco[j+1].saldoCartao){
+                	troca = 1;
+                    Cliente holder = banco[j];
+                    banco[j] = banco[j+1];
+                    banco[j+1] = holder;
+				}
         }
-        d++;
-        }
-    return banco[pos-1];
+        if(troca == 0){break;}
+	}
+	
+    return banco[0];
 }
 
 void deletarSubs(char nome[50]){
@@ -158,7 +163,7 @@ int main(){
         printf("Opcoes:\n1 - Cadastrar cliente\n2 - Mostrar clientes\n3 - Maior limite\n4 - Menor saldo\n5 - Deletar cliente\n0 - Sair\n");
         scanf("%d", &opcao);
         if(opcao == 1){
-            incluir2();
+            incluir();
         }
         else if(opcao == 2){
             mostrar();
