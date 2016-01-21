@@ -6,7 +6,7 @@ public interface Conta {
 	
 	public void sacar(double valor);
 	
-	public abstract void atualizar(double taxa);
+	public void atualizar(double taxa);
 		
 	public double getSaldo();
 	
