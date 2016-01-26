@@ -4,9 +4,9 @@ public class TestaFesta {
 
 	public static void main(String[] args) {
 		
-		Tema Cinderela = new Cinderela();
-		Item Castelo = new Castelo();
-		Cinderela.adicionarItem(Castelo);
+		Tema Cinderela = new Tema("Cinderela", "Azul clara");
+	    Item Castelo = new Item("Castelo", 250);
+	    Cinderela.adicionarItem(Castelo);
 		
 		Cliente cliente1 = new Cliente("Julia", "123456789", "Rua Aquela La, numero 1234", Cinderela, "26/01/2016");
 		Cliente cliente2 = new Cliente(Cinderela);
