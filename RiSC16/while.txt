@@ -3,7 +3,7 @@ while: calculodeX
 beq x,0,nono #x==0
 beq 0,0,endwhile #{
 nono: ... #conteudo do while
-beq 0,0,while#}
+beq 0,0,while #}
 beq 0,1,endwhile
 endwhile: ...
 x: .fill 2

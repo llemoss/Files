@@ -1,2 +1,26 @@
-lw 1,0,x
-addi 2,0,0
+addi 1,0,5
+movi 2,fib
+jalr 7,2
+halt
+fib:  movi 1,topo #comeco do overhead1
+      sw 7,1,0
+      addi 1,1,1
+      sw 1,0,topo #final do overhead1
+      lw 1,0,n
+      addi 2,2,1
+      beq 1,0,end
+      beq 1,2,end
+      addi 3,1,-1
+      addi 4,1,-2
+      movi 2,fib
+      sw 2,0,a
+      beq 1,0,end
+      movi 2,fib
+      jalr 7,2
+      movi 1,topo #comeco do overhead2
+      lw 7,1,topo
+      addi 7,7,-1
+      sw 7,1,0 #final do overhead2
+end: jalr 0,7
+topo: .fill pilha
+pilha:
