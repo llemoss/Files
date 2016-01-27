@@ -25,7 +25,7 @@ void incluir(){
         scanf("%d", &banco[pos].saldoCartao);
         pos++;
         printf("Deseja continuar? Y/N: ");
-        scanf("%s", &resp);}else{break;}
+        scanf("%s", &resp);} else {break;}
 
         while(1==1){
             if(resp == 'N' || resp == 'n'){break;}
@@ -157,6 +157,9 @@ void deletarMov(int p){
 void pesquisaBinaria(Cliente *vet, int elem){
 	int ini = 0;
 	int fim = pos-1;
+	
+	
+	//2 ^ log n_2 = n --> eficiência = log n
 	
 	while(ini <= fim){
 		int meio = (ini + fim) / 2;
