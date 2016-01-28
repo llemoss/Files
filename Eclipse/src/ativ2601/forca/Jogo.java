@@ -62,14 +62,18 @@ public class Jogo {
 			}
 			
 			if (acertou == false){
+				clear();
 				vida--;
 				boneco.removerParte(vida);
+				System.out.println("Você errou!");
 			}else{
+				clear();
 				contador--;
 				score += 100 + (contador * 15);
 			}
 			
 			if (strPalavra.equals(strAsteriscos)){
+				clear();
 				System.out.println("Você ganhou!");
 				System.out.println("Jogador: " + nome + " // Pontuação: " + score);
 				System.out.println("Tema: " + tema.getNome() + " // Palavra: " + strPalavra);
@@ -81,7 +85,6 @@ public class Jogo {
 				break;
 			}
 			else{
-				System.out.println("Você errou!");
 				mostrar();
 			}
 			
@@ -102,5 +105,9 @@ public class Jogo {
 			System.out.print(asteriscos[i]);
 		}
 		System.out.println("\n");
+	}
+	
+	public static void clear(){
+		for (int i = 0; i < 50; ++i) System.out.println();
 	}
 }
