@@ -126,14 +126,14 @@ public class Jogo {
 	}
 	
 	public static void incrementarTemas(){
-		int count = -1;
+		int count = 0;
 		System.out.println("Temas disponíveis para incremento: ");
 		for (int i = 0; i < temas.length; i++) {
 			if (temas[i].getNome() != null){System.out.println(i+1 + " - " + temas[i].getNome() + " // Qtd. palavras: [" + temas[i].getConjuntoPalavras().length + "]"); count++;}
 		}
 		
-		if (count == -1){count++;}
-		else if(count == 0){count++;}
+		//if (count == -1){count++;}
+		//else if(count == 0){count++;}
 		
 		while(true){
 			int opcao;
