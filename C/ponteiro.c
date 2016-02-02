@@ -3,12 +3,6 @@
 
 int main(){
 
-
-    /*
-    const int *a == const int *b
-    int const *a != int *const b;
-    */
-
     int var;
     int *ptr;
     var = 10;

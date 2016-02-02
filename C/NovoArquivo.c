@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 int listaFib[200];
 
@@ -40,12 +41,3 @@ int main(){
 	//main() só está executando o não recursivo, o recursivo precisa de printf("%d", fibRec(n))
 	//e não mostra lista
 }
-
-int main(){
-	int A = 10
-	while (A != 0){
-		A--;
-	}
-}
-
-

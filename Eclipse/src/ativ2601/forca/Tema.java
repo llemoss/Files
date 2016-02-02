@@ -12,7 +12,22 @@ public class Tema {
 	}
 	
 	Tema(){}
+	
+	public void setConjuntoPalavras(String conjunto){
+		conjunto = conjunto.toUpperCase();
+		this.ConjuntoPalavras = conjunto.split(" ");
+	}
 
+	public Tema adicionarPalavra(String palavra){
+		String str = "";
+		for (String p : this.getConjuntoPalavras()) {
+			str += p + " ";
+		}
+		str += palavra;
+		this.setConjuntoPalavras(str);
+		return this;
+	}
+	
 	public String getNome(){
 		return this.nome;
 	}
