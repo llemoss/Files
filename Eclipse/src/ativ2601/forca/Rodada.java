@@ -3,23 +3,24 @@ import java.util.Scanner;
 
 public class Rodada {
 	
-	private static Boneco boneco = new Boneco();
+	private Boneco boneco = new Boneco();
 	static Scanner input = new Scanner(System.in);
-	private static int vida = 6;
-	private static int score = 0;
-	private static Tema tema;
+	private int vida = 6;
+	private int score = 0;
+	private Tema tema;
 	private static Tema[] temas = new Tema[10];
-	private static Tema animais = new Tema("Animais", "Cachorro Gato Passarinho Ornintorrinco");
-	private static Tema frutas  = new Tema("Frutas", "Maçã Banana Abacaxi Limão");
-	private static Jogador jogador;
-	private static String[] palavra;
-	private static String[] asteriscos;
-	private static String letrasErradas = "";
-	private static String letrasAcertadas = "";
+	private static Tema animais = new Tema("Animais", "Cachorro Gato Passaro Ornintorrinco");
+	private static Tema frutas  = new Tema("Frutas", "Manga Banana Abacaxi Limao");
+	private Jogador jogador;
+	private String[] palavra;
+	private String[] asteriscos;
+	private String letrasErradas = "";
+	private String letrasAcertadas = "";
+	private String status = "";
 
 	Rodada(Jogador jogador){
 		
-		Rodada.jogador = jogador;
+		this.jogador = jogador;
 		
 		for (int i = 0; i < temas.length; i++) {
 			temas[i] = new Tema();
@@ -45,7 +46,9 @@ public class Rodada {
 		}
 	}
 	
-	public static void adicionarLetra(String letra){
+	public void adicionarLetra(String letra){
+		
+		this.status = "";
 		
 		boolean acertou = false;
 		int contador = 0;
@@ -57,6 +60,28 @@ public class Rodada {
 				contador++;}
 		}
 		
+		if (acertou == false){
+			getBoneco().setVida(--vida);
+			getBoneco().removerParte();
+			letrasErradas += " " + letra;
+			this.status = "Você errou!" + " Letras erradas:" + letrasErradas + "\n";
+		}else{
+			contador--;
+			if (letrasAcertadas.contains(letra)){
+				score += 0;
+				jogador.setPontos(score);
+				this.status = "Você já digitou essa letra!\n";
+			}else{
+				score += 100 + (contador * 15);
+				jogador.setPontos(score);
+				letrasAcertadas += letra;
+				this.status = "Você acertou!" + "\n";
+			}
+		}
+	}
+	
+	public String gameOver(){
+		
 		String strPalavra = "";
 		String strAsteriscos = "";
 		
@@ -65,97 +90,33 @@ public class Rodada {
 			strAsteriscos += asteriscos[i];
 		}
 		
-		if (acertou == false){
-			clear();
-			getBoneco().setVida(--vida);;
-			getBoneco().removerParte();
-			letrasErradas += " " + letra;
-			Jogo.msg("Você errou!" + " Letras erradas:" + letrasErradas);
-		}else{
-			clear();
-			contador--;
-			if (letrasAcertadas.contains(letra)){
-				Jogo.msg("Você já digitou essa letra!" + " Letras acertadas: " + letrasAcertadas);
-				score += 0;
-				jogador.setPontos(score);
-			}else{
-				score += 100 + (contador * 15);
-				jogador.setPontos(score);
-				letrasAcertadas += letra;
-				Jogo.msg("Você acertou!");
-			}
-		}
-		
 		if (strPalavra.equals(strAsteriscos)){
-			clear();
 			boneco.setDead(true);
-			Jogo.msg("Você ganhou!\nJogador: " + jogador.getNome() + " // Pontuação: " + jogador.getPontos() + "\nTema: " + tema.getNome() + " // Palavra: " + strPalavra);}
+			return "Você ganhou!\nJogador: " + jogador.getNome() + " // Pontuação: " + jogador.getPontos() + "\nTema: " + tema.getNome() + " // Palavra: " + strPalavra;}
 		else if (vida == 0){
 			boneco.setDead(true);
-			Jogo.msg("Você morreu!\nJogador: " + jogador.getNome() + " // Pontuação: " + jogador.getPontos() + "\nTema: " + tema.getNome() + " // Palavra: " + strPalavra);}
-			}
-	
-	public static void inputLetra(){
-			String letra = Jogo.lerString(mostrar() + "\nDigite uma letra!");
-			letra = letra.toUpperCase();
-			adicionarLetra(letra);
+			return "Você morreu!\nJogador: " + jogador.getNome() + " // Pontuação: " + jogador.getPontos() + "\nTema: " + tema.getNome() + " // Palavra: " + strPalavra;}
+		else{
+			return null;
+		}
 	}
-	
-	public static String mostrar(){
+		
+	public String mostrar(){
 		String str = "";
 		String strAsteriscos = "";
 		for (int i = 0; i < asteriscos.length; i++) {
 			strAsteriscos += asteriscos[i];
 		}
-		str = "Jogador: " + jogador.getNome() + " // Pontuação: " + jogador.getPontos() + "\nTema: " + tema.getNome() + "\n__\n   |\n" + boneco.mostrar() + "\n\nPalavra: " + strAsteriscos;
+		str = this.status + "Jogador: " + jogador.getNome() + " // Pontuação: " + jogador.getPontos() + "\nTema: " + tema.getNome() + "\n__\n   |\n" + boneco.mostrar() + "\n\nPalavra: " + strAsteriscos;
 		return str;
 	}
-
-	public static void incrementarTemas(){
-		while(true){
-			
-			int count = 0;
-			String strTemas = "Temas disponíveis para incremento: ";
-			
-			for (int i = 0; i < temas.length; i++) {
-				if (temas[i].getNome() != null){
-					strTemas += "\n" + (i+1) + " - " + temas[i].getNome() + " // Qtd. palavras: [" + temas[i].getConjuntoPalavras().length + "]"; 
-					count++;}
-			}
-			
-			String menu = strTemas + "\nOpções:\n1 - Adicionar palavra\n2 - Adicionar tema\n0 - Sair\nEscolha uma opção!";
-			
-			int opcao = Jogo.lerInteiro(menu);
-			
-			if (opcao == 1){
-				String nomeTema, novaPalavra;
-				int i;
-				nomeTema = Jogo.lerString(strTemas + "\nDigite o nome do tema a ser incrementado: ");
-				for (i = 0; i < temas.length; i++) {
-					if (temas[i].getNome().equals(nomeTema)){
-						break;
-					}
-				}
-				novaPalavra = Jogo.lerString("Digite palavra a adicionar: ");
-				temas[i].adicionarPalavra(novaPalavra);
-				Jogo.msg("Palavra adicionada com sucesso!\n");
-			}
-			else if (opcao == 2){
-				String nomeTema, conjuntoTema;
-				nomeTema = Jogo.lerString("Digite nome do tema:");
-				conjuntoTema = Jogo.lerString("Digite o conjunto de palavras (separadas por espaço): ");
-				Tema novoTema = new Tema(nomeTema, conjuntoTema);
-				temas[count] = novoTema;
-				Jogo.msg("Tema adicionado com sucesso!\n");
-				break;
-			}
-			else if (opcao == 0){break;}
-			else {Jogo.msg("Digite uma opção válida!");}
-		}
-	}
 		
-	public static void clear(){
-		for (int i = 0; i < 50; ++i) System.out.println();
+	public Tema[] getTemas() {
+		return temas;
+	}
+
+	public void setTemas(Tema[] temas) {
+		Rodada.temas = temas;
 	}
 
 	public Jogador getJogador() {
@@ -163,14 +124,18 @@ public class Rodada {
 	}
 
 	public void setJogador(Jogador jogador) {
-		Rodada.jogador = jogador;
+		this.jogador = jogador;
 	}
 
-	public static Boneco getBoneco() {
-		return boneco;
+	public Boneco getBoneco() {
+		return this.boneco;
+	}
+
+	public String getStatus() {
+		return status;
 	}
 
 	public void setBoneco(Boneco boneco) {
-		Rodada.boneco = boneco;
+		this.boneco = boneco;
 	}
 }
