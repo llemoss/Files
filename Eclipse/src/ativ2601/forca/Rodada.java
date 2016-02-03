@@ -70,100 +70,87 @@ public class Rodada {
 			getBoneco().setVida(--vida);;
 			getBoneco().removerParte();
 			letrasErradas += " " + letra;
-			System.out.println("Você errou!" + " Letras erradas:" + letrasErradas);
+			Jogo.msg("Você errou!" + " Letras erradas:" + letrasErradas);
 		}else{
 			clear();
 			contador--;
 			if (letrasAcertadas.contains(letra)){
-				System.out.println("Você já digitou essa letra!" + " Letras acertadas: " + letrasAcertadas);
+				Jogo.msg("Você já digitou essa letra!" + " Letras acertadas: " + letrasAcertadas);
 				score += 0;
 				jogador.setPontos(score);
 			}else{
 				score += 100 + (contador * 15);
 				jogador.setPontos(score);
 				letrasAcertadas += letra;
-				System.out.println("Você acertou!");
+				Jogo.msg("Você acertou!");
 			}
 		}
 		
 		if (strPalavra.equals(strAsteriscos)){
 			clear();
 			boneco.setDead(true);
-			System.out.println("Você ganhou!");
-			System.out.println("Jogador: " + jogador.getNome() + " // Pontuação: " + jogador.getPontos());
-			System.out.println("Tema: " + tema.getNome() + " // Palavra: " + strPalavra);}
+			Jogo.msg("Você ganhou!\nJogador: " + jogador.getNome() + " // Pontuação: " + jogador.getPontos() + "\nTema: " + tema.getNome() + " // Palavra: " + strPalavra);}
 		else if (vida == 0){
 			boneco.setDead(true);
-			System.out.println("Você morreu!");
-			System.out.println("Jogador: " + jogador.getNome() + " // Pontuação: " + jogador.getPontos());
-			System.out.println("Tema: " + tema.getNome() + " // Palavra: " + strPalavra);}
-		else{
-			mostrar();
-		}
-	}
+			Jogo.msg("Você morreu!\nJogador: " + jogador.getNome() + " // Pontuação: " + jogador.getPontos() + "\nTema: " + tema.getNome() + " // Palavra: " + strPalavra);}
+			}
 	
-	public static void adicionarLetra(){
-			String letra;
-			System.out.print("\nDigite uma letra: ");
-			letra = input.next();
+	public static void inputLetra(){
+			String letra = Jogo.lerString(mostrar() + "\nDigite uma letra!");
 			letra = letra.toUpperCase();
 			adicionarLetra(letra);
 	}
 	
-	public static void mostrar(){
-		System.out.println("Jogador: " + jogador.getNome() + " // Pontuação: " + jogador.getPontos());
-		System.out.print("Tema: " + tema.getNome());
-		System.out.println("\n___\n  |");
-		System.out.println(boneco.mostrar() + "\n");
+	public static String mostrar(){
+		String str = "";
+		String strAsteriscos = "";
 		for (int i = 0; i < asteriscos.length; i++) {
-			System.out.print(asteriscos[i]);
+			strAsteriscos += asteriscos[i];
 		}
-		System.out.println("\n");
+		str = "Jogador: " + jogador.getNome() + " // Pontuação: " + jogador.getPontos() + "\nTema: " + tema.getNome() + "\n__\n   |\n" + boneco.mostrar() + "\n\nPalavra: " + strAsteriscos;
+		return str;
 	}
 
 	public static void incrementarTemas(){
-		int count = 0;
-		
-		System.out.println("Temas disponíveis para incremento: ");
-		
-		for (int i = 0; i < temas.length; i++) {
-			if (temas[i].getNome() != null){System.out.println(i+1 + " - " + temas[i].getNome() + " // Qtd. palavras: [" + temas[i].getConjuntoPalavras().length + "]"); count++;}
-		}
-		
 		while(true){
-			int opcao;
-			System.out.println("\nOpções:\n1 - Adicionar palavra\n2 - Adicionar tema\n0 - Sair");
-			System.out.print("Opção escolhida: ");
-			opcao = input.nextInt();
+			
+			int count = 0;
+			String strTemas = "Temas disponíveis para incremento: ";
+			
+			for (int i = 0; i < temas.length; i++) {
+				if (temas[i].getNome() != null){
+					strTemas += "\n" + (i+1) + " - " + temas[i].getNome() + " // Qtd. palavras: [" + temas[i].getConjuntoPalavras().length + "]"; 
+					count++;}
+			}
+			
+			String menu = strTemas + "\nOpções:\n1 - Adicionar palavra\n2 - Adicionar tema\n0 - Sair\nEscolha uma opção!";
+			
+			int opcao = Jogo.lerInteiro(menu);
+			
 			if (opcao == 1){
 				String nomeTema, novaPalavra;
 				int i;
-				System.out.println("Digite o nome do tema a ser incrementado: ");
-				nomeTema = input.next();
+				nomeTema = Jogo.lerString(strTemas + "\nDigite o nome do tema a ser incrementado: ");
 				for (i = 0; i < temas.length; i++) {
 					if (temas[i].getNome().equals(nomeTema)){
 						break;
 					}
 				}
-				System.out.println("Digite palavra a adicionar: ");
-				novaPalavra = input.next();
+				novaPalavra = Jogo.lerString("Digite palavra a adicionar: ");
 				temas[i].adicionarPalavra(novaPalavra);
-				System.out.println("Palavra adicionada com sucesso!\n");
+				Jogo.msg("Palavra adicionada com sucesso!\n");
 			}
 			else if (opcao == 2){
 				String nomeTema, conjuntoTema;
-				System.out.println("Digite o nome do tema:");
-				nomeTema = input.next();
-				input.nextLine();
-				System.out.println("Digite o conjunto de palavras (separadas por espaço): ");
-				conjuntoTema = input.nextLine();
+				nomeTema = Jogo.lerString("Digite nome do tema:");
+				conjuntoTema = Jogo.lerString("Digite o conjunto de palavras (separadas por espaço): ");
 				Tema novoTema = new Tema(nomeTema, conjuntoTema);
 				temas[count] = novoTema;
-				System.out.println("Tema adicionado com sucesso!\n");
+				Jogo.msg("Tema adicionado com sucesso!\n");
 				break;
 			}
 			else if (opcao == 0){break;}
-			else {System.out.print("Digite uma opção válida!: "); opcao = input.nextInt();}
+			else {Jogo.msg("Digite uma opção válida!");}
 		}
 	}
 		

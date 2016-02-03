@@ -1,35 +1,53 @@
 package ativ2601.forca;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Jogo {
 	
-	static Scanner input = new Scanner(System.in);
-	static String nome;
-	static Rodada rodada;
-		
 	public static void main(String[] args) {
 		
-		System.out.print("Digite seu nome: ");
-		nome = input.next();
-		rodada = new Rodada(new Jogador(nome));
+		Scanner input = new Scanner(System.in);
+		
+		String nome = JOptionPane.showInputDialog("Digite seu nome:");
+		Rodada rodada = new Rodada(new Jogador(nome));
 		Rodada.clear();
+		
 		while(true){
-			int opcao;
-			System.out.println("Bem vindo ao Jogo da Forca, " + rodada.getJogador().getNome() + "!\n1 - Jogar\n2 - Incrementar\n0 - Sair");
-			System.out.print("Opção escolhida: ");
-			opcao = input.nextInt();
-			if (opcao == 1){
+			String menu = "Bem vindo ao Jogo da Forca, " + rodada.getJogador().getNome() + "!\n1 - Jogar\n2 - Incrementar\n0 - Sair\nOpção escolhida: ";
+			int opcao = lerInteiro(menu);
+			switch(opcao){
+			case 1:
 				Rodada.mostrar();
 				while(Rodada.getBoneco().isDead() == false){
-					Rodada.adicionarLetra();
+					Rodada.inputLetra();
 				}
-				break;}
-			else if (opcao == 2){
+				opcao = 0;
+				break;
+			case 2:
 				System.out.println("\n");
-				Rodada.incrementarTemas();}
-			else if (opcao == 0){break;}
-			else{System.out.print("Digite uma opção válida!: "); opcao = input.nextInt();}	
+				Rodada.incrementarTemas();
+				break;
+			case 0:
+				break;
+			default:
+				msg("Digite uma opção válida!");
+				break;
+			}
+			
+			if (opcao == 0){break;}
 		}
+	}
+
+	static void msg(String str) {
+		JOptionPane.showMessageDialog(null, str);
+	}
+
+	static int lerInteiro(String str) {
+		return Integer.parseInt(JOptionPane.showInputDialog(str));
+	}
+	
+	static String lerString(String str) {
+		return JOptionPane.showInputDialog(str);
 	}
 	
 	
