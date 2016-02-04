@@ -184,45 +184,74 @@ int main(){
 		case 2:
 			cout << "Digite matricula e nome a serem adicionados: ";
 			cin >> mat >> nome;
-			addElemento(mat, nome);
-			system("cls");
-			cout << "Elemento adicionado com sucesso!\n";
-			mostrarLista();
-			break;
+			resultado = buscaRtn(mat);
+			if(resultado == NULL){
+				addElemento(mat, nome);
+				system("cls");
+				cout << "Elemento adicionado com sucesso!\n";
+				mostrarLista();
+				break;}
+			else{
+				system("cls");
+				cout << "Erro: Matricula ja existente!\n\n";
+				break;
+			}
 		case 3:
 			cout << "Digite matricula e nome a serem adicionados: ";
 			cin >> mat >> nome;
-			addInicio(mat, nome);
-			system("cls");
-			cout << "Elemento adicionado com sucesso!\n";
-			mostrarLista();
-			break;
+			resultado = buscaRtn(mat);
+			if(resultado == NULL){
+				addInicio(mat, nome);
+				system("cls");
+				cout << "Elemento adicionado com sucesso!\n";
+				mostrarLista();
+				break;}
+			else{
+				system("cls");
+				cout << "Erro: Matricula ja existente!\n\n";
+				break;
+			}
 		case 4:
 			cout << "Digite matricula e nome a serem adicionados: ";
 			cin >> mat >> nome;
-			addFinal(mat, nome);
-			system("cls");
-			cout << "Elemento adicionado com sucesso!\n";
-			mostrarLista();
-			break;
+			resultado = buscaRtn(mat);
+			if(resultado == NULL){
+				addFinal(mat, nome);
+				system("cls");
+				cout << "Elemento adicionado com sucesso!\n";
+				mostrarLista();
+				break;}
+			else{
+				system("cls");
+				cout << "Erro: Matricula ja existente!\n\n";
+				break;
+			}
 		case 5:
 			cout << "Digite matricula a ser deletada: ";
 			cin >> mat;
 			resultado = buscaRtn(mat);
-			if (resultado == NULL){cout << "Matricula nao existe!\n"; break;}
-            else{rmvElemento(resultado->mat);
-			system("cls");
-			cout << "Elemento deletado com sucesso!\n";
-			mostrarLista();
-			break;}
+			if (resultado == NULL){
+				system("cls");
+				cout << "Erro: Matricula nao existe!\n\n";
+				break;}
+            else{
+				rmvElemento(resultado->mat);
+				system("cls");
+				cout << "Elemento deletado com sucesso!\n";
+				mostrarLista();
+				break;}
 		case 6:
 			cout << "Digite matricula a ser buscada: ";
 			cin >> mat;
 			resultado = buscaRtn(mat);
 			system("cls");
-			if (resultado == NULL){cout << "Resultado nao encontrado!\n";}
-			else{cout << "Resultado:\n" << "Nome: " << resultado->nome << " // Mat: " << resultado->mat << " // Prox: " << resultado->prox << endl << endl;}
-			break;
+			if (resultado == NULL){
+				system("cls");
+				cout << "Erro: Resultado nao encontrado!\n\n";
+				break;}
+			else{
+				cout << "Resultado:\n" << "Nome: " << resultado->nome << " // Mat: " << resultado->mat << " // Prox: " << resultado->prox << endl << endl;
+				break;}
 		default:
 			break;
 		}
