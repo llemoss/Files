@@ -1,0 +1,23 @@
+        lw 1,0,a
+        lw 2,0,b
+        nand 3,2,2
+        addi 3,2,1
+        add 1,1,2
+        beq 1,0,then
+        lui 4,512
+        nand 5,1,4
+        nand 5,5,5
+        beq 5,0,then
+        beq 0,0,endif
+then:   sw 0,0,a
+endif:  halt
+a:      .fill 10
+b:      .fill 11
+
+//
+int a = 10
+int b = 1
+if (a <= b || b - a >= 0){
+a = 0;
+}
+//

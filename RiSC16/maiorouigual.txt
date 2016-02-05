@@ -1,0 +1,17 @@
+#if(b >= a){b++}
+       lw 1,0,a
+       lw 2,0,b
+       nand 2,2,2
+       addi 2,2,1
+       add 1,1,2
+       beq 1,0,endif
+       lui 4,512
+       nand 3,1,4
+       nand 3,3,3
+       beq 3,0,then
+       beq 0,0,endif
+then:  addi 2,2,1
+       sw 2,0,b
+endif: halt
+a:    .fill 10
+b:    .fill 1

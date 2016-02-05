@@ -1,7 +1,0 @@
-	lw 1,0,a
-	lui 2,512
-	nand 3,1,2
-	nand 3,3,3
-	beq 0,3,endif
-nonono: ...
-endif:  ...
