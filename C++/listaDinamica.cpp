@@ -70,14 +70,16 @@ void addElemento(int mat, char nome[20]){
 					inicio = input;
 					entrou = 1;
 				}else{
+					input->prox = anterior->prox;
 					anterior->prox = input;
-					input->prox = fim;
 					entrou = 1;
 				}
 			}
+			
 			anterior = atual;
 			atual = atual->prox;
 		}
+		
 		
 		if (entrou == 0){
 			fim->prox = input;
@@ -104,8 +106,8 @@ void rmvElemento(int mat){
 		inicio = atual->prox;
 		atual = NULL;
 	}else{
-	anterior->prox = atual->prox;
-	atual = NULL;
+		anterior->prox = atual->prox;
+		atual = NULL;
 	}
 	
 }
@@ -140,12 +142,48 @@ Elemento *buscaRtn(int mat){
 	while(atual != NULL){
 		if(atual->mat == mat){
 			return atual;
-			//break;
 		}
 		atual = atual->prox;
 	}
 	
 	return NULL;
+}
+
+void sortMaior(){
+		
+	Elemento *atual = inicio;
+	Elemento *anterior = NULL;
+	Elemento *proximo = inicio->prox;
+	
+	Elemento *inicio2 = NULL;
+	Elemento *fim2 = NULL;
+	Elemento *input;
+	
+	while(atual->prox != NULL){
+		
+		input = (Elemento *)malloc(sizeof(Elemento));
+		input->mat = atual->mat;
+		//input->nome = atual->nome;
+		input->prox = NULL;
+		
+		if(inicio2 == NULL){
+			inicio2 = fim;
+			inicio2->prox = inicio;
+		}
+		
+		if(atual == inicio){
+			fim2 = input;
+			fim2->prox = NULL;
+		}else if (atual == fim){
+			inicio2 = input;
+			inicio2->prox = NULL;
+		}else{
+			anterior = atual;
+			atual = atual->prox;
+			proximo = atual->prox;
+		}
+	}
+	
 }
 
 void mostrarLista(){
@@ -165,7 +203,7 @@ int main(){
 
 	addElemento(2, "Julia");
 	addElemento(1, "Gil");
-	addElemento(4, "Quarto");
+	addElemento(5, "Quarto");
 	addElemento(3, "Sexto");
 	
 	int opcao;
@@ -252,6 +290,12 @@ int main(){
 			else{
 				cout << "Resultado:\n" << "Nome: " << resultado->nome << " // Mat: " << resultado->mat << " // Prox: " << resultado->prox << endl << endl;
 				break;}
+		case 7:
+			system("cls");
+			cout << "Sortado do maior para o menor:" << endl;
+			sortMaior();
+			mostrarLista();
+			break;
 		default:
 			break;
 		}
