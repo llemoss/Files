@@ -8,17 +8,13 @@ using namespace std;
 typedef struct elemento{
 	int mat;
 	char nome[20];
+	float nota;
 	elemento *prox;
 }Elemento;
 
 Elemento *inicio, *fim, *input;
 
-void addInicio(int mat, char nome[20]){
-
-	input = (Elemento *)malloc(sizeof(Elemento));
-	input->mat=mat;
-	strcpy(input->nome, nome);
-	input->prox=NULL;
+void inserir_InicioLista(Elemento *input){
 	
 	if (inicio == NULL){
 		inicio = input;
@@ -27,15 +23,11 @@ void addInicio(int mat, char nome[20]){
 		input->prox = inicio;
 		inicio = input;
 	}
+	
 }
 
 
-void addFinal(int mat, char nome[20]){
-
-	input = (Elemento *)malloc(sizeof(Elemento));
-	input->mat=mat;
-	strcpy(input->nome, nome);
-	input->prox=NULL;
+void inserir_FinalDaLista(Elemento *input){
 	
 	if (inicio == NULL){
 		inicio = input;
@@ -44,16 +36,12 @@ void addFinal(int mat, char nome[20]){
 		fim->prox = input;
 		fim = input;
 	}
+	
 }
 
-void addElemento(int mat, char nome[20]){
+void inserir_Ordenada(Elemento *input){
 	
 	int entrou = 0;
-	
-	input = (Elemento *)malloc(sizeof(Elemento));
-	input->mat=mat;
-	strcpy(input->nome, nome);
-	input->prox = NULL;
 	
 	if (inicio == NULL){
 		inicio = input;
@@ -88,13 +76,13 @@ void addElemento(int mat, char nome[20]){
 	}
 }
 
-void rmvElemento(int mat){
+void rmvElemento(Elemento *input){
 	
 	Elemento *atual = inicio;
 	Elemento *anterior = NULL;
 	
 	while(true){
-		if(atual->mat == mat){
+		if(atual == input){
 			break;
 		}else{
 			anterior = atual;
@@ -112,30 +100,8 @@ void rmvElemento(int mat){
 	
 }
 
-void buscar(int mat){
-	
-	Elemento *atual = inicio;
-	Elemento *anterior = NULL;
-	
-	int achou = 0;
-	
-	do{
-		if(atual->mat == mat){
-			achou = 1;
-			cout << "Resultado encontrado:\n" << "Nome: " << atual->nome << " // Mat: " << atual->mat << " // Prox: " << atual->prox << endl;
-			break;
-		}else{
-			anterior = atual;
-			atual = atual->prox;
-		}
-	}while(atual != NULL);
-	
-	if(achou == 0){
-		cout << "Resultado nao encontrado!" << endl;
-	}
-}
 
-Elemento *buscaRtn(int mat){
+Elemento *buscar(int mat){
 	
 	Elemento *atual = inicio;
 	
@@ -178,42 +144,6 @@ void furaFila(Elemento *input, int posicao){
 	}
 }
 
-void sortMaior(){
-		
-	Elemento *atual = inicio;
-	Elemento *anterior = NULL;
-	Elemento *proximo = inicio->prox;
-	
-	Elemento *inicio2 = NULL;
-	Elemento *fim2 = NULL;
-	Elemento *input;
-	
-	while(atual->prox != NULL){
-		
-		input = (Elemento *)malloc(sizeof(Elemento));
-		input->mat = atual->mat;
-		//input->nome = atual->nome;
-		input->prox = NULL;
-		
-		if(inicio2 == NULL){
-			inicio2 = fim;
-			inicio2->prox = inicio;
-		}
-		
-		if(atual == inicio){
-			fim2 = input;
-			fim2->prox = NULL;
-		}else if (atual == fim){
-			inicio2 = input;
-			inicio2->prox = NULL;
-		}else{
-			anterior = atual;
-			atual = atual->prox;
-			proximo = atual->prox;
-		}
-	}
-}
-
 void mostrarLista(){
 	Elemento *atual;
 	atual = inicio;
@@ -229,10 +159,12 @@ int main(){
 	inicio = NULL;
 	fim = NULL;
 
-	addElemento(2, "Julia");
-	addElemento(1, "Gil");
-	addElemento(5, "Quarto");
-	addElemento(3, "Sexto");
+	input =(Elemento *)malloc(sizeof(Elemento));
+	input->mat = 2;
+	strcpy(input->nome, "Julia");
+	input->prox = NULL;
+	
+	inserir_Ordenada(input);
 	
 	int opcao;
 	
@@ -250,9 +182,13 @@ int main(){
 		case 2:
 			cout << "Digite matricula e nome a serem adicionados: ";
 			cin >> mat >> nome;
-			resultado = buscaRtn(mat);
+			resultado = buscar(mat);
 			if(resultado == NULL){
-				addElemento(mat, nome);
+				resultado =(Elemento *)malloc(sizeof(Elemento));
+				resultado->mat = mat;
+				strcpy(resultado->nome, nome);
+				resultado->prox = NULL;
+				inserir_Ordenada(resultado);
 				system("cls");
 				cout << "Elemento adicionado com sucesso!\n";
 				mostrarLista();
@@ -265,9 +201,13 @@ int main(){
 		case 3:
 			cout << "Digite matricula e nome a serem adicionados: ";
 			cin >> mat >> nome;
-			resultado = buscaRtn(mat);
+			resultado = buscar(mat);
 			if(resultado == NULL){
-				addInicio(mat, nome);
+				resultado = (Elemento *)malloc(sizeof(Elemento));
+				resultado->mat = mat;
+				strcpy(resultado->nome, nome);
+				resultado->prox = NULL;
+				inserir_InicioLista(resultado);
 				system("cls");
 				cout << "Elemento adicionado com sucesso!\n";
 				mostrarLista();
@@ -280,9 +220,13 @@ int main(){
 		case 4:
 			cout << "Digite matricula e nome a serem adicionados: ";
 			cin >> mat >> nome;
-			resultado = buscaRtn(mat);
+			resultado = buscar(mat);
 			if(resultado == NULL){
-				addFinal(mat, nome);
+				resultado =( Elemento *)malloc(sizeof(Elemento));
+				resultado->mat = mat;
+				strcpy(resultado->nome, nome);
+				resultado->prox = NULL;
+				inserir_FinalDaLista(resultado);
 				system("cls");
 				cout << "Elemento adicionado com sucesso!\n";
 				mostrarLista();
@@ -295,13 +239,13 @@ int main(){
 		case 5:
 			cout << "Digite matricula a ser deletada: ";
 			cin >> mat;
-			resultado = buscaRtn(mat);
+			resultado = buscar(mat);
 			if (resultado == NULL){
 				system("cls");
 				cout << "Erro: Matricula nao existe!\n\n";
 				break;}
             else{
-				rmvElemento(resultado->mat);
+				rmvElemento(resultado);
 				system("cls");
 				cout << "Elemento deletado com sucesso!\n";
 				mostrarLista();
@@ -309,7 +253,7 @@ int main(){
 		case 6:
 			cout << "Digite matricula a ser buscada: ";
 			cin >> mat;
-			resultado = buscaRtn(mat);
+			resultado = buscar(mat);
 			system("cls");
 			if (resultado == NULL){
 				system("cls");
@@ -324,9 +268,9 @@ int main(){
 			cin >> mat >> nome;
 			cout << "Digite a posicao onde quer adicionar: ";
 			cin >> posicao;
-			resultado = buscaRtn(mat);
+			resultado = buscar(mat);
 			if(resultado == NULL){
-				resultado =(Elemento *)malloc(sizeof(Elemento));
+				resultado =( Elemento *)malloc(sizeof(Elemento));
 				resultado->mat = mat;
 				strcpy(resultado->nome, nome);
 				resultado->prox = NULL;
@@ -340,12 +284,6 @@ int main(){
 				cout << "Erro: Matricula ja existente!\n\n";
 				break;
 			}
-		case 8:
-			system("cls");
-			cout << "Sortado do maior para o menor:" << endl;
-			sortMaior();
-			mostrarLista();
-			break;
 		default:
 			break;
 		}
