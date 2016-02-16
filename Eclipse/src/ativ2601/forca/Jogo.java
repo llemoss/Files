@@ -1,12 +1,12 @@
 package ativ2601.forca;
-import java.util.Scanner;
+//import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class Jogo {
 	
 	public static void main(String[] args) {
 		
-		Scanner input = new Scanner(System.in);
+		//Scanner input = new Scanner(System.in);
 		
 		String nome = JOptionPane.showInputDialog("Digite seu nome:");
 		Rodada rodada = new Rodada(new Jogador(nome));

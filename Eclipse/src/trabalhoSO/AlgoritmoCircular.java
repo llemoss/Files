@@ -1,12 +1,9 @@
 package trabalhoSO;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class AlgoritmoCircular {
 	
 	public static void main(String[] args) {
-		
-		Scanner input = new Scanner(System.in);
 		
 		int quantum, trocaContexto;
 		String[] listaProgramas;
