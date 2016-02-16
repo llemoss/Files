@@ -1,4 +1,4 @@
-package gildasiozeth.banco.aplicacao;
+package gildasiozeth.banco.principal;
 import gildasiozeth.banco.modelo.*;
 
 public class TestaConta {
@@ -7,7 +7,12 @@ public class TestaConta {
 
 		Conta conta = new Conta(new Cliente("Rogerio", "123"));
 		
-		conta.depositar(100);
+		try{
+			conta.depositar(100);
+		}catch(InvalidValueException e){
+			System.out.println(e.getMessage());
+		}
+		
 		try{
 			conta.sacar(1000);
 		}catch(InsufficientBalanceException e){

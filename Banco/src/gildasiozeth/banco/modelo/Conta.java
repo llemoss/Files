@@ -30,18 +30,25 @@ public class Conta{
 		}	
 	}
 
-	public void transferir(double valor, Conta contaDestino){
-		//if (sacar(valor)){
-			contaDestino.depositar(valor);	
-		//}
+	public void transferir(double valor, Conta contaDestino) throws InsufficientBalanceException, DailyLimitException, InvalidValueException{
+		try{
+			this.sacar(valor);
+			contaDestino.depositar(100);
+		}catch(InvalidValueException e){
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public Cliente getCliente() {
 		return cliente;
 	}
 
-	public void depositar(double valor){
-		saldo += valor;
+	public void depositar(double valor) throws InvalidValueException{
+		if (valor < 0){
+			throw new InvalidValueException(valor);
+		}else{
+			saldo += valor;
+		}
 	}
 
 	public String toString(){

@@ -1,4 +1,4 @@
-package gildasiozeth.banco.aplicacao;
+package gildasiozeth.banco.principal;
 
 public class TestePilhaChamadas {
 
