@@ -66,7 +66,7 @@ void addElementoCod(int codigo, char descricao[20]){
 		Produto *anterior = NULL;
 		
 		while(atual != NULL){
-			if(input->descricao < atual->descricao){
+			if(input->cod < atual->cod){
 				if(atual == inicio){
 					input->prox = inicio;
 					inicio = input;

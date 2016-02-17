@@ -180,38 +180,19 @@ void furaFila(Elemento *input, int posicao){
 
 void sortMaior(){
 		
-	Elemento *atual = inicio;
+	Elemento *no = inicio;
 	Elemento *anterior = NULL;
-	Elemento *proximo = inicio->prox;
+	Elemento *proximo;
 	
-	Elemento *inicio2 = NULL;
-	Elemento *fim2 = NULL;
-	Elemento *input;
-	
-	while(atual->prox != NULL){
-		
-		input = (Elemento *)malloc(sizeof(Elemento));
-		input->mat = atual->mat;
-		//input->nome = atual->nome;
-		input->prox = NULL;
-		
-		if(inicio2 == NULL){
-			inicio2 = fim;
-			inicio2->prox = inicio;
-		}
-		
-		if(atual == inicio){
-			fim2 = input;
-			fim2->prox = NULL;
-		}else if (atual == fim){
-			inicio2 = input;
-			inicio2->prox = NULL;
-		}else{
-			anterior = atual;
-			atual = atual->prox;
-			proximo = atual->prox;
-		}
+	while(no != NULL){
+		proximo = no->prox;
+		no->prox = anterior;
+		anterior = no;
+		no = proximo;
 	}
+	
+	inicio = fim;
+	fim = anterior;
 }
 
 void mostrarLista(){
