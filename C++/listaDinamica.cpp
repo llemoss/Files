@@ -178,8 +178,7 @@ void furaFila(Elemento *input, int posicao){
 	}
 }
 
-void sortMaior(){
-		
+void inverterLista(){
 	Elemento *no = inicio;
 	Elemento *anterior = NULL;
 	Elemento *proximo;
@@ -195,15 +194,51 @@ void sortMaior(){
 	fim = anterior;
 }
 
-void mostrarLista(){
+void mostrarLista(Elemento *input){
 	Elemento *atual;
-	atual = inicio;
+	atual = input;
 	while(atual != NULL){
 		cout << "Nome: " << atual->nome << " // Mat: " << atual->mat << " // Prox: " << atual->prox << endl;
 		atual = atual->prox;
 	}
 	cout << endl;
 }
+
+void criarListaInvertida(){
+	Elemento *atual = inicio;
+	Elemento *anterior = NULL;
+	
+	Elemento *novoInicio = NULL, *novoFim = NULL, *novo;
+	
+	while(atual!=NULL){
+		novo = (Elemento *)malloc(sizeof(Elemento));
+		novo->mat=atual->mat;
+		strcpy(novo->nome, atual->nome);
+		if (novoInicio == NULL){
+			novoInicio = novo;
+			novoFim = novo;
+		}else{
+			novo->prox = novoInicio;
+			novoInicio = novo;
+		}
+		anterior = atual;
+		atual = atual->prox;
+	}
+	
+	atual = novoInicio;
+	anterior = NULL;
+	
+	while(atual->mat != inicio->mat){
+		anterior = atual;
+		atual = atual->prox;
+	}
+	
+	atual->prox = NULL;
+	
+	mostrarLista(novoInicio);
+}
+
+
 
 int main(){
 	
@@ -216,9 +251,10 @@ int main(){
 	addElemento(3, "Sexto");
 	
 	int opcao;
+	int opcao2;
 	
 	do{
-		cout << "Opcoes:\n1 - Mostrar elementos\n2 - Adicionar elemento (ordenado)\n3 - Adicionar elemento no comeco\n4 - Adicionar elemento no final\n5 - Remover elemento\n6 - Buscar elemento\n7 - Furar a fila\n0 - Sair\nDigite uma opcao: ";
+		cout << "Opcoes:\n1 - Mostrar elementos\n2 - Adicionar elemento (ordenado)\n3 - Adicionar elemento no comeco\n4 - Adicionar elemento no final\n5 - Remover elemento\n6 - Buscar elemento\n7 - Furar a fila\n8 - Inverter a lista atual\n9 - Criar uma nova lista invertida\n10 - Escolher qual tipo de lista mostrar\n0 - Sair\nDigite uma opcao: ";
 		int mat;
 		char nome[20];
 		Elemento *resultado;
@@ -226,7 +262,7 @@ int main(){
 		switch(opcao){
 		case 1:
 			system("cls");
-			mostrarLista();
+			mostrarLista(inicio);
 			break;
 		case 2:
 			cout << "Digite matricula e nome a serem adicionados: ";
@@ -236,7 +272,7 @@ int main(){
 				addElemento(mat, nome);
 				system("cls");
 				cout << "Elemento adicionado com sucesso!\n";
-				mostrarLista();
+				mostrarLista(inicio);
 				break;}
 			else{
 				system("cls");
@@ -251,7 +287,7 @@ int main(){
 				addInicio(mat, nome);
 				system("cls");
 				cout << "Elemento adicionado com sucesso!\n";
-				mostrarLista();
+				mostrarLista(inicio);
 				break;}
 			else{
 				system("cls");
@@ -266,7 +302,7 @@ int main(){
 				addFinal(mat, nome);
 				system("cls");
 				cout << "Elemento adicionado com sucesso!\n";
-				mostrarLista();
+				mostrarLista(inicio);
 				break;}
 			else{
 				system("cls");
@@ -285,7 +321,7 @@ int main(){
 				rmvElemento(resultado->mat);
 				system("cls");
 				cout << "Elemento deletado com sucesso!\n";
-				mostrarLista();
+				mostrarLista(inicio);
 				break;}
 		case 6:
 			cout << "Digite matricula a ser buscada: ";
@@ -314,7 +350,7 @@ int main(){
 				furaFila(resultado, posicao);
 				system("cls");
 				cout << "Elemento adicionado com sucesso!\n";
-				mostrarLista();
+				mostrarLista(inicio);
 				break;}
 			else{
 				system("cls");
@@ -323,9 +359,33 @@ int main(){
 			}
 		case 8:
 			system("cls");
-			cout << "Sortado do maior para o menor:" << endl;
-			sortMaior();
-			mostrarLista();
+			cout << "Lista invertida (sem criar uma nova):" << endl;
+			inverterLista();
+			mostrarLista(inicio);
+			break;
+		case 9:
+			system("cls");
+			cout << "Lista invertida (criando uma nova):" << endl;
+			criarListaInvertida();
+			break;
+		case 10:
+			do{
+				cout << "Opcoes:\n1 - Normal\n2 - Invertida\n0 - Voltar ao menu principal\nQual lista deseja ver?: ";
+				cin >> opcao2;
+				switch(opcao2){
+					case 1:
+						system("cls");
+						mostrarLista(inicio);
+						break;
+					case 2:
+						system("cls");
+						criarListaInvertida();
+						break;
+					default:
+						system("cls");
+						break;
+				}
+			}while(opcao2!=0);
 			break;
 		default:
 			break;
