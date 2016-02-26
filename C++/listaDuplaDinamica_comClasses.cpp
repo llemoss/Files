@@ -103,13 +103,22 @@ class Lista{
 			
 		}
 		
-		void mostrarLista(){
-			No *atual = inicio;
-			while(atual != NULL){
-				cout << "Nome: " << atual->nome << " // Matricula: " << atual->mat << " // Prox: " << atual->prox << endl;
-				atual = atual->prox;
+		void mostrarLista(bool reverse = false){
+			if(reverse == false){
+				No *atual = inicio;
+				while(atual != NULL){
+					cout << "Nome: " << atual->nome << " // Matricula: " << atual->mat << " // Prox: " << atual->prox << endl;
+					atual = atual->prox;
+				}
+				cout << endl;
+			}else{
+				No *atual = fim;
+				while(atual != NULL){
+					cout << "Nome: " << atual->nome << " // Matricula: " << atual->mat << " // Prox: " << atual->prox << endl;
+					atual = atual->ante;
+				}
+				cout << endl;
 			}
-			cout << endl;
 		}
 		
 		No *buscar(int mat){
