@@ -1,0 +1,82 @@
+package grupoD.associapp.modelo;
+import java.util.ArrayList;
+import java.util.List;
+
+import grupoD.associapp.enums.Cargo;
+
+public class Gestao {
+	
+	private String nome;
+	private Data mandatoInicio;
+	private Data mandatoFinal;
+	private String tipoEleicao;
+	private boolean atual;
+	private Membro liderComunitario;
+	private List<Membro> membros = new ArrayList<>();
+	
+	public int getMandatoInicio() {
+		return mandatoInicio.getAno();
+	}
+	
+	public void addMembro(Pessoa pessoa, Cargo cargo){
+		Membro membro = new Membro(pessoa, cargo);
+		membros.add(membro);
+	}
+	
+	public String obterMembros(){
+		String listaMembros = "";
+		for (int i = 0; i < membros.size(); i++) {
+			listaMembros += "Nome: " + membros.get(i).getPessoa().getNome() + "Cargo: " + membros.get(i).getCargo() + "\n";
+		}
+		return listaMembros;
+	}
+	
+	public void setMandatoInicio(int dia, int mes, int ano) {
+		this.mandatoInicio = new Data(dia, mes, ano);
+	}
+	
+	public Data getMandatoFinal() {
+		return mandatoFinal.getAno();
+	}
+	
+	public void setMandatoFinal(int dia, int mes, int ano) {
+		this.mandatoFinal = new Data(dia, mes, ano);;
+	}
+	
+	public int getDuracao(){
+		return mandatoFinal.getAno() - mandatoInicio.getAno();
+	}
+	
+	public String getTipoEleicao() {
+		return tipoEleicao;
+	}
+	
+	public void setTipoEleicao(String tipoEleicao) {
+		this.tipoEleicao = tipoEleicao;
+	}
+	
+	public Membro getLiderComunitario() {
+		return liderComunitario;
+	}
+	
+	public void setLiderComunitario(Pessoa pessoa) {
+		Membro liderComunitario = new Membro(pessoa, Cargo.PRESIDENTE);
+		this.liderComunitario = liderComunitario;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public boolean isAtual() {
+		return atual;
+	}
+
+	public void setAtual(boolean atual) {
+		this.atual = atual;
+	}
+}

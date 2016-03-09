@@ -1,0 +1,54 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.dao.*;
+import grupoD.associapp.modelo.*;
+
+public class TesteParentesco {
+	
+	public static void main(String[] args) {
+
+		FamiliaJDBC_DAO daoF = new FamiliaJDBC_DAO();
+		ParentescoJDBC_DAO daoPa = new ParentescoJDBC_DAO();
+		PessoaJDBC_DAO daoP = new PessoaJDBC_DAO();
+		
+		daoPa.createTable();
+		
+		Familia f = new Familia();
+		f = daoF.inserir(f);
+		
+		Parentesco pa;
+		
+		Pessoa p1;
+		Pessoa p2;
+		
+		p1 = new Pessoa();
+		p1.setNome("Pessoa1");
+		p1.setSexo("M");
+		p1 = daoP.inserir(p1);
+		p2 = new Pessoa();
+		p2.setNome("Pessoa2");
+		p2.setSexo("F");
+		p2 = daoP.inserir(p2);
+		
+		pa = new Parentesco(p1, p2, daoPa.obterTipoParentesco("Irmã", p1.getSexo()));
+		daoPa.inserir(pa);
+		p1.adicionarParentesco(pa);
+		pa = new Parentesco(p2, p1, daoPa.obterTipoParentesco("Irmão", p2.getSexo()));
+		p2.adicionarParentesco(pa);
+		
+		System.out.println(p1.obterParentes());
+		System.out.println(p2.obterParentes());
+		
+		p1 = daoP.obter(p1.getId());
+		
+
+		//pa = daoPa.inserirUpdating(pa);
+		
+		
+		
+		
+		
+		
+	}
+
+}

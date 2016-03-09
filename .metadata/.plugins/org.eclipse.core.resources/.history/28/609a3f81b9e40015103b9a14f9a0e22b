@@ -1,0 +1,46 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.dao.*;
+import grupoD.associapp.enums.Zona;
+import grupoD.associapp.modelo.*;
+
+public class TesteJDBC {
+
+	public static void main(String [] args){
+		
+		ComunidadeJDBC_DAO daoC = new ComunidadeJDBC_DAO();
+		FamiliaJDBC_DAO daoF = new FamiliaJDBC_DAO();
+		PessoaJDBC_DAO daoP = new PessoaJDBC_DAO();
+		//ParentescoJDBC_DAO daoPa = new ParentescoJDBC_DAO();
+		
+		Comunidade c = new Comunidade();		
+		Familia f = new Familia();
+		Pessoa p = new Pessoa();
+		
+		daoC.inserir(c);
+		f = daoF.inserir(f);
+		daoP.inserir(p);
+		
+		c = daoC.obter(1);
+		
+		p = daoP.obter(5);
+		
+		f.adicionarMembro(p);
+		p = daoP.obter(4);
+		f.adicionarMembro(p);
+		p = daoP.obter(6);
+		f.adicionarMembro(p);
+		
+		daoF.update(f.getId(), "id_membros", f.obterMembrosId());
+		
+		System.out.println(f.obterMembrosId());
+		
+		System.out.println(p.obterParentes());
+		
+		System.out.println(c);
+		System.out.println(f);
+		System.out.println(p);
+		
+	}
+
+}

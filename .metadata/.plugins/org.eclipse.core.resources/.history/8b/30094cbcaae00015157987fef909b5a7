@@ -1,0 +1,12 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.dao.ComunidadeDAO;
+import grupoD.associapp.dao.ComunidadeJDBC_DAO;
+
+public class criarTabelas {
+
+	public static void main(String[] args) {
+		ComunidadeDAO dao = new ComunidadeJDBC_DAO();
+		dao.createTable();
+	}
+}

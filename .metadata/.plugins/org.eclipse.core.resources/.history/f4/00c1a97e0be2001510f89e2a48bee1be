@@ -1,0 +1,65 @@
+package grupoD.associapp.dao;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+
+import grupoD.associapp.interfaces.RecursoDAO;
+import grupoD.associapp.modelo.Recurso;
+
+public class RecursoJDBC_DAO implements RecursoDAO{
+	
+	private Connection conn;
+	
+	public void inserir(Recurso r) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "INSERT INTO recursos(nome, disponibilidade, grauSituacao) VALUES('" + r.getNome() + "'," + r.getDisponibilidade() + "," + r.getGrauSituacao() + ");";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			conn.close();
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir Comunidade");
+		}
+	}
+	@Override
+	public void createTable() {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "CREATE TABLE recursos(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, disponibilidade INT, grauSituacao INT);";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			conn.close();
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao criar tabela");
+		}
+	}
+	@Override
+	public List<Recurso> lista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void remover(Recurso r) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "DELETE FROM recursos where recursos.nome = " + r.getNome();
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		}catch (Exception e){
+			e.printStackTrace();
+			System.out.println("Erro ao excluir recurso");
+		}
+	}
+	@Override
+	public Recurso obter(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

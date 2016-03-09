@@ -1,0 +1,29 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.dao.*;
+
+public class criarTabelas {
+
+	public static void main(String[] args) {
+		
+		ComunidadeJDBC_DAO daoC = new ComunidadeJDBC_DAO();
+		daoC.createTable();
+		FamiliaJDBC_DAO daoF = new FamiliaJDBC_DAO();
+		daoF.createTable();
+		PessoaJDBC_DAO daoP = new PessoaJDBC_DAO();
+		daoP.createTable();
+		RecursoJDBC_DAO daoR = new RecursoJDBC_DAO();
+		daoR.createTable();
+		AptidaoJDBC_DAO daoA = new AptidaoJDBC_DAO();
+		daoA.createTable();
+		ContatoJDBC_DAO daoCo = new ContatoJDBC_DAO();
+		daoCo.createTable();
+		GestaoJDBC_DAO daoG = new GestaoJDBC_DAO();
+		daoG.createTable();
+		MembroJDBC_DAO daoM = new MembroJDBC_DAO();
+		daoM.createTable();
+		ParentescoJDBC_DAO daoPa = new ParentescoJDBC_DAO();
+		daoPa.createTable();
+		
+	}
+}

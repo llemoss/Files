@@ -1,0 +1,37 @@
+package grupoD.associapp.enums;
+
+public enum Zona {
+
+	URBANA(1),
+	RURAL(2);
+	
+	private int id;
+
+	private Zona(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+	
+	public static Zona fromInteger(int i){
+		switch (i) {
+		case 1:
+			return Zona.URBANA;
+		case 2:
+			return Zona.RURAL;
+		default:
+			throw new IllegalArgumentException();
+		}
+	}public static Zona fromString(String i){
+		switch (i) {
+		case "URBANA":
+			return Zona.URBANA;
+		case "RURAL":
+			return Zona.RURAL;
+		default:
+			throw new IllegalArgumentException();
+		}
+	}
+}

@@ -1,0 +1,15 @@
+package grupoD.associapp.interfaces;
+
+import java.util.List;
+
+import grupoD.associapp.modelo.Contato;
+
+public interface ContatoDAO {
+	
+	public void createTable();
+	public List<Contato> lista();
+	public void inserir(Contato c);
+	public void remover(Contato c);
+	public Contato obter(String tipo);
+	
+}

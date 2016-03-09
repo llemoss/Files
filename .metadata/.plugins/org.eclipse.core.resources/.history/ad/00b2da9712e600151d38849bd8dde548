@@ -1,0 +1,11 @@
+
+public class RegisterFile {
+	
+	public int index;
+	public short value;
+	
+	public RegisterFile(){
+		this.value = 0;
+	}
+
+}

@@ -1,0 +1,135 @@
+package grupoD.associapp.dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import grupoD.associapp.interfaces.ContatoDAO;
+import grupoD.associapp.modelo.Contato;
+
+public class ContatoJDBC_DAO implements ContatoDAO{
+	
+	private Connection conn;
+	PessoaJDBC_DAO daoP = new PessoaJDBC_DAO();
+	
+	public Contato inserir(Contato c) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "INSERT INTO contatos(nome, id_pessoa, tipo) VALUES('"
+		+ c.getDado() + "','"
+		+ c.getPessoa().getId() + "','"
+		+ c.getTipo() + "');";
+		try{
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			sql = "SELECT id FROM contatos ORDER BY id DESC limit 1";
+			ResultSet rs = stmt.executeQuery(sql);
+			int id = rs.getInt("id");
+			c.setId(id);
+			System.out.println("Contato de ID (" + id + ") inserido com sucesso!");
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir contato");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+		
+		return c;
+	}
+	@Override
+	public void createTable() {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "CREATE TABLE contatos(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, tipo TEXT, id_pessoa INT);";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao criar tabela");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	@Override
+	public void remover(Contato co) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "DELETE FROM contatos where contatos.tipo = " + co.getTipo();
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			System.out.println("Contato removido: " + co.toString());
+		}catch (Exception e){
+			e.printStackTrace();
+			System.out.println("Erro ao excluir contato");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	@Override
+	public List<Contato> obter(int id_pessoa) {
+		conn = ConnectionFactory.getConnection();
+		String sql = "SELECT * FROM contatos WHERE id_pessoa = " + id_pessoa;
+		List<Contato> contatos = new ArrayList<>();
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet resultado = stmt.executeQuery(sql);
+			while (resultado.next()) {
+				Contato c = new Contato();
+				c.setId(resultado.getInt("id"));
+				c.setDado(resultado.getString("nome"));
+				c.setTipo(resultado.getString("tipo"));
+				//c.setPessoa(daoP.obter(resultado.getInt("id_pessoa")));
+				contatos.add(c);
+				System.out.println("Contato de ID (" + c.getId() + ") adicionado na lista com sucesso!");
+			}
+			//System.out.println("Lista de contatos da pessoa de ID (" + id_pessoa + ") obtida com sucesso!");
+			return contatos;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	public void update(int id, String coluna, String valor){
+		conn = ConnectionFactory.getConnection();
+		String sql = "UPDATE contatos SET " + coluna + " = '" + valor + "' WHERE id = " + id + ";";
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}

@@ -1,0 +1,38 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.dao.*;
+import grupoD.associapp.enums.Situacao;
+import grupoD.associapp.enums.Zona;
+import grupoD.associapp.interfaces.ComunidadeDAO;
+import grupoD.associapp.modelo.*;
+
+import java.util.List;
+
+public class TesteJDBC {
+
+	public static void main(String[] args)  {
+		
+		
+		
+		ComunidadeDAO dao = new ComunidadeJDBC_DAO();
+		
+		FamiliaJDBC_DAO daoF = new FamiliaJDBC_DAO();
+		
+		PessoaJDBC_DAO daoP = new PessoaJDBC_DAO();
+		
+		Pessoa p = new Pessoa();
+		Comunidade c = new Comunidade();
+		Familia f = new Familia();
+		f.setComunidadePertencente(c);
+		f.setChefe(p);
+		f.setEndereco("endereco");
+		f.setGrauSeguranca(0);
+		f.setRenda(1000);
+		p = daoP.obter(1);
+		Pessoa l = daoP.obter(17);
+		p.adicionarParentesco(l, new TipoParentesco("Irmão"));
+		p = daoP.inserir(p);
+		
+		System.out.println(p.obterParentes());
+	}
+}

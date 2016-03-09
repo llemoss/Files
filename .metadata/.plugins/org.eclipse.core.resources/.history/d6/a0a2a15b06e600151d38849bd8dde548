@@ -1,0 +1,21 @@
+
+public class RegUpdateUnit {
+	
+	public static void receiveResult(short result, short busPC){
+		System.out.println("\n");
+	}
+	
+	public RegUpdateUnit(){
+		this.sentToRF = false;
+		this.receivedFromRF = false;
+	}
+	
+	public short id;
+	public short neededId;
+	public short data1;
+	public short data2;
+	public short dataToTGT;
+	public boolean receivedFromRF;
+	public boolean sentToRF;
+
+}

@@ -1,0 +1,11 @@
+
+public class Instruction {
+	
+	short op;
+	short tgt;
+	short src1;
+	short src2;
+	int imm7;
+	int imm10;
+
+}

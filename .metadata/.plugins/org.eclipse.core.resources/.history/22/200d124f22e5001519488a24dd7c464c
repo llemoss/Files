@@ -1,0 +1,9 @@
+package grupoD.associapp.interfaces;
+
+import grupoD.associapp.modelo.TipoParentesco;
+
+public interface TipoParentescoDAO {
+	
+	
+	
+}

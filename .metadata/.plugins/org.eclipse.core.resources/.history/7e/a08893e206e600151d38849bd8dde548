@@ -1,0 +1,23 @@
+
+public class RegUpdateUnit {
+	
+	public static RegUpdateUnit[] Queue;
+	
+	public static void receiveData(short result, short id){
+		System.out.println("\n");
+	}
+	
+	public RegUpdateUnit(){
+		this.sentToRF = false;
+		this.receivedFromRF = false;
+	}
+	
+	public short id;
+	public short neededId;
+	public short data1;
+	public short data2;
+	public short dataToTGT;
+	public boolean receivedFromRF;
+	public boolean sentToRF;
+
+}

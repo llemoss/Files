@@ -1,0 +1,42 @@
+package grupoD.associapp.modelo;
+
+public class Parentesco {
+	
+	private int id;
+	private Pessoa pessoa;
+	private Pessoa parente;
+	private TipoParentesco tipo;
+	
+	public Parentesco(){}
+	
+	public Parentesco(Pessoa pessoa, Pessoa parente, TipoParentesco tipo){
+		this.pessoa = pessoa;
+		this.parente = parente;
+		this.tipo = tipo;
+	}
+	
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+	
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+	
+	public TipoParentesco getTipo() {
+		return tipo;
+	}
+	
+	public void setTipo(TipoParentesco tipo) {
+		this.tipo = tipo;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getId(){
+		return id;
+	}
+	
+}

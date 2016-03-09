@@ -1,0 +1,15 @@
+package grupoD.associapp.interfaces;
+
+import java.util.List;
+
+import grupoD.associapp.modelo.Gestao;
+
+public interface GestaoDAO {
+	
+	public void createTable();
+	public List<Gestao> lista();
+	public Gestao inserir(Gestao g);
+	public void remover(Gestao g);
+	public Gestao obter(int id);
+	public void update(int id, String coluna, String valor);
+}

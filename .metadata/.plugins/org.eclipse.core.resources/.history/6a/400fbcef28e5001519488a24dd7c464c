@@ -1,0 +1,260 @@
+package grupoD.associapp.modelo;
+import java.util.List;
+
+import grupoD.associapp.dao.FamiliaJDBC_DAO;
+import grupoD.associapp.enums.Zona;
+
+import java.util.ArrayList;
+
+public class Comunidade {
+	
+	private int id = 0;
+	private String nome = "n/d";
+	private List<Familia> familias = new ArrayList<>();
+	private List<Recurso> recursosComunitarios = new ArrayList<>();
+	private List<Aptidao> aptidoes = new ArrayList<>();
+	private List<Gestao> historicoLideres = new ArrayList<>();
+	private String cidade = "n/d";
+	private String regiao = "n/d";
+	private String tipoComercio = "n/d";
+	private String historico = "n/d";
+	private Zona zona = Zona.URBANA;
+	private int grauSegurança = 0;
+	private String codigo = "n/d";
+	private int idadeMinimaLider = 18;
+	private Localizacao posicaoGeografica = null;
+	
+	@Override
+	public String toString() {
+		return "-----------------\n| Nome: " + this.nome + "\n| Codigo: " + this.codigo +
+			   "\n| Cidade: " + this.cidade + "\n| Região: " + this.regiao +
+			   "\n| Tipo de comercio: " + this.tipoComercio + "\n| Zona: " + this.zona +
+			   "\n-----------------";
+	}
+	
+	public Comunidade(){};	
+	
+	public Comunidade(int id, String nome, List<Familia> familias, List<Recurso> recursosComunitarios,
+			List<Aptidao> aptidoes, List<Gestao> historicoLideres, String cidade, String regiao, String tipoComercio,
+			String historico, Zona zona, int grauSegurança, String codigo, int idadeMinimaLider,
+			Localizacao posicaoGeografica) {
+		this.id = id;
+		this.nome = nome;
+		this.familias = familias;
+		this.recursosComunitarios = recursosComunitarios;
+		this.aptidoes = aptidoes;
+		this.historicoLideres = historicoLideres;
+		this.cidade = cidade;
+		this.regiao = regiao;
+		this.tipoComercio = tipoComercio;
+		this.historico = historico;
+		this.zona = zona;
+		this.grauSegurança = grauSegurança;
+		setCodigo();
+		this.idadeMinimaLider = idadeMinimaLider;
+		this.posicaoGeografica = posicaoGeografica;
+	}
+
+	public Comunidade(String nome, String cidade){
+		this.nome = nome;
+		this.cidade = cidade;
+	}
+	
+	public String obterAptidoes(){
+		String listaAptidoes = "";
+		for (int i = 0; i < this.aptidoes.size(); i++) {
+			listaAptidoes += this.aptidoes.get(i).getNome() +"\n";
+		}
+		return listaAptidoes;
+	}
+	
+	public String obterAptidoesInt(){
+		String listaAptidoes = "";
+		for (int i = 0; i < this.aptidoes.size(); i++) {
+			listaAptidoes += this.aptidoes.get(i).getId() +" ";
+		}
+		
+		if(listaAptidoes != ""){
+			listaAptidoes = listaAptidoes.substring(0, listaAptidoes.length()-1);
+		}
+		return listaAptidoes;
+	}
+	
+	public void adicionarAptidao(Aptidao aptidao){
+		this.aptidoes.add(aptidao);
+	}
+	
+	public void removerAptidao(String aptidao){
+		this.aptidoes.remove(aptidao);
+	}
+	
+	public String obterRecursos(){
+		String listaRecursos = "";
+		for (int i = 0; i < this.recursosComunitarios.size(); i++) {
+			listaRecursos += this.recursosComunitarios.get(i).getNome() + "// Situação: " + this.recursosComunitarios.get(i).getGrauSituacao() + "\n";
+		}
+		return listaRecursos;
+	}
+	
+	public void adicionarRecurso(Recurso recurso){
+		this.recursosComunitarios.add(recurso);
+	}
+	
+	public void removerRecurso(Recurso recurso){
+		this.recursosComunitarios.remove(recurso);
+	}
+	
+	public String obterFamilias(){
+		String listaFamilias = "Lista de famílias:\n";
+		for (int i = 0; i < this.familias.size(); i++)
+			listaFamilias += this.familias.toString();
+		return listaFamilias;
+	}
+	
+	public void adicionarFamilia(Familia familia){
+		if(!familias.contains(familia)){
+			FamiliaJDBC_DAO fdao=new FamiliaJDBC_DAO(); 
+			fdao.inserir(familia);
+			this.familias.add(familia);
+			familia.setComunidadePertencente(this);
+		}
+	}
+	
+	public void removerFamilia(Familia familia){
+		if(familias.contains(familia)){
+			this.familias.remove(familia);
+			familia.setComunidadePertencente(null);
+		}
+	}
+	
+	/////////////////////////////GETTERS AND SETTERS////////////////////////////////
+	
+	public String getCodigo() {
+		if (cidade.length() == 3) {
+			  return (id+this.cidade);
+			  }
+			else if (cidade.length() > 3) {
+			  return (id+this.cidade.substring(0,3));
+			} else {
+			  throw new IllegalArgumentException("Nome de cidade muito pequeno!");
+			}
+	}
+	public void resetCodigo(String codigo){
+		this.codigo=codigo;
+	}
+	public void setCodigo() {
+		if (this.cidade.length() == 3) {
+			this.codigo = (id+this.cidade);
+			  }
+			else if (this.cidade.length() > 3) {
+				this.codigo = (id+this.cidade.substring(0,3));
+			} else {
+			  throw new IllegalArgumentException("Nome de cidade muito pequeno!");
+			}
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getRegiao() {
+		return regiao;
+	}
+
+	public void setRegiao(String regiao) {
+		this.regiao = regiao;
+	}
+
+	public String getTipoComercio() {
+		return tipoComercio;
+	}
+
+	public void setTipoComercio(String tipoComercio) {
+		this.tipoComercio = tipoComercio;
+	}
+
+	public String getHistorico() {
+		return historico;
+	}
+
+	public void setHistorico(String historico) {
+		this.historico = historico;
+	}
+
+	public Zona getZona() {
+		return this.zona.fromInteger(zona.getId());
+	}
+
+	public void setZona(Zona zona) {
+		this.zona = zona;
+	}
+
+	public int getGrauSegurança() {
+		return grauSegurança;
+	}
+
+	public void setGrauSegurança(int grauSegurança) {
+		this.grauSegurança = grauSegurança;
+	}
+
+	public int getIdadeMinimaLider() {
+		return idadeMinimaLider;
+	}
+
+	public void setIdadeMinimaLider(int idadeMinimaLider) {
+		this.idadeMinimaLider = idadeMinimaLider;
+	}
+
+	public Localizacao getPosicaoGeografica() {
+		return posicaoGeografica;
+	}
+
+	public void setPosicaoGeografica(double x, double y) {
+		this.posicaoGeografica = new Localizacao(x, y);
+	}
+
+	public List<Familia> getFamilias() {
+		return familias;
+	}
+
+	public List<Recurso> getRecursos() {
+		return recursosComunitarios;
+	}
+
+	public List<Gestao> getHistoricoLideres() {
+		return historicoLideres;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setRecursos(List<Recurso> recursos) {
+		this.recursosComunitarios = recursos;
+	}
+
+	public void setFamilias(List<Familia> familias) {
+		this.familias = familias;
+	}
+
+	public void setAptidoes(List<Aptidao> aptidoes) {
+		this.aptidoes = aptidoes;
+	}
+	
+}

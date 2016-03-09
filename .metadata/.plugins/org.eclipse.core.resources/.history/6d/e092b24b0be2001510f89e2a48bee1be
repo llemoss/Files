@@ -1,0 +1,13 @@
+package grupoD.associapp.dao;
+
+import java.util.List;
+
+import grupoD.associapp.modelo.Recurso;
+
+public interface RecursoDAO {
+	public void createTable();
+	public List<Recurso> lista();
+	public void inserir(Recurso p);
+	public void remover(Recurso p);
+	public Recurso obter(int id);
+}

@@ -1,0 +1,40 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.dao.*;
+import grupoD.associapp.enums.Situacao;
+import grupoD.associapp.modelo.*;
+
+public class TesteRecurso {
+
+	public static void main(String[] args) {
+		
+		ComunidadeJDBC_DAO daoC = new ComunidadeJDBC_DAO();
+		FamiliaJDBC_DAO daoF = new FamiliaJDBC_DAO();
+		RecursoJDBC_DAO daoR = new RecursoJDBC_DAO();
+		
+		Comunidade c;
+		Familia f;
+		Recurso r;
+		
+		c = new Comunidade();
+		f = new Familia();
+		f = daoF.inserir(f);
+		c.adicionarFamilia(f);
+		c = daoC.inserir(c);
+		
+		
+		r = new Recurso("Praça", Situacao.fromInteger(1));
+		r = daoR.inserir(r);
+		
+		r = daoR.obter(1);
+		c.adicionarRecurso(r);
+		
+		System.out.println(c.getId());
+		System.out.println(r.getComunidadePertence().getId());
+		f.adicionarRecurso(r);
+		System.out.println(f.getId());
+		System.out.println(r.getFamiliaPertence().getId());
+
+	}
+	
+}

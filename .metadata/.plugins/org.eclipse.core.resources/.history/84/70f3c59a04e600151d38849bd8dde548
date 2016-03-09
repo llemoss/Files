@@ -1,0 +1,21 @@
+
+public class ExecuteUnit {
+
+	public short op1;
+	public short op2;
+	public short PC;
+	
+	public void Update(){
+		Execute(op1, op2);
+	}
+	
+	private void Execute(short operand1, short operand2, short op){
+		if(op == 0){ //ADD
+			System.out.println("ALU executando ADD // Dados:\nOPERAND1 = " + operand1 + " // OPERAND2" + operand2);
+			short result = (short) (op1 + op2);
+			RegUpdateUnit.sendResult(result, PC);
+			System.out.println("Resultado (" + result +") enviado\n");
+		}
+	}
+	
+}

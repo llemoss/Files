@@ -1,0 +1,16 @@
+package grupoD.associapp.interfaces;
+
+import java.util.List;
+import grupoD.associapp.modelo.Parentesco;
+import grupoD.associapp.modelo.TipoParentesco;
+
+public interface ParentescoDAO {
+	
+	public void createTable();
+	public Parentesco inserir(Parentesco p);
+	public void remover(Parentesco p);
+	public Parentesco obter(String tipo);
+	public List<Parentesco> obterParentescos(int id_pessoa);
+	public TipoParentesco obterTipoParentesco(String nome, String sexo);
+	public void update(int id, String coluna, String valor);
+}

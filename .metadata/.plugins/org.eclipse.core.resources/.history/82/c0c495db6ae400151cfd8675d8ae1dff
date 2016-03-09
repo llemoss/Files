@@ -1,0 +1,197 @@
+package grupoD.associapp.modelo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Pessoa {
+	
+	private int id;
+	private String nome;
+	private String cpf;
+	private int idade;
+	private List<Parentesco> parentescos = new ArrayList<>();
+	private String sexo;
+	private String profissao;
+	private String situacaoLaboral;
+	private String religiao;
+	private String timeDeFutebol;
+	private List<Contato> contatos = new ArrayList<>();
+	private double renda;
+	private String grauEscolaridade;
+	private Data dataNascimento;
+	private Familia familiaPertence;
+		
+	public Pessoa(){}
+	
+	public Pessoa(String nome){
+		this.nome = nome;
+		this.cpf = null;
+		this.idade = null;
+		this.parentescos = null;
+		this.sexo = null;
+		this.profissao = null;
+		this.situacaoLaboral = null;
+		this.religiao = null;
+		this.timeDeFutebol = null;
+		this.contatos = null;
+		this.renda = null;
+		this.grauEscolaridade = null;
+		this.dataNascimento = null;
+		this.familiaPertence = null;
+	}
+	
+	public void adicionarParentesco(Pessoa parente, TipoParentesco tipoParentesco){
+		//Adicionando nesta pessoa
+		Parentesco parentesco = new Parentesco(parente, tipoParentesco);
+		this.getParentescos().add(parentesco);
+		//Adicionando na outra pessoa (com TipoParentesco = espelho)
+		parentesco = new Parentesco(parente, tipoParentesco.getEspelho());
+		parente.getParentescos().add(parentesco);
+	}
+	
+	public String obterParentes(){
+		String listaParentes = "";
+		for (int i = 0; i < this.getParentescos().size(); i++) {
+			listaParentes += ""+ this.getParentescos().get(i).getPessoa().getId()+" ";
+			}
+		return listaParentes;
+	}
+	
+	public void adicionarContato(Contato contato){
+		this.getContatos().add(contato);
+	}
+	
+	public void setContatos(List<Contato> contatos){
+		this.contatos = contatos;
+	}
+	
+	public String obterContatos(){
+		String listaContatos = "";
+		for (int i = 0; i < this.contatos.size(); i++) {
+			listaContatos += this.contatos.get(i).toString() + "\n";
+		}
+		return listaContatos;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public String getProfissao() {
+		return profissao;
+	}
+
+	public void setProfissao(String profissao) {
+		this.profissao = profissao;
+	}
+
+	public String getReligiao() {
+		return religiao;
+	}
+
+	public void setReligiao(String religiao) {
+		this.religiao = religiao;
+	}
+
+	public double getRenda() {
+		return renda;
+	}
+
+	public void setRenda(double renda) {
+		this.renda = renda;
+	}
+
+	public String getGrauEscolaridade() {
+		return grauEscolaridade;
+	}
+
+	public void setGrauEscolaridade(String grauEscolaridade) {
+		this.grauEscolaridade = grauEscolaridade;
+	}
+
+	public void setDataNascimento(int dia, int mes, int ano){
+		this.dataNascimento = new Data(dia, mes, ano);
+		this.idade = this.dataNascimento.calcularIdade();
+	}
+	
+	public void setDataNascimento(Data data){
+		this.dataNascimento = data;
+		this.idade = this.dataNascimento.calcularIdade();
+	}
+	
+	public String getDataNascimento() {
+		return dataNascimento.toString();
+	}
+
+	public List<Parentesco> getParentescos() {
+		return parentescos;
+	}
+
+	public List<Contato> getContatos() {
+		return contatos;
+	}
+
+	public int getIdade() {
+		return idade;
+	}
+
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+
+	public String getSituacaoLaboral() {
+		return situacaoLaboral;
+	}
+
+	public void setSituacaoLaboral(String situacaoLaboral) {
+		this.situacaoLaboral = situacaoLaboral;
+	}
+
+	public String getTimeDeFutebol() {
+		return timeDeFutebol;
+	}
+
+	public void setTimeDeFutebol(String timeDeFutebol) {
+		this.timeDeFutebol = timeDeFutebol;
+	}
+
+	public int getId() {
+		return this.id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setParentescos(List<Parentesco> parentescos) {
+		this.parentescos = parentescos;
+	}
+
+	public Familia getFamiliaPertence() {
+		return familiaPertence;
+	}
+
+	public void setFamiliaPertence(Familia familiaPertence) {
+		this.familiaPertence = familiaPertence;
+	}
+}

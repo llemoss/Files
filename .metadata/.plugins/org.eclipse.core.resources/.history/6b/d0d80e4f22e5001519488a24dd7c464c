@@ -1,0 +1,17 @@
+package grupoD.associapp.dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import grupoD.associapp.interfaces.TipoParentescoDAO;
+import grupoD.associapp.modelo.TipoParentesco;
+
+public class TPJDBC_DAO implements TipoParentescoDAO {
+	
+	private Connection conn;
+
+	
+
+}

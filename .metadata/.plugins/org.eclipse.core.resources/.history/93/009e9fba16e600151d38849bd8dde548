@@ -1,0 +1,64 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class RunSystem {
+
+	public static short PC = 1;
+	public static ExecuteUnit ALU = new ExecuteUnit();
+	public static List<Instruction> instructions = new ArrayList<>();
+	public static List<RegisterFile> RF = new ArrayList<>();
+	
+	
+	public static void sendInstruction(Instruction inst){
+		int i = 0;
+		while(RegUpdateUnit.Queue.get(i).neededId != 0){
+			if(RegUpdateUnit.Queue.get(i).neededId == 0)
+				break;
+			i++;
+		}
+		RegUpdateUnit.Queue.get(i).targetIndex = inst.tgt.index;
+		RegUpdateUnit.Queue.get(i).data1 = inst.src1.value;
+		if(inst.op == 0){
+			RegUpdateUnit.Queue.get(i).data2 = inst.src2.value;
+		}else if(inst.op == 1){
+			RegUpdateUnit.Queue.get(i).data2 = inst.imm7;
+		}
+		RegUpdateUnit.Queue.get(i).receivedFromRF = true;
+		inst.id = PC;
+		instructions.add(inst);
+		if(PC >= 2){
+			if(instructions.get(PC-1).src1 == inst.src1 || instructions.get(PC-1).src2 == inst.src2){
+				RegUpdateUnit.Queue.get(i).neededId = instructions.get(PC-1).id;
+			}else{
+				RegUpdateUnit.Queue.get(i).neededId = PC;
+			}
+		}
+		ALU.Update(RegUpdateUnit.Queue.get(i));
+		PC++;
+	}
+	
+	public static void main(String[] args) {
+		
+		RF.add(new RegisterFile());
+		for (int i = 1; i < 8; i++) {
+			RF.add(new RegisterFile(i));
+		}
+		
+		for (int i = 0; i < 8; i++) {
+			RegUpdateUnit.Queue.add(new RegUpdateUnit());
+		}
+		
+		System.out.println("ADDI 1,0,1");
+		System.out.println("PC: " + PC);
+		Instruction addi = new Instruction((short) 1, RF.get(1), RF.get(0), (short) 1);
+		sendInstruction(addi);
+		System.out.println("ADD 1,1,1");
+		System.out.println("PC: " + PC);
+		System.out.println(RF.get(1).index);
+		Instruction add = new Instruction((short) 0, RF.get(1), RF.get(1), RF.get(1));
+		sendInstruction(add);
+		
+		
+	}
+
+}

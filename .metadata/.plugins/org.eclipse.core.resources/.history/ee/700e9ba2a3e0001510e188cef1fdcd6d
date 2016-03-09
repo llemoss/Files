@@ -1,0 +1,5 @@
+package grupoD.associapp.dao;
+
+public interface ComunidadeDAO {
+
+}

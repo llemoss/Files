@@ -1,0 +1,17 @@
+
+public class ToDo {
+
+	public static void main(String[] args) {
+		
+		//Tarefas Gil
+		boolean TesteResto = false;
+		//Tarefas Leôncio
+		boolean TesteComunidade = false;
+		boolean TesteFamilia = false;
+		boolean TestePessoa = false;
+		//Tarefas Paulo
+		boolean fazerFuncoesUpdate = false;
+		
+	}
+
+}

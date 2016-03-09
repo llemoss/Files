@@ -1,19 +1,7 @@
 # -*- coding: cp1252 -*-
 
-def tempoMedioTurnaround(vetorProgramas):
-    tempo = 0
-    for j in range(len(vetorProgramas)):
-        tempo += float(vetorProgramas[j])
-    
-    tempo = tempo / len(vetorProgramas)
-    return tempo
-
-def tempoMedioEspera(vetorTempos, vetorProgramas):
-    tempo = 0
-    for j in range(len(vetorProgramas)):
-        tempo += float(vetorProgramas[j] - vetorTempos[j])
-    tempo = tempo / len(vetorProgramas)
-    return tempo
+def _cmp_by_program(x, y):
+    return cmp(x[0], y[0])
 
 def calcularTempo(lista, quantum, trocaContexto):
     origQuantum = quantum
@@ -39,13 +27,15 @@ def calcularTempo(lista, quantum, trocaContexto):
 
             if (lista[i] > 0):
                 if ((lista[i] - quantum) < 0):
+
                     oldTempo = tempo
                     tempo += lista[i] + trocaContexto
                     vetorTempos += [tempo]
                     lista[i] -= lista[i]
                     if (lista[i] == 0):
-                        vetorProgramas += [oldTempo]  
+                        vetorProgramas += [[i+1, tempo]]  
                 else:
+
                     oldTempo = tempo
                     if (loopCount == 0 and i == 0):
                         tempo += quantum
@@ -56,7 +46,8 @@ def calcularTempo(lista, quantum, trocaContexto):
                         vetorTempos += [tempo]
                         lista[i] -= quantum
                     if (lista[i] == 0):
-                        vetorProgramas += [oldTempo]
+                        vetorProgramas += [[i+1, tempo]]
+
                 print "Tempo:", tempo, "Processo:", i, "Valor:", lista[i]
 
             #print "Final -- Processo:", i+1, "// Tempo:", tempo, "// Valor:", lista[i]
@@ -64,30 +55,32 @@ def calcularTempo(lista, quantum, trocaContexto):
 
         loopCount += 1
 
-    vetorTempos.remove(vetorTempos[len(vetorTempos)-1])
-    print "Tempo final:", vetorProgramas[len(vetorProgramas)-1]
+    #vetorTempos.remove(vetorTempos[len(vetorTempos)-1])
+    vetorProgramas.sort(_cmp_by_program)
+    print "Tempo final:", vetorProgramas[len(vetorProgramas)-1][1]
     print "Vetor de tempos:", vetorTempos
     print "Vetor tempos finais de programas:", vetorProgramas
 
     tempo = 0
     for j in range(len(vetorProgramas)):
-        tempo += float(vetorProgramas[j])
-    tempo = tempo / len(vetorProgramas)
-    print "Tempo medio de turnaround:", tempo
-
-    tempo = 0
-    for j in range(len(vetorProgramas)):
-        tempo += float(vetorProgramas[j] - vetorTempos[j])
+        tempo += float(vetorProgramas[j][1] - vetorTempos[j])
     tempo = tempo / len(vetorProgramas)
     print "Tempo medio de espera:", tempo
+
+    
+    tempo = 0
+    for j in range(len(vetorProgramas)):
+        tempo += float(vetorProgramas[j][1])
+    tempo = tempo / len(vetorProgramas)
+    print "Tempo medio de turnaround:", tempo
 
    
      
     
-listaProgramas = [int(i) for i in raw_input("Digite os tempos de processador dos programas separando por espaço: ").split(" ")]
-quantum, trocaContexto = [int(i) for i in raw_input("Digite quantum e fator de troca de contexto separados por espaço: ").split(" ")]
-#listaProgramas = [40, 20, 50, 30]
-#quantum = 20
-#trocaContexto = 5
+#listaProgramas = [int(i) for i in raw_input("Digite os tempos de processador dos programas separando por espaço: ").split(" ")]
+#quantum, trocaContexto = [int(i) for i in raw_input("Digite quantum e fator de troca de contexto separados por espaço: ").split(" ")]
+listaProgramas = [10, 14, 5, 7, 20]
+quantum = 2
+trocaContexto = 0
 calcularTempo(listaProgramas, quantum, trocaContexto)
 

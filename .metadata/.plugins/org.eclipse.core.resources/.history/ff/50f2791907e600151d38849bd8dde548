@@ -1,0 +1,27 @@
+
+public class RegUpdateUnit {
+	
+	public static RegUpdateUnit[] Queue;
+	
+	public static void receiveData(short result, short id){
+		for (RegUpdateUnit RUU : Queue) {
+			if(RUU != null) && RUU.neededId == id){
+				RUU.dataToTGT = result;
+			}
+		}
+	}
+	
+	public RegUpdateUnit(){
+		this.sentToRF = false;
+		this.receivedFromRF = false;
+	}
+	
+	public short id;
+	public short neededId;
+	public short data1;
+	public short data2;
+	public short dataToTGT;
+	public boolean receivedFromRF;
+	public boolean sentToRF;
+
+}

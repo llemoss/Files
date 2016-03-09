@@ -1,0 +1,212 @@
+package grupoD.associapp.dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import grupoD.associapp.enums.Situacao;
+import grupoD.associapp.enums.Zona;
+import grupoD.associapp.interfaces.RecursoDAO;
+import grupoD.associapp.modelo.Familia;
+import grupoD.associapp.modelo.Recurso;
+
+public class RecursoJDBC_DAO implements RecursoDAO{
+	
+	private Connection conn;
+	
+	public Recurso inserir(Recurso r, Familia f) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "INSERT INTO recursos(nome, disponibilidade, grauSituacao, id_familia, id_comunidade) VALUES('"+
+		r.getNome()+"','"+
+		r.getDisponibilidade() +"','"+
+		r.getGrauSituacao()+"','"+
+		f.getId() +"','"+
+		null +"');";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			sql = "SELECT id FROM recursos ORDER BY id DESC limit 1";
+			ResultSet rs = stmt.executeQuery(sql);
+			int id = rs.getInt("id");
+			r.setId(id);
+			System.out.println("Recurso de ID (" + r.getId() + ") inserido com sucesso!");
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir recurso");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+		
+		return r;
+	}
+	@Override
+	public void createTable() {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "CREATE TABLE recursos(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, disponibilidade INT, grauSituacao INT, id_comunidade INT, id_familia INT);";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao criar tabela");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+	}
+	@Override
+	public List<Recurso> obterRecursosComunidade(int id_comunidade) {
+		conn = ConnectionFactory.getConnection();
+		String sql;
+		sql = "SELECT * FROM recursos WHERE id_comunidade = " + id_comunidade;
+			//id = id_familia;
+		
+		List<Recurso> recursos = new ArrayList<>();
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet resultado = stmt.executeQuery(sql);
+			FamiliaJDBC_DAO daoF = new FamiliaJDBC_DAO();
+			ComunidadeJDBC_DAO daoC = new ComunidadeJDBC_DAO();
+			while (resultado.next()) {
+				Recurso r = new Recurso();
+				r.setId(resultado.getInt("id"));
+				r.setNome(resultado.getString("nome"));
+				r.setGrauSituacao(Situacao.fromInteger(resultado.getInt("grauSituacao")));
+				r.setDisponibilidade(resultado.getInt("disponibilidade"));
+				r.setComunidadePertence(daoC.obter(resultado.getInt("id_comunidade")));
+				r.setFamiliaPertence(daoF.obter(resultado.getInt("id_familia")));
+				recursos.add(r);
+				System.out.println("Recurso de ID (" + r.getId() + ") inserido na lista com sucesso!");
+			}
+			
+			return recursos;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	public List<Recurso> obterRecursosFamilia(int id_familia) {
+		conn = ConnectionFactory.getConnection();
+		String sql;
+		sql = "SELECT * FROM recursos WHERE id_familia = " + id_familia;
+			//id = id_familia;
+		
+		List<Recurso> recursos = new ArrayList<>();
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet resultado = stmt.executeQuery(sql);
+			FamiliaJDBC_DAO daoF = new FamiliaJDBC_DAO();
+			ComunidadeJDBC_DAO daoC = new ComunidadeJDBC_DAO();
+			while (resultado.next()) {
+				Recurso r = new Recurso();
+				r.setId(resultado.getInt("id"));
+				r.setNome(resultado.getString("nome"));
+				r.setGrauSituacao(Situacao.fromInteger(resultado.getInt("grauSituacao")));
+				r.setDisponibilidade(resultado.getInt("disponibilidade"));
+				r.setComunidadePertence(daoC.obter(resultado.getInt("id_comunidade")));
+				r.setFamiliaPertence(daoF.obter(resultado.getInt("id_familia")));
+				recursos.add(r);
+				System.out.println("Recurso de ID (" + r.getId() + ") inserido na lista com sucesso!");
+			}
+			
+			return recursos;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	@Override
+	public void remover(Recurso r) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "DELETE FROM recursos where id = " + r.getId() + ";";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			System.out.println("Recurso de ID (" + r.getId() + ") removido com sucesso!");
+		}catch (Exception e){
+			e.printStackTrace();
+			System.out.println("Erro ao excluir recurso");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+	}
+	@Override
+	public Recurso obter(int id) {
+		conn = ConnectionFactory.getConnection();
+		String sql = "SELECT * FROM recursos WHERE id = " + id + ";";
+		Recurso r = null;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet resultado = stmt.executeQuery(sql);
+			while (resultado.next()) {
+				r = new Recurso();
+				r.setDisponibilidade(resultado.getInt("disponibilidade"));
+				r.setGrauSituacao(Situacao.fromString(resultado.getString("grauSituacao")));
+				r.setNome(resultado.getString("nome"));
+			}
+			System.out.println("Recurso de ID (" + r.getId() + ") obtido com sucesso!");
+			return r;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
+	public void update(int id, String coluna, String valor){
+		conn = ConnectionFactory.getConnection();
+		String sql = "UPDATE recursos SET " + coluna + " = '" + valor + "' WHERE id = " + id + ";";
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			System.out.println("Recurso de ID (" + id + ") atualizado com sucesso!");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}

@@ -1,0 +1,71 @@
+package grupoD.associapp.dao;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+
+import grupoD.associapp.modelo.Comunidade;
+
+public class ComunidadeJDBC_DAO implements ComunidadeDAO {
+	
+	private Connection conn;
+
+	@Override
+	public List<Comunidade> lista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void inserir(Comunidade c) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "INSERT INTO comunidades(nome, idadeMinimaLider, tipo) VALUES('"+c.getNome()+"',"
+		+c.getIdadeMinimaLider() + ",'" + c.getZona().getId() + "');";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			conn.close();
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir Comunidade");
+		}
+	}
+
+	@Override
+	public void remover(Comunidade c) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "DELETE FROM comunidades where comunidades.id = " + c.getCodigo();
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		}catch (Exception e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir Comunidade");
+		}
+	}
+
+	@Override
+	public Comunidade obter(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void createTable() {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "CREATE TABLE comunidades(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, cidade TEXT, zona INT, regiao TEXT, tipoComercio TEXT, historico TEXT, grauSeguranca INT, localizacao TEXT, aptidoes TEXT, idadeMinimaLider INT, codigo TEXT, id_recursos INT, id_gestao INT);";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			conn.close();
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao criar tabela");
+		}
+	}
+
+}

@@ -1,0 +1,119 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.dao.*;
+import grupoD.associapp.enums.Situacao;
+import grupoD.associapp.enums.Zona;
+import grupoD.associapp.interfaces.ComunidadeDAO;
+import grupoD.associapp.modelo.*;
+
+import java.util.List;
+
+public class TesteJDBC {
+
+	public static void main(String[] args)  {
+		
+		
+		
+		ComunidadeDAO dao = new ComunidadeJDBC_DAO();
+/*		
+		Comunidade c = new Comunidade();
+		c.setNome("Morro do Cego");
+		Recurso r=new Recurso("felinos",Situacao.BOM,"Clovis");
+		c.adicionarRecurso(r);
+		
+		Familia f=new Familia();
+		Pessoa p = new Pessoa();
+		p.setNome("Constantino pereira");
+		p.setCpf("000.0000.000");
+		p.setDataNascimento(Data.parseInt("10/12/10"));
+		p.setGrauEscolaridade("Ensino Superior");
+		p.setSexo("Masculino");
+		p.setProfissao("Cirurgião");
+		p.setReligiao("Capirotista");
+		p.setTimeDeFutebol("Capivaras futebol clube");
+		p.setRenda(3000);
+		Contato co=new Contato("Wpp","99182654");
+		p.adicionarContato(co);
+		TipoParentesco irmao=new TipoParentesco();
+		irmao.setNome("Irmao");
+		p.adicionarParentesco(p,irmao);
+		
+		f.setChefe(p);
+		f.setEndereco("endereco");
+		f.setGrauSeguranca(700);
+		f.setRenda(f.getRenda());
+		f.adicionarRecurso(r);;
+		
+		Familia f2=new Familia();
+		Pessoa p2 = new Pessoa();
+		p2.setNome("cleyde");
+		p2.setCpf("000.0050.000");
+		p2.setDataNascimento(Data.parseInt("10/12/10"));
+		p2.setGrauEscolaridade("Ensino medio");
+		p2.setSexo("Feminino");
+		p2.setProfissao("Cirurgião");
+		p2.setReligiao("Jesusisista");
+		p2.setTimeDeFutebol("Ocarinas do Forro");
+		p2.setRenda(3000);
+		Contato co2=new Contato("Wpp","99182654");
+		p.adicionarContato(co2);
+		p.adicionarContato(co);
+		TipoParentesco irmao2=new TipoParentesco();
+		irmao2.setNome("Irmao");
+		
+		p.adicionarParentesco(p,irmao);
+		
+		f.setChefe(p2);
+		f.setEndereco("endereco");
+		f.setGrauSeguranca(3);
+		f.setRenda(f.getRenda());
+		f.adicionarRecurso(r);
+		c.adicionarFamilia(f);
+		
+		Familia f1=new Familia();
+		Pessoa p1 = new Pessoa();
+		p.setNome("juninho");
+		p.setCpf("000.0000.000");
+		p.setDataNascimento(Data.parseInt("10/12/10"));
+		p.setGrauEscolaridade("Ensino Superior");
+		p.setSexo("Femminino");
+		p.setProfissao("Cirurgião");
+		p.setReligiao("Capirotista");
+		p.setTimeDeFutebol("Capivaras futebol clube");
+		p.setRenda(3000);
+		Contato co1=new Contato("Wpp","99182654");
+		p.adicionarContato(co);
+		TipoParentesco irmao1=new TipoParentesco();
+		irmao.setNome("Irmao");
+		c.adicionarFamilia(f);
+		
+		Aptidao a=new Aptidao("Churrasco de Gato");
+		c.adicionarAptidao(a);
+		c.setCidade("TEREHELL");
+		c.setRegiao("Sudeste");
+		c.setHistorico("Se_por_epaço_da_merda");
+		c.setZona(Zona.RURAL);
+		c.setTipoComercio("Industria");
+		dao.inserir(c);
+		
+*/		
+		
+		PessoaJDBC_DAO daoP = new PessoaJDBC_DAO();
+		Familia f = new Familia();
+		Pessoa p = new Pessoa();
+		p = new Pessoa();
+		p.setNome("Nome");
+		p.setCpf("CPF");
+		p.setDataNascimento(01, 01, 01);
+		p.setGrauEscolaridade("Inferior");
+		p.setSexo("M");
+		p.setProfissao("Gari");
+		p.setReligiao("Nenhuma");
+		p.setTimeDeFutebol("paiN Gaming");
+		p.setRenda(1000);
+		f.adicionarMembro(p);
+		p = daoP.inserir(p);
+		
+		System.out.println(p.obterParentes());
+	}
+}

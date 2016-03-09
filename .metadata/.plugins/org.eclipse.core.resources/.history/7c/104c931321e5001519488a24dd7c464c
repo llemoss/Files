@@ -1,0 +1,26 @@
+package grupoD.associapp.dao;
+
+import grupoD.associapp.interfaces.TipoParentescoDAO;
+import grupoD.associapp.modelo.TipoParentesco;
+
+public class TPJDBC_DAO implements TipoParentescoDAO {
+
+	@Override
+	public TipoParentesco obterTipoParentesco(String nome, String sexo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TipoParentesco obterTipoParentesco(int id_pessoa, int id_parente) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String obterNomeTipoParentesco(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

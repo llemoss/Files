@@ -1,0 +1,5 @@
+package grupoD.associapp.dao;
+
+public class FamiliaJDBC_DAO implements FamiliaDAO{
+
+}

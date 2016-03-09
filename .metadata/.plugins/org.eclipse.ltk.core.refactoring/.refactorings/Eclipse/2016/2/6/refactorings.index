@@ -1,0 +1,6 @@
+1454444153614	Encapsulate field 'jogador'
+1454444167775	Encapsulate field 'boneco'
+1454524718650	Extract method 'lerInteiro'
+1454525022246	Extract method 'msg'
+1454531395000	Delete element
+1454531407814	Rename type 'Jogo2'

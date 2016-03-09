@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class RegUpdateUnit {
+	
+	public static List<RegUpdateUnit> Queue = new ArrayList<>();
+		
+	public static void receiveData(short result, short id){
+		for (int i = 0; i < Queue.size(); i++) {
+			if(Queue.get(i) != null && Queue.get(i).neededId == id){
+				Queue.get(i).target.value = result;
+				System.out.println("target.value = ");
+			}
+		}
+	}
+	
+	public RegUpdateUnit(){
+		this.sentToRF = false;
+		this.receivedFromRF = false;
+	}
+	
+	public int targetIndex;
+	public short neededId;
+	public short data1;
+	public short data2;
+	public boolean receivedFromRF;
+	public boolean sentToRF;
+
+}

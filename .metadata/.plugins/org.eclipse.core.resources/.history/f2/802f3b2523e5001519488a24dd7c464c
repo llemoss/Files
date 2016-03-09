@@ -1,0 +1,189 @@
+package grupoD.associapp.dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import grupoD.associapp.interfaces.PessoaDAO;
+import grupoD.associapp.modelo.Data;
+import grupoD.associapp.modelo.Pessoa;
+
+public class PessoaJDBC_DAO implements PessoaDAO{
+	
+	private Connection conn;
+	
+	public Pessoa inserir(Pessoa p) {
+		Connection conn = ConnectionFactory.getConnection();
+		
+		String sql = "INSERT INTO pessoas(nome,cpf,idade,ids_parentesco, sexo, profissao, situacao_laboral, religiao, time,"
+				+ "id_contatos, renda, grau_escolaridade, data_nascimento) VALUES('"+p.getNome()+"','"+
+				p.getCpf() +"','" +
+				p.getIdade() +"','"+
+				p.obterParentes()+"','"+
+				p.getSexo()+"','"+
+				p.getProfissao()+"','"+
+				p.getSituacaoLaboral()+"','"+
+				p.getReligiao()+"','"+
+				p.getTimeDeFutebol()+"','"+
+				p.getContatos()+"','"+
+				p.getRenda()+"','"+
+				p.getGrauEscolaridade()+"','"+
+				p.getDataNascimento()+"');";
+		try{
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			sql = "SELECT id FROM pessoas ORDER BY id DESC limit 1";
+			ResultSet rs = stmt.executeQuery(sql);
+			int id = rs.getInt("id");
+			p.setId(id);
+			System.out.println("Pessoa de ID (" + p.getId() + ") inserida com sucesso!");
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir pessoa");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+		
+		return p;
+	}
+	
+	@Override
+	public void createTable() {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "CREATE TABLE pessoas(id INTEGER PRIMARY KEY AUTOINCREMENT,cpf TEXT, nome TEXT, idade INT, id_parentesco INT,"
+				+ "sexo TEXT, profissao TEXT, situacao_laboral TEXT, religiao TEXT, time TEXT,"
+				+ "id_contatos INT, renda REAL, grau_escolaridade TEXT, data_nascimento TEXT, familia_id INT);";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao criar tabela");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void remover(Pessoa p) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "DELETE FROM pessoas where id = " + p.getId() + ";";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			System.out.println("Pessoa de ID (" + p.getId() + ") removida com sucesso!");
+		}catch (Exception e){
+			e.printStackTrace();
+			System.out.println("Erro ao excluir pessoa");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+	}
+	@Override
+	public Pessoa obter(int id) {
+		conn = ConnectionFactory.getConnection();
+		String sql = "SELECT * FROM pessoas WHERE id = " + id + " limit 1;";
+		Pessoa p = null;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet resultado = stmt.executeQuery(sql);
+			ContatoJDBC_DAO daoC = new ContatoJDBC_DAO();
+			ParentescoJDBC_DAO daoP = new ParentescoJDBC_DAO();
+			while (resultado.next()) {
+				p = new Pessoa();
+				p.setId(resultado.getInt("id"));
+				p.setNome(resultado.getString("nome"));
+				p.setCpf(resultado.getString("cpf"));
+				p.setDataNascimento(Data.parseInt(resultado.getString("data_nascimento")));
+				p.setGrauEscolaridade(resultado.getString("grau_escolaridade"));
+				p.setSexo(resultado.getString("sexo"));
+				p.setProfissao(resultado.getString("profissao"));
+				p.setReligiao(resultado.getString("religiao"));
+				p.setTimeDeFutebol(resultado.getString("time"));
+				p.setSituacaoLaboral(resultado.getString("situacao_laboral"));
+				p.setRenda(resultado.getDouble("renda"));
+				p.setContatos(daoC.obter(id));
+				p.setParentescos(daoP.obterParentescos(id));
+				System.out.println("Pessoa de ID (" + id + ") obtida com sucesso!");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return p;
+	}
+
+	public List<Pessoa> obterFamilia(int id_familia) {
+		conn = ConnectionFactory.getConnection();
+		String sql = "SELECT * FROM pessoas WHERE id_familia = " + id_familia + ";";
+		Pessoa p = null;
+		List<Pessoa> pessoas = new ArrayList<>();
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet resultado = stmt.executeQuery(sql);
+			ContatoJDBC_DAO daoC = new ContatoJDBC_DAO();
+			ParentescoJDBC_DAO daoP = new ParentescoJDBC_DAO();
+			while (resultado.next()) {
+				p = obter(resultado.getInt("id"));
+				pessoas.add(p);
+				System.out.println("Pessoa de ID (" + p.getId() + ") inserida na família com sucesso!");
+			}
+			
+			return pessoas;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
+	
+	public void update(int id, String coluna, String valor){
+		conn = ConnectionFactory.getConnection();
+		String sql = "UPDATE pessoas SET " + coluna + " = '" + valor + "' WHERE id = " + id + ";";
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			System.out.println("Pessoa de ID (" + id + ") atualizada com sucesso!");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}

@@ -1,0 +1,186 @@
+package grupoD.associapp.dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import grupoD.associapp.interfaces.FamiliaDAO;
+import grupoD.associapp.modelo.Comunidade;
+import grupoD.associapp.modelo.Familia;
+
+public class FamiliaJDBC_DAO implements FamiliaDAO{
+
+	@Override
+	public void createTable() {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "CREATE TABLE familias(id INTEGER PRIMARY KEY AUTOINCREMENT, id_comunidade INT, id_chefe INT, id_membros INT, id_recursos INT, endereco TEXT, renda REAL, grauSeguranca INT);";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			conn.close();
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao criar tabela");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public List<Familia> lista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Familia inserir(Familia f) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "INSERT INTO familias(id_comunidade,id_chefe,endereco,renda,grauSeguranca) VALUES('"+f.getComunidadePertencente().getId()+"','"+
+		f.getChefe().getId()+"','"+
+		f.getEndereco()+"','"+
+		f.getRenda()+"','"+
+		f.getGrauSeguranca()+"');";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			sql = "SELECT id FROM familias ORDER BY id DESC limit 1";
+			ResultSet rs = stmt.executeQuery(sql);
+			int id = rs.getInt("id");
+			f.setId(id);
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir Família");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+		
+		return f;
+	}
+
+	@Override
+	public void remover(Familia f) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "DELETE FROM familias where familias.id = " + f.getId();
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		}catch (Exception e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir Família");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public Familia obter(int id) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "SELECT * FROM familias where id = " + id;
+		Familia f = null;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet resultado = stmt.executeQuery(sql);
+			PessoaJDBC_DAO daoP = new PessoaJDBC_DAO();
+			ComunidadeJDBC_DAO daoC = new ComunidadeJDBC_DAO();
+			RecursoJDBC_DAO daoR = new RecursoJDBC_DAO();
+			while (resultado.next()) {
+				f = new Familia();
+				f.setId(resultado.getInt("id"));
+				f.setComunidadePertencente(daoC.obter(id));
+				f.setChefe(daoP.obter(resultado.getInt("id_chefe")));
+				f.setMembros(daoP.obterFamilia(id));
+				f.setEndereco(resultado.getString("endereco"));
+				f.setGrauSeguranca(resultado.getInt("grauSeguranca"));
+				f.setRenda(resultado.getDouble("renda"));
+				f.setRecursos(daoR.obterRecursos(0, id));
+			}
+			return f;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
+	
+	public List<Familia> obterFamiliasPorComunidade(int id){
+		List<Familia> familias = new ArrayList<>();
+		
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "SELECT * FROM familias where id_comunidade = " + id;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet resultado = stmt.executeQuery(sql);
+			PessoaJDBC_DAO daoP = new PessoaJDBC_DAO();
+			ComunidadeJDBC_DAO daoC = new ComunidadeJDBC_DAO();
+			RecursoJDBC_DAO daoR = new RecursoJDBC_DAO();
+			while (resultado.next()) {
+				Familia f = new Familia();
+				f.setId(resultado.getInt("id"));
+				f.setComunidadePertencente(daoC.obter(id));
+				f.setChefe(daoP.obter(resultado.getInt("id_chefe")));
+				f.setMembros(daoP.obterFamilia(id));
+				f.setEndereco(resultado.getString("endereco"));
+				f.setGrauSeguranca(resultado.getInt("grauSeguranca"));
+				f.setRenda(resultado.getDouble("renda"));
+				f.setRecursos(daoR.obterRecursos(0, id));
+				familias.add(f);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return familias;
+	}
+	
+	@Override
+	public void update(int id, String coluna, String valor){
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "UPDATE familias SET " + coluna + " = '" + valor + "' WHERE id = " + id + ";";
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			System.out.println("Família de ID (" + id + ") atualizado com sucesso!");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}

@@ -1,0 +1,6 @@
+
+public class RegisterFile {
+	
+	public short value;
+
+}

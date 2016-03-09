@@ -1,0 +1,89 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.modelo.*;
+import grupoD.associapp.dao.*;
+import grupoD.associapp.enums.Cargo;
+
+public class TestaTuto {
+
+	public static void main(String[] args) {
+
+		ComunidadeJDBC_DAO daoC = new ComunidadeJDBC_DAO();
+		FamiliaJDBC_DAO daoF = new FamiliaJDBC_DAO();
+		PessoaJDBC_DAO daoP = new PessoaJDBC_DAO();
+		GestaoJDBC_DAO daoG = new GestaoJDBC_DAO();
+		MembroJDBC_DAO daoM = new MembroJDBC_DAO();
+		RecursoJDBC_DAO daoR = new RecursoJDBC_DAO();
+		ParentescoJDBC_DAO daoPa = new ParentescoJDBC_DAO();
+		ContatoJDBC_DAO daoCo = new ContatoJDBC_DAO();
+		AptidaoJDBC_DAO daoAp = new AptidaoJDBC_DAO();
+		
+		Comunidade c;
+		Familia f;
+		Pessoa p;
+		Gestao g;
+		Membro m;
+		Recurso r;
+		Parentesco pa;
+		Contato co;
+		Aptidao ap;
+		TipoParentesco tp;
+		
+		/*c = new Comunidade();
+		c = daoC.inserir(c);
+		f = new Familia();
+		c.adicionarFamilia(f);
+		p = new Pessoa();
+		p.setNome("Pessoa1");
+		p.setSexo("F");
+		f.adicionarMembro(p);
+		p = new Pessoa();
+		p.setNome("PessoaChefe");
+		p.setSexo("M");
+		f.adicionarMembro(p);
+		f.setChefe(p);
+		
+		Pessoa p1 = daoP.obter(1);
+		tp = daoPa.obterTipoParentesco("Irmã", p.getSexo());
+		p.adicionarParentesco(p1, tp);
+		p.adicionarContato(new Contato("12345678", "Telefone"));
+		
+		f.adicionarRecurso(new Recurso("Internet", 2));
+		
+		c.adicionarRecurso(new Recurso("Praça", 2));
+		
+		ap = new Aptidao("Indústria");
+		c.adicionarAptidao(ap);
+		
+		m = new Membro(p1, Cargo.PRESIDENTE);
+		g = new Gestao();
+		g.setAtual(true);
+		g.setMandatoInicio(01, 01, 2015);
+		g.setMandatoFinal(01, 01, 2016);
+		g.setTipoEleicao("Votos");
+		g = daoG.inserir(g);
+		m.setGestaoPertencente(g);
+		m = daoM.inserir(m);
+		g.addMembro(m);
+		daoM.update(m.getId(), "id_gestao", String.valueOf(g.getId()));
+		g.setMembros(daoM.obterMembrosdaGestao(g.getId()));
+		
+		*/
+		
+		c = daoC.obter(1);
+		f = daoF.obter(1);
+		p = daoP.obter(1);
+		g = daoG.obter(1);
+		m = daoM.obter(1);
+		r = daoR.obter(1);
+		p.setParentescos(daoPa.obterParentescos(p.getId()));
+		System.out.println(p.obterParentes());
+		p.setContatos(daoCo.obter(p));
+		System.out.println(p.obterParentes());
+		Aptidao ap;
+		TipoParentesco tp;
+		
+		
+	}
+
+}

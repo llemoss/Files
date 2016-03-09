@@ -1,0 +1,14 @@
+package grupoD.associapp.interfaces;
+
+import java.util.List;
+
+import grupoD.associapp.modelo.Aptidao;
+
+public interface AptidaoDAO {
+	public void createTable();
+	public List<Aptidao> lista();
+	public Aptidao inserir(Aptidao a);
+	public void remover(Aptidao a);
+	public List<Aptidao> obter(int id_comunidade);
+
+}

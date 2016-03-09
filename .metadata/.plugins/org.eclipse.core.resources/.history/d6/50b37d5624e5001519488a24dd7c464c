@@ -1,0 +1,45 @@
+package grupoD.associapp.modelo;
+
+public class Contato {
+	
+	private int id;
+	private String dado;
+	private String tipo;
+	private Pessoa pessoa;
+	
+	public Contato(String dado, String tipo){
+		this.dado = dado;
+		this.tipo = tipo;
+	}
+	
+	public Contato() {}
+
+	@Override
+	public String toString() {
+		return "Contato ("+ tipo +"): " + dado;
+	}
+	
+	public void setDado(String dado) {
+		this.dado = dado;
+	}
+	
+	public String getDado() {
+		return dado;
+	}
+	
+	public String getTipo() {
+		return tipo;
+	}
+	
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+}

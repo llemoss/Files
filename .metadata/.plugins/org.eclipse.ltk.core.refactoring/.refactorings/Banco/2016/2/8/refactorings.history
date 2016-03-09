@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;gildasiozeth.banco.aplicacao&apos; to &apos;gildasiozeth.banco.principal&apos;&#x0D;&#x0A;- Original project: &apos;Banco&apos;&#x0D;&#x0A;- Original element: &apos;Banco/src/gildasiozeth.banco.aplicacao&apos;&#x0D;&#x0A;- Renamed element: &apos;Banco/src/gildasiozeth.banco.principal&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;gildasiozeth.banco.aplicacao&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;gildasiozeth.banco.aplicacao" name="gildasiozeth.banco.principal" qualified="false" references="true" stamp="1455660947069" textual="false" version="1.0"/>
+</session>

@@ -1,2 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="restaurante.Mesa"/>
+<fullyQualifiedTypeName name="aula6.Cargo"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
+<fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
+<fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+<fullyQualifiedTypeName name="gildasiozeth.banco.modelo.InsufficientBalanceException"/>
+<fullyQualifiedTypeName name="gildasiozeth.banco.modelo.DailyLimitException"/>
+<fullyQualifiedTypeName name="gildasiozeth.banco.modelo.InvalidValueException"/>
+<fullyQualifiedTypeName name="javax.swing.plaf.synth.SynthSeparatorUI"/>
+<fullyQualifiedTypeName name="grupoD.associapp.principal.TestaComunidade"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.util.GregorianCalendar"/>
+<fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
+<fullyQualifiedTypeName name="grupoD.associapp.modelo.GerenciarComunidade"/>
+<fullyQualifiedTypeName name="grupoD.associapp.modelo.Membro"/>
+<fullyQualifiedTypeName name="java.lang.IllegalAccessException"/>
+<fullyQualifiedTypeName name="javax.sql.rowset.JdbcRowSet"/>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
+<fullyQualifiedTypeName name="grupoD.associapp.dao.ConnectionFactory"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="grupoD.associapp.dao.FamiliaDAO"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="grupoD.associapp.modelo.Data"/>
+<fullyQualifiedTypeName name="grupoD.associapp.enums.Zona"/>
+<fullyQualifiedTypeName name="grupoD.associapp.modelo.Gestao"/>
+<fullyQualifiedTypeName name="grupoD.associapp.enums.Cargo"/>
+<fullyQualifiedTypeName name="grupoD.associapp.dao.MembroJDBC_DAO"/>
+<fullyQualifiedTypeName name="grupoD.associapp.dao.GestaoJDBC_DAO"/>
+<fullyQualifiedTypeName name="grupoD.associapp.dao.ParentescoJDBC_DAO"/>
+<fullyQualifiedTypeName name="grupoD.associapp.modelo.Parentesco"/>
+<fullyQualifiedTypeName name="grupoD.associapp.modelo.TipoParentesco"/>
+<fullyQualifiedTypeName name="grupoD.associapp.dao.TPJDBC_DAO"/>
+<fullyQualifiedTypeName name="grupoD.associapp.dao.PessoaJDBC_DAO"/>
+<fullyQualifiedTypeName name="grupoD.associapp.dao.ContatoJDBC_DAO"/>
+<fullyQualifiedTypeName name="grupoD.associapp.modelo.Pessoa"/>
+<fullyQualifiedTypeName name="grupoD.associapp.dao.AptidaoJDBC_DAO"/>
+<fullyQualifiedTypeName name="grupoD.associapp.modelo.Aptidao"/>
+<fullyQualifiedTypeName name="grupoD.associapp.dao.ComunidadeJDBC_DAO"/>
+<fullyQualifiedTypeName name="grupoD.associapp.dao.RecursoJDBC_DAO"/>
+<fullyQualifiedTypeName name="grupoD.associapp.dao.FamiliaJDBC_DAO"/>
+<fullyQualifiedTypeName name="grupoD.associapp.modelo.Recurso"/>
+<fullyQualifiedTypeName name="grupoD.associapp.enums.Situacao"/>
+<fullyQualifiedTypeName name="grupoD.associapp.modelo.Familia"/>
+<fullyQualifiedTypeName name="grupoD.associapp.modelo.Comunidade"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+</qualifiedTypeNameHistroy>

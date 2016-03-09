@@ -1,0 +1,29 @@
+package grupoD.associapp.modelo;
+
+public class Aptidao {
+	private int id;
+	private String nome;
+	
+	public Aptidao(String nome){
+		this.nome=nome;
+	}
+	public Aptidao(){};
+	
+	@Override
+	public String toString() {
+		return "Contato ("+ nome +"): ";
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+}

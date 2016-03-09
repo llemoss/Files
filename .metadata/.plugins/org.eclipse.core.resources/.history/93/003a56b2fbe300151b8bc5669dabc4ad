@@ -1,0 +1,161 @@
+package grupoD.associapp.dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import grupoD.associapp.modelo.Aptidao;
+import grupoD.associapp.modelo.Comunidade;
+import grupoD.associapp.interfaces.AptidaoDAO;
+
+
+public class AptidaoJDBC_DAO implements AptidaoDAO{
+	
+	private Connection conn;
+	
+	public Aptidao inserir(Aptidao a) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "INSERT INTO aptidao(nome) VALUES('" 
+		+ a.getNome() +"');";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			sql = "SELECT id FROM aptidoes ORDER BY id DESC limit 1";
+			ResultSet rs = stmt.executeQuery(sql);
+			int id = rs.getInt("id");
+			a.setId(id);
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir aptidao");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+		return a;
+	}
+	@Override
+	public void createTable() {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "CREATE TABLE aptidoes(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, id_comunidade INT);";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao criar tabela");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	@Override
+	public void remover(Aptidao a){
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "DELETE FROM aptidoes where aptidoes.nome = " + a.getNome();
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		}catch (Exception e){
+			e.printStackTrace();
+			System.out.println("Erro ao excluir contato");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	@Override
+	public List<Aptidao> obter(int id_comunidade) {
+		conn = ConnectionFactory.getConnection();
+		String sql = "SELECT * FROM aptidoes WHERE id_comunidade = " + id_comunidade;
+		List<Aptidao> aptidoes = new ArrayList<>();
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet resultado = stmt.executeQuery(sql);
+			while (resultado.next()) {
+				Aptidao a = new Aptidao();
+				a.setId(resultado.getInt("id"));
+				a.setNome(resultado.getString("nome"));
+				aptidoes.add(a);
+			}
+			
+			return aptidoes;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+	public List<Aptidao> obterAptidoes(int id_comunidade) {
+		conn = ConnectionFactory.getConnection();
+		String sql;
+		sql = "SELECT * FROM aptidoes WHERE id_comunidade = " + id_comunidade;
+		List<Aptidao> aptidoes = new ArrayList<>();
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet resultado = stmt.executeQuery(sql);
+			while (resultado.next()) {
+				Aptidao a= new Aptidao();
+				a.setId(resultado.getInt("id"));
+				a.setNome(resultado.getString("nome"));
+				aptidoes.add(a);
+			}			
+			return aptidoes;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	@Override
+	public List<Aptidao> lista() {	
+		return null;
+	}
+	public void update(int id, String coluna, String valor){
+		conn = ConnectionFactory.getConnection();
+		String sql = "UPDATE aptidoes SET " + coluna + " = '" + valor + "' WHERE id = " + id + ";";
+		Comunidade c = null;
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}

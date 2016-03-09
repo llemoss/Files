@@ -1,0 +1,10 @@
+
+public class RegisterFile {
+	
+	public short value;
+	
+	public RegisterFile(){
+		this.value = 0;
+	}
+
+}

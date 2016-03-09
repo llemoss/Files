@@ -1,0 +1,28 @@
+
+public class RegisterFile {
+	
+	short op;
+	short tgt;
+	short src1;
+	short src2;
+	short imm7;
+	short imm10;
+	
+	
+	//RRR
+	public RegisterFile(short op, short tgt, short src1, short src2) {
+		this.op = op;
+		this.tgt = tgt;
+		this.src1 = src1;
+		this.src2 = src2;
+	}
+	
+	//RRI
+	public RegisterFile(short op, short tgt, short src1, short imm7) {
+		this.op = op;
+		this.tgt = tgt;
+		this.src1 = src1;
+		this.imm7 = imm7;
+	}
+
+}

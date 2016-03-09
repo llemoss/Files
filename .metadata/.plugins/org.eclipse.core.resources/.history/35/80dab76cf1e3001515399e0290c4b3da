@@ -1,0 +1,23 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.dao.ComunidadeJDBC_DAO;
+import grupoD.associapp.modelo.*;
+
+public class TesteComunidade {
+
+	public static void main(String[] args) {
+
+		ComunidadeJDBC_DAO daoC = new ComunidadeJDBC_DAO();
+		
+		Comunidade c = new Comunidade();
+		c.setNome("NOME");
+		c.setCidade("the");
+		c.setRegiao("norte");
+		c.setGrauSegurança(0);
+		c.setHistorico("h");
+		c.setZona(Zona.URBANA);
+		c.setTipoComercio("dinheiros");
+
+	}
+
+}

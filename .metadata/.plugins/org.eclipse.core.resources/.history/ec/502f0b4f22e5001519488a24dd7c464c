@@ -1,0 +1,102 @@
+package grupoD.associapp.dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import grupoD.associapp.interfaces.TipoParentescoDAO;
+import grupoD.associapp.modelo.TipoParentesco;
+
+public class TPJDBC_DAO implements TipoParentescoDAO {
+	
+	private Connection conn;
+
+	@Override
+	public TipoParentesco obterTipoParentesco(int id_pessoa, int id_parente){
+		conn = ConnectionFactory.getConnection();
+		String sql = "select * from parentescos where id_pessoa = " + id_pessoa + " AND id_parente = " + id_parente + ";";
+		try{
+			Statement stmt = conn.createStatement();
+			PessoaJDBC_DAO daoP = new PessoaJDBC_DAO();
+			ResultSet resultado = stmt.executeQuery(sql);
+			int id_tipo = resultado.getInt("id_tipo");
+			sql = "select * tiposdeparentesco where id = " + id_tipo;
+			resultado = stmt.executeQuery(sql);
+			TipoParentesco tp = obterTipoParentesco(resultado.getString("nome"), daoP.obter(id_pessoa).getSexo());
+			System.out.println("TipoParentesco de ID (" + tp.getId() + ") obtido com sucesso!");
+			return tp;
+		}catch(SQLException e){
+			System.out.println("Erro ao obter TipoParentesco");
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+	
+	@Override
+	public TipoParentesco obterTipoParentesco(String nome, String sexo){
+		conn = ConnectionFactory.getConnection();
+		String sql = "SELECT * FROM tiposdeparentesco where nome = '" + nome + "';";
+		TipoParentesco tp = null;
+		TipoParentesco espelho = null;
+
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet resultado = stmt.executeQuery(sql);
+			while (resultado.next()) {
+				tp = new TipoParentesco();
+				tp.setId(resultado.getInt("id"));
+				tp.setNome(resultado.getString("nome"));
+				espelho = new TipoParentesco();
+				if(sexo == "M"){
+					espelho.setId(resultado.getInt("id_espelhoM"));
+					espelho.setNome(obterNomeTipoParentesco(resultado.getInt("id_espelhoM")));
+				}else if(sexo == "F"){
+					espelho.setId(resultado.getInt("id_espelhoF"));
+					espelho.setNome(obterNomeTipoParentesco(resultado.getInt("id_espelhoF")));
+				}
+				tp.setEspelho(espelho);
+			}
+			System.out.println("TipoParentesco de ID (" + tp.getId() + ") obtido com sucesso!");
+			return tp;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return tp;
+	}
+	
+	@Override
+	public String obterNomeTipoParentesco(int id){
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "select * from tiposdeparentesco where id = " + id + ";";
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet resultado = stmt.executeQuery(sql);
+			return resultado.getString("nome");
+		}catch(SQLException e){
+			System.out.println("Erro ao obter TipoParentesco");
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
+}

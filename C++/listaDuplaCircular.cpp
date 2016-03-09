@@ -167,7 +167,7 @@ main(){
 	lista->addElemento(2, "dois");
 	lista->addElemento(4, "quatro");
 	//lista->addElemento(1, "testeInicio");
-	lista->mostrarLista();
+	lista->mostrarLista(true);
 	cout << endl;
 	//lista->mostrarLista(false);
 	int a;

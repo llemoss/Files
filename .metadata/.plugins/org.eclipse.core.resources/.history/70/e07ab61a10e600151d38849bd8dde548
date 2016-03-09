@@ -1,0 +1,31 @@
+
+import java.util.List;
+import java.util.ArrayList;
+
+public class ExecuteUnit {
+
+	public short op = 0; //0 = ADD
+	public short id = 0; //Instrução que foi executada
+	public short op1 = 0;
+	public short op2 = 0;
+	
+	public void Update(short op, short id, short operand1, short operand2){
+		this.op = op;
+		this.id = id;
+		this.op1 = operand1;
+		this.op2 = operand2;
+		Execute();
+	}
+	
+	private void Execute(){
+		if(op == 0){ //ADD
+			System.out.println("ALU executando ADD // Dados:\nOPERAND1 = " + op1 + " // OPERAND2" + op2);
+			short add = (short) (op1 + op2);
+			System.out.println("Resultado do ADD: " + add);
+			RegUpdateUnit.receiveData(add, id);
+		}else{
+			System.out.println("Instrução inválida");
+		}
+	}
+	
+}

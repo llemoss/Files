@@ -1,0 +1,131 @@
+package grupoD.associapp.modelo;
+import java.util.ArrayList;
+import java.util.List;
+
+import grupoD.associapp.enums.Cargo;
+
+public class Gestao {
+	
+	private int id;
+	private String nome;
+	private Data mandatoInicio;
+	private Data mandatoFinal;
+	private String tipoEleicao;
+	private boolean atual;
+	private List<Membro> membros = new ArrayList<>();
+	
+	public String getMandatoInicio() {
+		return mandatoInicio.toString();
+	}
+	
+	public String obterMembrosString(){
+		String listaMembros = "";
+		for (int i = 0; i < membros.size(); i++) {
+			listaMembros += "Nome: " + membros.get(i).getPessoa().getNome() + "Cargo: " + membros.get(i).getCargo() + "\n";
+		}
+		return listaMembros;
+	}
+	
+	public String obterMembrosInt(){
+		String listaMembros = "";
+		if(membros.size() > 0){
+			for (int i = 0; i < membros.size(); i++) {
+				listaMembros += membros.get(i).getId() + " ";
+			}
+			listaMembros = listaMembros.substring(1, listaMembros.length()-1);
+			return listaMembros;
+		}else{
+			return "";
+		}
+	}
+	
+	public void setMandatoInicio(int dia, int mes, int ano) {
+		this.mandatoInicio = new Data(dia, mes, ano);
+	}
+	
+	public String getMandatoFinal() {
+		return mandatoFinal.toString();
+	}
+	
+	public void setMandatoFinal(int dia, int mes, int ano) {
+		this.mandatoFinal = new Data(dia, mes, ano);;
+	}
+	
+	public int getDuracao(){
+		return mandatoFinal.getAno() - mandatoInicio.getAno();
+	}
+	
+	public String getTipoEleicao() {
+		return tipoEleicao;
+	}
+	
+	public void setTipoEleicao(String tipoEleicao) {
+		this.tipoEleicao = tipoEleicao;
+	}
+	
+	public Membro getLiderComunitario() {
+		return liderComunitario;
+	}
+	
+	public void setLiderComunitario(Pessoa pessoa) {
+		Membro liderComunitario = new Membro(pessoa, Cargo.PRESIDENTE);
+		this.liderComunitario = liderComunitario;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public int getAtual() {
+		if(isAtual() == true){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+	
+	public void setAtual(int i) {
+		if(i == 1){
+			this.atual = true;
+		}else{
+			this.atual = false;
+		}
+	}
+
+	public boolean isAtual() {
+		return atual;
+	}
+
+	public void setAtual(boolean atual) {
+		this.atual = atual;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setMandatoInicio(Data data) {
+		this.mandatoInicio = data;
+	}
+	
+	public void setMandatoFinal(Data data) {
+		this.mandatoFinal = data;
+	}
+
+	public void setMembros(List<Membro> membros) {
+		this.membros = membros;
+	}
+
+	public void addMembro(Membro m) {
+		m.setGestaoPertencente(this);
+		membros.add(m);
+	}
+}

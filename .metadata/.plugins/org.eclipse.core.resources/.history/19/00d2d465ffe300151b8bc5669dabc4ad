@@ -1,0 +1,49 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.dao.*;
+import grupoD.associapp.enums.Situacao;
+import grupoD.associapp.enums.Zona;
+import grupoD.associapp.interfaces.ComunidadeDAO;
+import grupoD.associapp.modelo.*;
+
+import java.util.List;
+
+public class TesteJDBC {
+
+	public static void main(String[] args)  {
+		
+		
+		
+		ComunidadeDAO dao = new ComunidadeJDBC_DAO();
+		
+		FamiliaJDBC_DAO daoF = new FamiliaJDBC_DAO();
+		
+		PessoaJDBC_DAO daoP = new PessoaJDBC_DAO();
+		
+		Pessoa p = daoP.obter(1);
+		/*System.out.println(p.getId());
+		Comunidade c = new Comunidade();
+		c.setNome("NOME");
+		c.setCidade("the");
+		c.setRegiao("norte");
+		c.setGrauSegurança(0);
+		c.setHistorico("h");
+		c.setZona(Zona.URBANA);
+		c.setTipoComercio("dinheiros");
+		Familia f = new Familia();
+		f.setComunidadePertencente(c);
+		f.setChefe(p);
+		f.setEndereco("endereco");
+		f.setGrauSeguranca(0);
+		f.setRenda(1000);
+		f = daoF.inserir(f);*/
+		p = daoP.obter(1);
+		Pessoa l = daoP.obter(18);
+		p.adicionarParentesco(l, new TipoParentesco("Irmão"));
+		Pessoa l2 = daoP.obter(18);
+		p.adicionarParentesco(l2, new TipoParentesco("Irmão"));
+		//p = daoP.inserir(p);
+		
+		System.out.println(p.obterParentes());
+	}
+}

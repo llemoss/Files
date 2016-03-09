@@ -1,0 +1,11 @@
+package grupoD.associapp.interfaces;
+
+import grupoD.associapp.modelo.TipoParentesco;
+
+public interface TipoParentescoDAO {
+	
+	public TipoParentesco obterTipoParentesco(String nome, String sexo);
+	public TipoParentesco obterTipoParentesco(int id_pessoa, int id_parente);
+	public String obterNomeTipoParentesco(int id);
+	
+}

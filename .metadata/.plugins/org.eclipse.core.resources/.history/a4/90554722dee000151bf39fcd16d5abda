@@ -1,0 +1,76 @@
+package grupoD.associapp.dao;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+
+import grupoD.associapp.modelo.Gestao;
+
+public class GestaoJDBC_DAO implements GestaoDAO {
+	
+	private Connection conn;
+
+	@Override
+	public List<Gestao> lista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void inserir(Gestao g) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "INSERT INTO gestoes(nome, mandatoInicio, mandatoFinal, tipoEleicao, atual, liderComunitario, membros) VALUES('"+g.getNome()+"'," + g.getMandatoInicio()+"'," + g.getMandatoFinal()+"'," + g.getTipoEleicao()+"'," + g.isAtual()+"'," + g.getLiderComunitario()+"'," + g.obterMembros() + "');";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			conn.close();
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir Gestao");
+		}
+	}
+
+	@Override
+	public void remover(Gestao g) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "DELETE FROM gestao where g.nome = " + g.getNome();
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		}catch (Exception e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir gestao");
+		}
+	}
+
+	public Gestao obter(String nome) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void createTable() {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "CREATE TABLE gestoes(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, mandatoInicio INT, mandatoFinal INT, tipoEleicao TEXT, atual INT, id_liderComunitario INT, id_membros INT);";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			conn.close();
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao criar tabela");
+		}
+	}
+
+	@Override
+	public Gestao obter(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+}

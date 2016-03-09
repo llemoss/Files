@@ -1,0 +1,39 @@
+
+public class RegUpdateUnit {
+	
+	public static RegUpdateUnit[] RUUs;
+	
+	public static void SendResult(short result, short busPC){
+		for (int i = 0; i < RUUs.length; i++) {
+			System.out.println("RUU (" + i + ") recebeu o valor (" + result + ") da instrução (" + busPC + ")");
+			if(busPC == RUUs[i].neededPC){
+				RUUs[i].dataTarget = result;
+				System.out.println("RUUs (" + i +") utilizou o resultado ("+ result+")");
+				//RUUs[i].neededPC = 0;
+			}
+		}
+		System.out.println("\n");
+	}
+	
+	public RegUpdateUnit(){
+		boolean sentToRF = false;
+	}
+	
+	//public short src1;
+	//public short src2;
+	public short data1;
+	public short data2;
+	public short PC;
+	public short neededPC;
+	public short dataTarget;
+	public byte tgt;
+	public byte op;
+	public boolean sentToRF;
+	
+	@Override
+	public String toString() {
+		return "RegUpdateUnit [data1=" + data1 + ", data2=" + data2 + ", PC=" + PC
+				+ ", neededPC=" + neededPC + ", dataTarget=" + dataTarget + ", tgt=" + tgt + ", op=" + op + "]";
+	}
+
+}

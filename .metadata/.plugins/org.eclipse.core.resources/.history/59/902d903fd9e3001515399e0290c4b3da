@@ -1,0 +1,49 @@
+package grupoD.associapp.modelo;
+
+import java.sql.Connection;
+
+import grupoD.associapp.dao.ConnectionFactory;
+
+public class TipoParentesco {
+
+	private int id;
+	private String nome; //Pai
+	private TipoParentesco espelho; //Filho
+
+	public TipoParentesco(String nome){
+		this.nome = nome;
+	}
+	
+	public TipoParentesco(){}
+	
+	@Override
+	public String toString() {
+		return this.nome;
+	}
+	
+	public TipoParentesco getEspelho(String sexo) {
+		return espelho;
+	}
+
+	public void setEspelho(TipoParentesco espelho) {
+		this.espelho = espelho;
+	}
+	
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+}

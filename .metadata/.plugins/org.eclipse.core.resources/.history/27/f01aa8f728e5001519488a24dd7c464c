@@ -1,0 +1,18 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.dao.*;
+import grupoD.associapp.modelo.*;
+
+public class TesteAptidao {
+	public static void main(String[] args) {
+		ComunidadeJDBC_DAO daoC = new ComunidadeJDBC_DAO();
+		AptidaoJDBC_DAO daoA = new AptidaoJDBC_DAO();
+		
+		Aptidao a;
+		Comunidade c;
+		
+		c = new Comunidade();
+		a = new Aptidao("Indústria");
+		c.adicionarAptidao(a);
+	}
+}

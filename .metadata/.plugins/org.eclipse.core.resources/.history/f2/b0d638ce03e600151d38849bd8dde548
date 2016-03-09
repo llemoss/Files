@@ -1,0 +1,19 @@
+
+public class ExecuteUnit {
+
+	public short op1;
+	public short op2;
+	public short PC;
+	
+	public void Update(){
+		ExecuteADD(op1, op2);
+	}
+	
+	private void ExecuteADD(short op1, short op2){
+		System.out.println("Dados recebidos: op1 (" + op1 + ") // op2 (" + op2 + ")");
+		short result = (short) (op1 + op2);
+		RegUpdateUnit.SendResult(result, PC);
+		System.out.println("Resultado (" + result +") enviado\n");
+	}
+	
+}

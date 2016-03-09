@@ -1,0 +1,119 @@
+package grupoD.associapp.modelo;
+import java.util.List;
+import java.util.ArrayList;
+
+public class Familia {
+	
+	private Comunidade comunidadePertencente;
+	private Pessoa chefe;
+	private List<Pessoa> membros = new ArrayList<>();
+	private List<Recurso> recursosFamiliares = new ArrayList<>();
+	private String endereco;
+	private double renda;
+	private int grauSeguranca;
+	private int id;
+	
+	public Familia(){}
+	
+	public String obterMembros(){
+		String membrosFamilia = "Membros da familia:\n";
+		for(int i=0; i < this.membros.size(); i++){
+			membrosFamilia += this.membros.get(i).getNome() + "\n";
+		}
+		return membrosFamilia;
+	}
+	
+	public void adicionarMembro(Pessoa pessoa){
+		this.membros.add(pessoa);
+	}
+	
+	public void removerMembro(Pessoa pessoa){
+		this.membros.remove(pessoa);
+	}
+	
+	public String obterRecursos(){
+		String recursos = "Lista de recursos:\n";
+		for (int i = 0; i < recursosFamiliares.size(); i++) {
+			recursos += "Nome: " + this.recursosFamiliares.get(i).getNome() + " // Situação: " + this.recursosFamiliares.get(i).getGrauSituacao();
+		}
+		return recursos;
+	}
+	
+	public void adicionarRecurso(Recurso recurso){
+		this.recursosFamiliares.add(recurso);
+	}
+	
+	public void removerRecurso(Recurso recurso){
+		this.recursosFamiliares.remove(recurso);
+	}
+	
+	@Override
+	public String toString() {
+		return "Nome do chefe: " + chefe.getNome() + "\n" + obterMembros() + obterRecursos();
+	}
+	
+	public Pessoa getChefe() {
+		return this.chefe;
+	}
+	
+	public void setChefe(Pessoa chefe) {
+		this.chefe = chefe;
+	}
+	
+	public String getEndereco() {
+		return endereco;
+	}
+	
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	
+	public double getRenda() {
+		return renda;
+	}
+	
+	public void setRenda(double renda) {
+		this.renda = renda;
+	}
+	
+	public int getGrauSeguranca() {
+		return grauSeguranca;
+	}
+	
+	public void setGrauSeguranca(int grauSeguranca) {
+		this.grauSeguranca = grauSeguranca;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public List<Pessoa> getMembros() {
+		return membros;
+	}
+	
+	public List<Recurso> getRecursos() {
+		return recursosFamiliares;
+	}
+	
+	public void setComunidadePertencente(Comunidade comunidadePertencente) {
+		this.comunidadePertencente = comunidadePertencente;
+		comunidadePertencente.adicionarFamilia(this);
+	}
+	
+	public Comunidade getComunidadePertencente() {
+		return comunidadePertencente;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setComunidadePertencente(int id_comunidade) {
+			
+	}
+
+	public void setMembros(List<Pessoa> membros) {
+		this.membros = membros;
+	}
+}

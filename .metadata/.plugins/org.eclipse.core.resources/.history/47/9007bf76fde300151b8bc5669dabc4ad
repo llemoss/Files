@@ -1,0 +1,150 @@
+package grupoD.associapp.dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+
+import grupoD.associapp.enums.Cargo;
+import grupoD.associapp.interfaces.GestaoDAO;
+import grupoD.associapp.modelo.Comunidade;
+import grupoD.associapp.modelo.Data;
+import grupoD.associapp.modelo.Gestao;
+import grupoD.associapp.modelo.Membro;
+
+public class GestaoJDBC_DAO implements GestaoDAO {
+	
+	private Connection conn;
+
+	@Override
+	public Gestao inserir(Gestao g) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "INSERT INTO gestoes(nome, mandatoInicio, mandatoFinal, tipoEleicao, atual, liderComunitario, membros) VALUES('"+g.getNome()+"',"
+		+ g.getMandatoInicio()+"','"
+		+ g.getMandatoFinal()+"','"
+		+ g.getTipoEleicao()+"','"
+		+ g.getAtual()+"','"
+		+ g.getLiderComunitario().getPessoa().getId() +"','"
+		+ g.obterMembros() + "');";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			sql = "SELECT id FROM gestoes ORDER BY id DESC limit 1";
+			ResultSet rs = stmt.executeQuery(sql);
+			int id = rs.getInt("id");
+			g.setId(id);
+			System.out.println("Gestão de ID (" + g.getId() + ") inserida com sucesso!");
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir Gestao");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+		
+		return g;
+	}
+
+	@Override
+	public void remover(Gestao g) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "DELETE FROM gestao where g.nome = " + g.getNome();
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			System.out.println("Gestão de ID (" + g.getId() + ") removida com sucesso!");
+		}catch (Exception e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir gestao");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public Gestao obter(int id) {
+		conn = ConnectionFactory.getConnection();
+		String sql = "SELECT * FROM gestoes WHERE id = " + id;
+		Gestao g = null;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet resultado = stmt.executeQuery(sql);
+			PessoaJDBC_DAO daoP = new PessoaJDBC_DAO();
+			MembroJDBC_DAO daoM = new MembroJDBC_DAO();
+			while (resultado.next()) {
+				g = new Gestao();
+				g.setId(resultado.getInt("id"));
+				g.setNome(resultado.getString("nome"));
+				g.setMandatoInicio(Data.parseInt(resultado.getString("mandatoInicio")));
+				g.setMandatoFinal(Data.parseInt(resultado.getString("mandatoFinal")));
+				g.setTipoEleicao(resultado.getString("tipoEleicao"));
+				g.setAtual(resultado.getInt("atual"));
+				g.setLiderComunitario(daoP.obter(resultado.getInt("id_pessoa")));
+				g.setMembros(daoM.obterMembrosdaGestao(id));
+			}
+			System.out.println("Gestão de ID (" + g.getId() + ") obtida com sucesso!");
+			return g;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
+
+	@Override
+	public void createTable() {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "CREATE TABLE gestoes(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, mandatoInicio INT, mandatoFinal INT, tipoEleicao TEXT, atual INT, id_liderComunitario INT, id_membros INT);";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			conn.close();
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao criar tabela");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+	}
+	public void update(int id, String coluna, String valor){
+		conn = ConnectionFactory.getConnection();
+		String sql = "UPDATE gestoes SET " + coluna + " = '" + valor + "' WHERE id = " + id + ";";
+		Comunidade c = null;
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+}

@@ -1,0 +1,31 @@
+
+public class RegUpdateUnit {
+	
+	//public static RegUpdateUnit[] RUUs;
+	
+	public static void sendResult(short result, short busPC){
+		System.out.println("\n");
+	}
+	
+	public RegUpdateUnit(){
+		this.sentToRF = false;
+		this.receivedFromRF = false;
+	}
+	
+	public short data1;
+	public short data2;
+	public short PC;
+	public short neededPC;
+	public short dataTarget;
+	public byte tgt;
+	public byte op;
+	public boolean receivedFromRF;
+	public boolean sentToRF;
+	
+	@Override
+	public String toString() {
+		return "RegUpdateUnit [data1=" + data1 + ", data2=" + data2 + ", PC=" + PC
+				+ ", neededPC=" + neededPC + ", dataTarget=" + dataTarget + ", tgt=" + tgt + ", op=" + op + "]";
+	}
+
+}

@@ -1,0 +1,11 @@
+
+public class RegisterFile {
+	
+	short op;
+	short tgt;
+	short src1;
+	short src2;
+	short imm7;
+	short imm10;
+
+}

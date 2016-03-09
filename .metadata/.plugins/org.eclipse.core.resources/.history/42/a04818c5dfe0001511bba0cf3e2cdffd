@@ -1,0 +1,69 @@
+package grupoD.associapp.dao;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+
+import grupoD.associapp.modelo.Familia;
+
+public class FamiliaJDBC_DAO implements FamiliaDAO{
+
+	@Override
+	public void createTable() {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "CREATE TABLE familias(id INTEGER PRIMARY KEY AUTOINCREMENT, id_comunidade INT, id_chefe INT, id_membros INT, id_recursos INT, endereco TEXT, renda REAL, grauSeguranca INT);";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			conn.close();
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao criar tabela");
+		}
+	}
+
+	@Override
+	public List<Familia> lista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void inserir(Familia f) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "INSERT INTO familias(nome, idadeMinimaLider, tipo) VALUES('"+f.getEndereco()+"',"
+		+f.getRenda() + ",'" + f.getCodigo() + "');";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			conn.close();
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir Família");
+		}
+	}
+
+	@Override
+	public void remover(Familia f) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "DELETE FROM familias where familias.id = " + f.getId();
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		}catch (Exception e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir Família");
+		}
+	}
+
+	@Override
+	public Familia obter(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

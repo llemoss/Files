@@ -1,0 +1,231 @@
+package grupoD.associapp.modelo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import grupoD.associapp.dao.*;
+
+public class Pessoa {
+		
+	private int id = 0;
+	private String nome = "n/a";
+	private String cpf = "n/a";
+	private int idade = 0;
+	private List<Parentesco> parentescos = new ArrayList<>();
+	private String sexo = "n/a";
+	private String profissao = "n/a";
+	private String situacaoLaboral = "n/a";
+	private String religiao = "n/a";
+	private String timeDeFutebol = "n/a";
+	private List<Contato> contatos = new ArrayList<>();
+	private double renda = 0;
+	private String grauEscolaridade = "n/a";
+	private Data dataNascimento = new Data(0,0,0);
+	private Familia familiaPertencente = null;
+		
+	public Pessoa(){
+		Familia f = new Familia(0);
+		this.familiaPertencente = f;
+	}
+	
+	public void adicionarParentesco(Pessoa parente, TipoParentesco tipoParentesco){
+		ParentescoJDBC_DAO daoPa = new ParentescoJDBC_DAO();
+		//Adicionando nesta pessoa
+		Parentesco parentesco = new Parentesco(this, parente, tipoParentesco);
+		parentesco = daoPa.inserir(parentesco);
+		this.parentescos.add(parentesco);
+		//Adicionando na outra pessoa (com TipoParentesco = espelho)
+		parentesco = new Parentesco(parente, this, tipoParentesco.getEspelho());
+		parentesco = daoPa.inserir(parentesco);
+		parente.getParentescos().add(parentesco);
+	}
+	
+	public String toString() {
+		return "\n Nome: "+ this.nome+"\n CPF: " + this.getCpf() + "\n Data de Nascimento: " + this.getDataNascimento();
+	}
+	
+	public String obterParentes(){
+		String listaParentes = "Lista de parentes:\n";
+		if(this.parentescos != null){
+			for (int i = 0; i < this.getParentescos().size(); i++) {
+				listaParentes += "Nome: " + this.getParentescos().get(i).getParente().getNome() + " // Tipo: " + this.getParentescos().get(i).getTipo();
+			}
+		return listaParentes;
+		}else{
+			return null;
+		}
+	}
+	
+	public String obterParentesInt(){
+		String listaParentes = "";
+		
+		for (int i = 0; i < this.getParentescos().size(); i++) {
+				listaParentes += this.getParentescos().get(i).getPessoa().getId() + " ";
+		}
+		
+		if(listaParentes != ""){
+			listaParentes = listaParentes.substring(0, listaParentes.length()-1);
+		}
+		
+		return listaParentes;
+	}
+	
+	public void adicionarContato(Contato contato){
+		ContatoJDBC_DAO daoCo = new ContatoJDBC_DAO();
+		contato.setPessoa(this);
+		daoCo.inserir(contato);
+		this.contatos.add(contato);
+	}
+	
+	public void setContatos(List<Contato> contatos){
+		this.contatos = contatos;
+	}
+	
+	public String obterContatos(){
+		String listaContatos = "";
+		for (int i = 0; i < this.contatos.size(); i++) {
+			listaContatos += this.contatos.get(i).toString() + "\n";
+		}
+		return listaContatos;
+	}
+	
+	public String obterContatosInt(){
+		String listaContatos = "";
+		
+		for (int i = 0; i < this.contatos.size(); i++) {
+			listaContatos += this.contatos.get(i).getId() + " ";
+		}
+		
+		if(listaContatos != ""){
+			listaContatos = listaContatos.substring(0, listaContatos.length()-1);
+		}
+		
+		return listaContatos;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public String getProfissao() {
+		return profissao;
+	}
+
+	public void setProfissao(String profissao) {
+		this.profissao = profissao;
+	}
+
+	public String getReligiao() {
+		return religiao;
+	}
+
+	public void setReligiao(String religiao) {
+		this.religiao = religiao;
+	}
+
+	public double getRenda() {
+		return renda;
+	}
+
+	public void setRenda(double renda) {
+		this.renda = renda;
+	}
+
+	public String getGrauEscolaridade() {
+		return grauEscolaridade;
+	}
+
+	public void setGrauEscolaridade(String grauEscolaridade) {
+		this.grauEscolaridade = grauEscolaridade;
+	}
+
+	public void setDataNascimento(int dia, int mes, int ano){
+		this.dataNascimento = new Data(dia, mes, ano);
+		this.idade = this.dataNascimento.calcularIdade();
+	}
+	
+	public void setDataNascimento(Data data){
+		this.dataNascimento = data;
+		this.idade = this.dataNascimento.calcularIdade();
+	}
+	
+	public String getDataNascimento() {
+		return this.dataNascimento.toString();
+	}
+
+	public List<Parentesco> getParentescos() {
+		return parentescos;
+	}
+
+	public List<Contato> getContatos() {
+		return contatos;
+	}
+
+	public int getIdade() {
+		return idade;
+	}
+
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+
+	public String getSituacaoLaboral() {
+		return situacaoLaboral;
+	}
+
+	public void setSituacaoLaboral(String situacaoLaboral) {
+		this.situacaoLaboral = situacaoLaboral;
+	}
+
+	public String getTimeDeFutebol() {
+		return timeDeFutebol;
+	}
+
+	public void setTimeDeFutebol(String timeDeFutebol) {
+		this.timeDeFutebol = timeDeFutebol;
+	}
+
+	public int getId() {
+		return this.id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setParentescos(List<Parentesco> parentescos) {
+		this.parentescos = parentescos;
+	}
+	
+	public List<Contato> getContatos() {
+		return contatos;
+	}
+
+	public Familia getFamiliaPertence() {
+		return familiaPertencente;
+	}
+
+	public void setFamiliaPertence(Familia familiaPertence) {
+		this.familiaPertencente = familiaPertence;
+	}
+}

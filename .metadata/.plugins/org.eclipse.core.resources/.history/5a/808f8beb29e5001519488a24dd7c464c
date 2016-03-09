@@ -1,0 +1,24 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.dao.*;
+import grupoD.associapp.modelo.*;
+
+public class TesteRecurso {
+
+	public static void main(String[] args) {
+		
+		ComunidadeJDBC_DAO daoC = new ComunidadeJDBC_DAO();
+		FamiliaJDBC_DAO daoF = new FamiliaJDBC_DAO();
+		RecursoJDBC_DAO daoR = new RecursoJDBC_DAO();
+		
+		Comunidade c;
+		Familia f;
+		Recurso r;
+		
+		c = new Comunidade();
+		f = new Familia();
+		c.adicionarFamilia(f);
+
+	}
+	
+}

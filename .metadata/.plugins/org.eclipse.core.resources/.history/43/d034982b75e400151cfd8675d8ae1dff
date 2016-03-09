@@ -1,0 +1,77 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.dao.GestaoJDBC_DAO;
+import grupoD.associapp.dao.MembroJDBC_DAO;
+import grupoD.associapp.dao.PessoaJDBC_DAO;
+import grupoD.associapp.enums.Cargo;
+import grupoD.associapp.modelo.*;
+
+public class TesteGestao {
+
+	public static void main(String[] args) {
+		
+		PessoaJDBC_DAO daoP = new PessoaJDBC_DAO();
+		MembroJDBC_DAO daoM = new MembroJDBC_DAO();
+		GestaoJDBC_DAO daoG = new GestaoJDBC_DAO();
+		
+		Gestao g = new Gestao();
+		Membro m;
+		Pessoa p = new Pessoa("Gil");
+		p = daoP.inserir(p);
+		
+		g.setLiderComunitario(p);
+		g.setAtual(true);
+		g.setMandatoInicio(01, 01, 2015);
+		g.setMandatoFinal(01, 01, 2016);
+		g.setTipoEleicao("Votos");
+		
+		g = daoG.inserir(g);
+		g.getLiderComunitario().setGestaoPertencente(g);
+		daoM.inserir(g.getLiderComunitario());
+		daoM.update(g.getLiderComunitario().getId(), "id_gestao", String.valueOf(g.getId()), false);
+		
+		p = new Pessoa("Pessoa2");
+		p = daoP.inserir(p);
+		m = new Membro(p, Cargo.SECRETARIO);
+		m.setGestaoPertencente(g);
+		m = daoM.inserir(m);
+		g.addMembro(m);
+		daoM.update(m.getId(), "id_gestao", String.valueOf(g.getId()), false);
+		
+		p = new Pessoa("Pessoa3");
+		p = daoP.inserir(p);
+		m = new Membro(p, Cargo.TESOUREIRO);
+		m.setGestaoPertencente(g);
+		m = daoM.inserir(m);
+		g.addMembro(m);
+		daoM.update(m.getId(), "id_gestao", String.valueOf(g.getId()), false);
+		
+		p = new Pessoa("Pessoa4");
+		p = daoP.inserir(p);
+		m = new Membro(p, Cargo.VICE_PRESIDENTE);
+		m.setGestaoPertencente(g);
+		m = daoM.inserir(m);
+		g.addMembro(m);
+		daoM.update(m.getId(), "id_gestao", String.valueOf(g.getId()), false);
+		
+		System.out.println(g.obterMembrosInt());
+		
+		m = daoM.obter(1);
+		System.out.println("Membro de ID: " + m.getId() + "ID da pessoa: " + m.getPessoa().getId());
+		
+		daoG.update(g.getId(), "ids_membro", g.obterMembrosInt(), true);
+		
+		//g = daoG.obter(g.getId());
+		
+		System.out.println("Gestão com membros de IDs: " +  g.obterMembrosInt());
+		
+		daoG.update(g.getId(), "atual", "0", false);
+		
+		g = daoG.obter(g.getId());
+		
+		System.out.println("Gestão atual: " + g.getAtual());
+		
+
+	}
+
+}

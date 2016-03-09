@@ -139,6 +139,7 @@ main(){
 	lista->addFinal(4, "testeFinal2");
 	lista->addElemento(2, "aaaaaa");
 	lista->mostrarLista();
+	
 	/*int a;
 	cout << "Remover elemento de matricula: ";
 	cin >> a;

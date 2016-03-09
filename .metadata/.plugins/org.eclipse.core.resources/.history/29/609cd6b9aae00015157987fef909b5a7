@@ -1,0 +1,8 @@
+package grupoD.associapp.testes;
+
+public class criarTabelas {
+
+	public static void main(String[] args) {
+		
+	}
+}

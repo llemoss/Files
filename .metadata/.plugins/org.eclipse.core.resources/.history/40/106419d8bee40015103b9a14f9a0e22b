@@ -1,0 +1,10 @@
+package grupoD.associapp.interfaces;
+
+import java.util.List;
+import grupoD.associapp.modelo.Parentesco;
+import grupoD.associapp.modelo.TipoParentesco;
+
+public interface ParentescoDAO {
+	
+	
+}

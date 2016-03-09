@@ -1,0 +1,54 @@
+package grupoD.associapp.modelo;
+
+import grupoD.associapp.enums.Situacao;
+
+public class Recurso {
+	
+	private String nome;
+	private Situacao grauSituacao;
+	private String afilicacao;
+	private boolean disponibilidade;
+	
+	public Recurso(){
+		this.disponibilidade = false;
+	}
+	
+	public Recurso(String nome, Situacao grauSituacao, String afiliacao){
+		this.nome = nome;
+		this.grauSituacao = grauSituacao;
+		this.afilicacao = afiliacao;
+		this.disponibilidade = true;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public String getAfilicacao() {
+		return afilicacao;
+	}
+	
+	public void setAfilicacao(String afilicacao) {
+		this.afilicacao = afilicacao;
+	}
+
+	public Situacao getGrauSituacao() {
+		return grauSituacao;
+	}
+
+	public void setGrauSituacao(Situacao grauSituacao) {
+		this.grauSituacao = grauSituacao;
+	}
+
+	public boolean isDisponivel() {
+		return disponibilidade;
+	}
+
+	public void setDisponibilidade(boolean disponibilidade) {
+		this.disponibilidade = disponibilidade;
+	}
+}

@@ -1,0 +1,15 @@
+package grupoD.associapp.interfaces;
+
+import java.util.List;
+
+import grupoD.associapp.modelo.Membro;
+
+public interface MembroDAO {
+	
+	public void createTable();
+	public List<Membro> lista();
+	public Membro inserir(Membro m);
+	public void remover(Membro m);
+	public Membro obter(int id);
+	
+}

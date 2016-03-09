@@ -1,0 +1,158 @@
+package grupoD.associapp.dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
+import grupoD.associapp.enums.Zona;
+import grupoD.associapp.interfaces.ComunidadeDAO;
+import grupoD.associapp.modelo.Comunidade;
+
+public class ComunidadeJDBC_DAO implements ComunidadeDAO {
+	
+	private Connection conn;
+
+	@Override
+	public Comunidade inserir(Comunidade c) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql;
+		try{
+			Statement stmt = conn.createStatement();
+			sql = "INSERT INTO comunidades(nome,cidade, zona, regiao, tipoComercio, historico, grauSeguranca, localizacao, idadeMinimaLider, codigo) VALUES('"+
+					c.getNome()+"','"+
+					c.getCidade()+"','"+
+					c.getZona()+"','"+
+					c.getRegiao()+"','"+
+					c.getTipoComercio()+"','"+
+					c.getHistorico()+"','"+
+					c.getGrauSegurança()+"','"+
+					c.getPosicaoGeografica()+"','"+
+					c.getIdadeMinimaLider()+"','"+ 
+					c.getCodigo().toUpperCase()+"');";
+			stmt.executeUpdate(sql);
+			sql = "SELECT id FROM comunidades ORDER BY id DESC limit 1";
+			ResultSet rs = stmt.executeQuery(sql);
+			int id = rs.getInt("id");
+			c.setId(id);
+			System.out.println("Comunidade inserida com sucesso! ID: " + id);
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao inserir comunidade");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+		
+		return c;
+	}
+
+	@Override
+	public void remover(Comunidade c) {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "DELETE FROM comunidades where comunidades.id = " + c.getCodigo();
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		}catch (Exception e){
+			e.printStackTrace();
+			System.out.println("Erro ao remover Comunidade");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void update(int id, String coluna, String valor){
+		conn = ConnectionFactory.getConnection();
+		String sql = "UPDATE comunidades SET " + coluna + " = '" + valor + "' WHERE id = " + id + ";";
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			System.out.println("Comunidade de ID (" + id + ") atualizada!");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public Comunidade obter(int id) {
+		
+		conn = ConnectionFactory.getConnection();
+		Comunidade c = null;
+		try {
+			String sql = "SELECT * FROM comunidades WHERE id = " + id;
+			Statement stmt = conn.createStatement();
+			ResultSet resultado = stmt.executeQuery(sql);
+			FamiliaJDBC_DAO daoF = new FamiliaJDBC_DAO();
+			RecursoJDBC_DAO daoR = new RecursoJDBC_DAO();
+			AptidaoJDBC_DAO daoA = new AptidaoJDBC_DAO();
+			if(resultado.next()) {
+				c = new Comunidade();
+				c.setNome(resultado.getString("nome"));
+				c.setId(resultado.getInt("id"));
+				c.setRecursos(daoR.obterRecursosComunidade(id));
+				c.setFamilias(daoF.obterFamiliasPorComunidade(id));
+				c.setAptidoes(daoA.obterAptidoes(c));
+				c.setCidade(resultado.getString("cidade"));
+				c.setRegiao(resultado.getString("regiao"));
+				c.resetCodigo(resultado.getString("codigo"));
+				c.setGrauSegurança(resultado.getInt("grauSeguranca"));
+				c.setHistorico(resultado.getString("historico"));
+				c.setZona(Zona.fromString(resultado.getString("zona")));
+				c.setTipoComercio(resultado.getString("tipoComercio"));
+			}
+			System.out.println("Comunidade de ID (" + resultado.getInt("id") + ") obtida!");
+			return c;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
+
+	@Override
+	public void createTable() {
+		Connection conn = ConnectionFactory.getConnection();
+		String sql = "CREATE TABLE comunidades(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, cidade TEXT, zona INT, regiao TEXT, tipoComercio TEXT, historico TEXT, grauSeguranca INT, localizacao TEXT, idadeMinimaLider INT, codigo TEXT);";
+		try{
+			System.out.println(sql);
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			conn.close();
+		}catch (SQLException e){
+			e.printStackTrace();
+			System.out.println("Erro ao criar tabela");
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar conexão");
+				e.printStackTrace();
+			}
+		}
+	}
+
+}

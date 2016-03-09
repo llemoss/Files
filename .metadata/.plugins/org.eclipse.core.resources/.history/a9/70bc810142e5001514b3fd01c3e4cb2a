@@ -1,0 +1,99 @@
+package grupoD.associapp.modelo;
+
+import grupoD.associapp.enums.Situacao;
+
+public class Recurso {
+	
+	private int id=0;
+	private String nome="n/a";
+	private Situacao grauSituacao = Situacao.BOM;
+	private boolean disponibilidade = false;
+	private Familia familiaPertence = null;
+	private Comunidade comunidadePertence = null;
+	
+	public Recurso(){
+		Familia f = new Familia(0);
+		Comunidade c = new Comunidade();
+		this.comunidadePertence = c;
+		this.familiaPertence = f;
+	}
+	
+	public Recurso(String nome, Situacao grauSituacao){
+		Familia f=new Familia(0);
+		Comunidade c=new Comunidade();
+		this.comunidadePertence=c;
+		this.familiaPertence=f;
+		
+		this.nome = nome;
+		this.grauSituacao = grauSituacao;
+		this.disponibilidade = true;
+	}
+	
+	public Recurso(String nome, Situacao grauSituacao, Familia f){
+		Comunidade c = new Comunidade();
+		this.comunidadePertence = c;
+		this.familiaPertence = f;
+		this.nome = nome;
+		this.grauSituacao = grauSituacao;
+		this.disponibilidade = true;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	public Familia getFamiliaPertence(){
+		return familiaPertence;
+	}
+	public void setFamiliaPertence(Familia f){
+		this.familiaPertence=f;
+	}
+	public void setComunidadePertence(Comunidade c){
+		this.comunidadePertence=c;
+	}
+	public Comunidade getComunidadePertence(){
+		return comunidadePertence;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Situacao getGrauSituacao() {
+		return grauSituacao;
+	}
+
+	public void setGrauSituacao(Situacao grauSituacao) {
+		this.grauSituacao = grauSituacao;
+	}
+
+	public int getDisponibilidade(){
+		if(this.isDisponivel() == true){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+	
+	public void setDisponibilidade(int i){
+		if(i == 1){
+			this.disponibilidade = true;
+		}else{
+			this.disponibilidade = false;
+		}
+	}
+	
+	public boolean isDisponivel() {
+		return disponibilidade;
+	}
+
+	public void setDisponibilidade(boolean disponibilidade) {
+		this.disponibilidade = disponibilidade;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+}

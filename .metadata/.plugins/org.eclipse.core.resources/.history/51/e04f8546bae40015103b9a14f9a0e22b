@@ -1,0 +1,22 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.dao.*;
+import grupoD.associapp.modelo.*;
+
+public class TesteParentesco {
+	
+	public static void main(String[] args) {
+
+		FamiliaJDBC_DAO daoF = new FamiliaJDBC_DAO();
+		ParentescoJDBC_DAO daoPa = new ParentescoJDBC_DAO();
+		PessoaJDBC_DAO daoP = new PessoaJDBC_DAO();
+		
+		Familia f = new Familia();
+		Pessoa p;
+		Parentesco pa;
+		
+		
+		
+	}
+
+}

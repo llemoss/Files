@@ -1,0 +1,17 @@
+package grupoD.associapp.dao;
+
+import java.util.List;
+
+import grupoD.associapp.modelo.Comunidade;
+
+public interface ComunidadeDAO {
+	
+	public static List<Comunidade> lista(){
+		return List<Comunidade> teste = new ArrayList<>();
+	}
+
+	public static void inserir(Comunidade c){
+		
+	}
+	
+}

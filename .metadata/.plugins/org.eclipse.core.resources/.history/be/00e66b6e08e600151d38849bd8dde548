@@ -1,0 +1,41 @@
+
+public class Instruction {
+	
+	short op;
+	RegisterFile tgt;
+	RegisterFile src1;
+	RegisterFile src2;
+	short imm7;
+	short imm10;
+	
+	//Empty
+	public Instruction(){
+		this.op = 0;
+		this.tgt = new RegisterFile();
+		this.src1 = new RegisterFile();
+	}
+		
+	//RRR
+	public Instruction(short op, RegisterFile tgt, RegisterFile src1, RegisterFile src2) {
+		this.op = op;
+		this.tgt = tgt;
+		this.src1 = src1;
+		this.src2 = src2;
+	}
+		
+	//RRI
+	public Instruction(short op, RegisterFile tgt, RegisterFile src1, short imm7) {
+		this.op = op;
+		this.tgt = tgt;
+		this.src1 = src1;
+		this.imm7 = imm7;
+	}
+		
+	//RI
+	public Instruction(short op, RegisterFile tgt, short imm10) {
+		this.op = op;
+		this.tgt = tgt;
+		this.imm7 = imm10;
+	}
+
+}

@@ -1,0 +1,30 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.dao.*;
+import grupoD.associapp.modelo.*;
+
+public class TesteContato {
+
+	public static void main(String[] args) {
+		PessoaJDBC_DAO daoP = new PessoaJDBC_DAO();
+		ContatoJDBC_DAO daoCo = new ContatoJDBC_DAO();
+		
+		Pessoa p;
+		Contato co;
+		
+		p = new Pessoa();
+		p.setNome("Pessoa1");
+		co = new Contato("123456789", "Telefone");
+		p.adicionarContato(co);
+		p = daoP.inserir(p);
+		System.out.println(p.obterContatos());
+		System.out.println(p.obterContatosInt());
+		p.setContatos(daoCo.obter(p.getId()));
+		p.obterContatos();
+		
+		
+		
+		
+	}
+	
+}

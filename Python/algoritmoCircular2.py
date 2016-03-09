@@ -1,20 +1,5 @@
 # -*- coding: cp1252 -*-
-'''
-def tempoMedioTurnaround(vetorProgramas):
-    tempo = 0
-    for j in range(len(vetorProgramas)):
-        tempo += float(vetorProgramas[j])
-    
-    tempo = tempo / len(vetorProgramas)
-    return tempo
 
-def tempoMedioEspera(vetorTempos, vetorProgramas):
-    tempo = 0
-    for j in range(len(vetorProgramas)):
-        tempo += float(vetorProgramas[j] - vetorTempos[j])
-    tempo = tempo / len(vetorProgramas)
-    return tempo
-'''
 def calcularTempo(lista, quantum, trocaContexto):
     #status = P (pronto), W (espera), E (execução), T (terminou)
     tempo = 0

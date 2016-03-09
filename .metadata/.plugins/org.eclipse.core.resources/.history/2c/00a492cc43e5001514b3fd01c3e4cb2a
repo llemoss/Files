@@ -1,0 +1,149 @@
+package grupoD.associapp.modelo;
+import java.util.List;
+
+import grupoD.associapp.dao.RecursoJDBC_DAO;
+
+import java.util.ArrayList;
+
+public class Familia {
+
+	private Comunidade comunidadePertencente = null;
+	private Pessoa chefe = null;
+	private List<Pessoa> membros = new ArrayList<>();
+	private List<Recurso> recursosFamiliares = new ArrayList<>();
+	private String endereco = "n/a";
+	private double renda = 0;
+	private int grauSeguranca = 0;
+	private int id = 0;
+	
+	public Familia(){
+		Comunidade c = new Comunidade();
+		this.setComunidadePertencente(c);
+		Pessoa p = new Pessoa();
+		this.setChefe(p);
+	}
+	public Familia(int id){
+	}
+	
+	public String obterMembros(){
+		String membrosFamilia = "Membros da familia:\n";
+		for(int i=0; i < this.membros.size(); i++){
+			membrosFamilia += this.membros.get(i).getNome() + "\n";
+		}
+		return membrosFamilia;
+	}
+	public String obterMembrosId(){
+		String membrosFamilia = "";
+		for(int i=0; i < this.membros.size(); i++){
+			membrosFamilia += this.membros.get(i).getId() + " ";
+		}
+		membrosFamilia = membrosFamilia.substring(0, membrosFamilia.length()-1);
+		return membrosFamilia;
+	}
+	public void adicionarMembro(Pessoa pessoa){
+		this.membros.add(pessoa);
+		pessoa.setFamiliaPertence(this);
+	}
+	
+	public void removerMembro(Pessoa pessoa){
+		this.membros.remove(pessoa);
+		pessoa.setFamiliaPertence(null);
+	}
+	
+	public String obterRecursos(){
+		String recursos = "Lista de recursos:\n";
+		for (int i = 0; i < recursosFamiliares.size(); i++) {
+			recursos += "Nome: " + this.recursosFamiliares.get(i).getNome() + " //   Situação: " + this.recursosFamiliares.get(i).getGrauSituacao();
+		}
+		return recursos;
+	}
+	
+	public void adicionarRecurso(Recurso recurso){
+		Comunidade c=new Comunidade();
+		recurso.setComunidadePertence(c);
+		recurso.setFamiliaPertence(this);
+		this.recursosFamiliares.add(recurso);
+		RecursoJDBC_DAO rdao=new RecursoJDBC_DAO();
+		rdao.inserir(recurso);	
+	}
+	
+	public void removerRecurso(Recurso recurso){
+		this.recursosFamiliares.remove(recurso);
+	}
+	
+	@Override
+	public String toString() {
+		return "\n Identificador: "+ this.id +"\n Nome do chefe: " + (this.chefe==null?"Sem Chefe":chefe.getNome()) + "\n Endereço: " + this.endereco;
+	}
+	
+	public Pessoa getChefe() {
+		return this.chefe;
+	}
+	
+	public void setChefe(Pessoa chefe) {
+		this.chefe = chefe;
+	}
+	
+	public String getEndereco() {
+		return endereco;
+	}
+	
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	
+	public double getRenda() {
+		return renda;
+	}
+	
+	public void setRenda(double renda) {
+		this.renda = renda;
+	}
+	
+	public int getGrauSeguranca() {
+		return grauSeguranca;
+	}
+	
+	public void setGrauSeguranca(int grauSeguranca) {
+		this.grauSeguranca = grauSeguranca;
+	}
+	
+	public int getId() {
+		if (this.chefe == null){
+			return 0;
+		}
+		return id;
+	}
+	
+	public List<Pessoa> getMembros() {
+		return membros;
+	}
+	
+	public List<Recurso> getRecursos() {
+		return recursosFamiliares;
+	}
+	
+	public void setComunidadePertencente(Comunidade comunidadePertencente) {
+		this.comunidadePertencente = comunidadePertencente;
+	}
+	
+	public Comunidade getComunidadePertencente() {
+		return comunidadePertencente;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setComunidadePertencente(int id_comunidade) {
+			
+	}
+	
+	public void setRecursos(List<Recurso> recursos) {
+		this.recursosFamiliares = recursos;
+	}
+
+	public void setMembros(List<Pessoa> membros) {
+		this.membros = membros;
+	}
+}

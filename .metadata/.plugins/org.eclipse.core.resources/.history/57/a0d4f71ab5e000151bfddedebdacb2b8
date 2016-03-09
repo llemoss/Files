@@ -1,0 +1,18 @@
+package grupoD.associapp.testes;
+
+import grupoD.associapp.dao.*;
+
+public class criarTabelas {
+
+	public static void main(String[] args) {
+		
+		ComunidadeDAO daoC = new ComunidadeJDBC_DAO();
+		daoC.createTable();
+		FamiliaDAO daoF = new FamiliaJDBC_DAO();
+		daoF.createTable();
+		PessoaDAO daoP = new PessoaJDBC_DAO();
+		daoP.createTable();
+		RecursoDAO daoR = new RecursoJDBC_DAO();
+		daoR.createTable();
+	}
+}
