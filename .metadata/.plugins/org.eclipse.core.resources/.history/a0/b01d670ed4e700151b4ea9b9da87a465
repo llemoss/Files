@@ -1,0 +1,60 @@
+package br.edu.ifpi.ads;
+
+public class ALU {
+
+	private boolean[] operand1;
+	private boolean[] operand2;
+
+	private boolean branchTaken;
+	
+	public void convertBits(boolean[] bits){
+		int result = 0;
+		for (int i = 0; i < bits.length; i++) {
+			if(bits[i] == true){
+				result += Math.pow(2, i);
+				System.out.println("result += " + i);
+			}else{
+				result += 0;
+			}
+		}
+		System.out.println(result);
+	}
+
+	public boolean[] execute(OperationCode opCode) {
+		switch(opCode){
+			case ADD:
+				break;
+			case NAND:
+				break;
+			case BEQ:
+				break;
+			case PASS1:
+				break;
+			default:
+				break;
+		}
+		
+		return null;
+	}
+
+	public boolean[] getOperand1() {
+		return operand1;
+	}
+
+	public void setOperand1(boolean[] operand1) {
+		this.operand1 = operand1;
+	}
+
+	public boolean[] getOperand2() {
+		return operand2;
+	}
+
+	public void setOperand2(boolean[] operand2) {
+		this.operand2 = operand2;
+	}
+
+	public boolean isBranchTaken() {
+		return branchTaken;
+	}
+
+}

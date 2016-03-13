@@ -1,0 +1,47 @@
+import grupoD.associapp.enums.Cargo;
+
+public enum OperEnum {
+	
+	ADD(000),
+	NAND(001),
+	BEQ(010),
+	PASS(100);
+	
+	private int op;
+	
+	private OperEnum(int op){
+		this.op = op;
+	}
+	
+	public static OperEnum fromInteger(int i){
+		switch (i) {
+		case 1:
+			return OperEnum.ADD;
+		case 2:
+			return OperEnum.NAND;
+		case 3:
+			return OperEnum.BEQ;
+		case 4:
+			return OperEnum.PASS;
+		default:
+			throw new IllegalArgumentException();
+		}
+	}
+	
+	public static OperEnum fromString(String i){
+		switch (i) {
+		case "PRESIDENTE":
+			return OperEnum.ADD;
+		case "VICE_PRESIDENTE":
+			return OperEnum.NAND;
+		case "TESOUREIRO":
+			return OperEnum.BEQ;
+		case "SECRETARIO":
+			return OperEnum.PASS;
+		default:
+			throw new IllegalArgumentException();
+		}
+	}
+	
+
+}

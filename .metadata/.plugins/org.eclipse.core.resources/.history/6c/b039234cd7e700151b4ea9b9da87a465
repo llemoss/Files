@@ -1,0 +1,19 @@
+package br.edu.ifpi.ads.test;
+
+import br.edu.ifpi.ads.ALU;
+
+public class RiSC16Tests {
+
+	public static void main(String[] args) {
+		
+		boolean[] zero = {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false};
+		
+		ALU alu = new ALU();
+		
+		alu.convertBits(zero);
+		boolean[] ten = {false,false,false,false,false,false,false,false,false,false,false,false,true,false,true,false};
+		alu.convertBits(ten);
+
+	}
+
+}

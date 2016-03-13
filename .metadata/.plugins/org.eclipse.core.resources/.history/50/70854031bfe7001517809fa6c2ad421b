@@ -1,0 +1,36 @@
+public class ALU {
+	
+	private short operand1;
+	private short operand2;
+	private boolean branchTaken = false;
+	
+	private short Execute(OperEnum op){
+		return null;
+		
+	}
+
+	public short getOp1() {
+		return operand1;
+	}
+
+	public void setOp1(short operand1) {
+		this.operand1 = operand1;
+	}
+
+	public short getOp2() {
+		return operand2;
+	}
+
+	public void setOp2(short operand2) {
+		this.operand2 = operand2;
+	}
+
+	public boolean isBranchTaken() {
+		return branchTaken;
+	}
+
+	public void setBranchTaken(boolean branchTaken) {
+		this.branchTaken = branchTaken;
+	}
+
+}

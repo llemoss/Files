@@ -1,0 +1,15 @@
+
+public enum OperEnum {
+	
+	ADD(000),
+	NAND(001),
+	BEQ(010),
+	PASS(100);
+	
+	private int op;
+	
+	private OperEnum(int op){
+		
+	}
+
+}

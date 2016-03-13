@@ -1,0 +1,10 @@
+package br.edu.ifpi.ads.test;
+
+public class RiSC16Tests {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

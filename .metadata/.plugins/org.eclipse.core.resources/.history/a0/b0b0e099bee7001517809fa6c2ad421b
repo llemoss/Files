@@ -1,0 +1,11 @@
+public class ALU {
+	
+	private short operand1;
+	private short operand2;
+	private boolean branchTaken = false;
+	
+	private short Execute(OperEnum op){
+		
+	}
+
+}

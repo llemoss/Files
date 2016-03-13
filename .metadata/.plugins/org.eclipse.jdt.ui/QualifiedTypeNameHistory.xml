@@ -53,4 +53,7 @@
 <fullyQualifiedTypeName name="grupoD.associapp.modelo.Comunidade"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="br.edu.ifpi.ads.ALU"/>
+<fullyQualifiedTypeName name="java.lang.Short"/>
+<fullyQualifiedTypeName name="java.util.BitSet"/>
 </qualifiedTypeNameHistroy>
