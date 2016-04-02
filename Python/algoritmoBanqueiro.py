@@ -9,7 +9,7 @@ C = [[0, 0, 1, 0], #P1
 
 R = [[2, 0, 0, 1], #P1
      [1, 0, 1, 0], #P2
-     [2, 1, 0, 0]] #P3 // Se o R[3][4] for igual a 1, ocorre deadlock
+     [2, 1, 0, 1]] #P3 // Se o R[3][4] for igual a 1, ocorre deadlock
 
 def verify(R, A):
 

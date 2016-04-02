@@ -179,15 +179,15 @@ void furaFila(Elemento *input, int posicao){
 }
 
 void inverterLista(){
-	Elemento *no = inicio;
+	Elemento *atual = inicio;
 	Elemento *anterior = NULL;
 	Elemento *proximo;
 	
-	while(no != NULL){
-		proximo = no->prox;
-		no->prox = anterior;
-		anterior = no;
-		no = proximo;
+	while(atual != NULL){
+		proximo = atual->prox;
+		atual->prox = anterior;
+		anterior = atual;
+		atual = proximo;
 	}
 	
 	inicio = fim;

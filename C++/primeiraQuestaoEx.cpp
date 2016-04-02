@@ -67,8 +67,6 @@ void verify(string str){
 	
 	Pilha *pilha = new Pilha();	
 	
-	//cout << par[0][0] << endl;
-	
 	for(int i = 0; i < str.length(); i++){
 		if(str[i] == par[0][0]){ //(
 			pilha->push(str[i]);

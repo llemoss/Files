@@ -70,12 +70,12 @@ int main(){
     fila1->push('O');
     fila1->push('U');
  
-    
     No *inicio=fila1->inicio;
     No *atual=fila1->inicio;
     No *loopbreak=fila1->fim;
 	No *fim=fila1->fim;
 	No *anterior;
+	
     while(fila1->fim!=inicio){
     	while(atual!=loopbreak){
     		anterior=atual;

@@ -28,6 +28,14 @@ class Fila{
 			fim = NULL;
 		}
 		
+		int isEmpty(){
+			if(this->inicio == NULL){
+				return 1;
+			}else{
+				return 0;
+			}
+		}
+		
 		void push(char n){
 			No *novo = new No(n);
 			if(inicio == NULL){
@@ -64,24 +72,28 @@ int main(){
    
     Fila *fila1 = new Fila();
     Fila *fila2 = new Fila();
+    
+    char letra;
+	int resp;
+    do{
+		cout << "Digite a letra\n";
+		cin >> letra;
 		
-	fila1->push('a');
-	fila1->push('b');
-	fila1->push('c');
-
-	fila2->push(fila1->inicio->prox->prox->nome);
-	fila2->push(fila1->inicio->prox->nome);
-	fila2->push(fila1->inicio->nome);
+		if(fila1->isEmpty() == 1){
+			fila1->push(letra);
+		}else{
+			while(fila1->isEmpty() != 1){
+				fila2->push(fila1->pop());
+			}
+			fila1->push(letra);
+			while(fila2->isEmpty() != 1){
+				fila1->push(fila2->pop());
+			}
+		}
 	
-	fila1->pop();
-	fila1->pop();
+		fila1->showAll();
 		
-	
-	No *atual=fila2->inicio;
-	while(atual!=NULL){
-		fila1->push(atual->nome);
-		atual=atual->prox;
-	}
-	
-	fila2->showAll();
+		cout << "Continuar? // 1 - Sim // 2 - Nao\n";
+		cin >> resp;
+	}while(resp == 1);
 }

@@ -158,7 +158,6 @@ void pesquisaBinaria(Cliente *vet, int elem){
 	int ini = 0;
 	int fim = pos-1;
 	
-	
 	//2 ^ log n_2 = n --> eficiência = log n
 	
 	while(ini <= fim){
