@@ -9,7 +9,7 @@ C = [[0, 0, 1, 0], #P1
 
 R = [[2, 0, 0, 1], #P1
      [1, 0, 1, 0], #P2
-     [2, 1, 0, 1]] #P3 // Se o R[3][4] for igual a 1, ocorre deadlock
+     [2, 1, 0, 0]] #P3 // Se o R[3][4] for igual a 1, ocorre deadlock
 
 def verify(R, A):
 
@@ -20,11 +20,11 @@ def verify(R, A):
             if (R[i] <= A[i]):
                 count+=1
         if (count == len(A)):
-            return True
+            return 1
         else:
-            return False
+            return 0
     else:
-        return None
+        return -1
 
 
 def sumVect(A, B):
@@ -54,7 +54,7 @@ def compare(R, C, E, A):
             p = 0
             
             while(p < len(C)):
-                if (verify(R[p], A) == True):
+                if (verify(R[p], A) == 1):
                     A = sumVect(A, C[p])
                     #print "A:", A, "p:", p, "count:", count
                     break

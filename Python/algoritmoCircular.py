@@ -15,8 +15,6 @@ def calcularTempo(lista, quantum, trocaContexto):
         for j in range(len(lista)):
             if (lista[j] == 0):
                     count += 1
-        print "Count:", count
-        print "Loop count:", loopCount
         if (count == len(lista)):
             break
 
@@ -55,7 +53,6 @@ def calcularTempo(lista, quantum, trocaContexto):
 
         loopCount += 1
 
-    #vetorTempos.remove(vetorTempos[len(vetorTempos)-1])
     vetorProgramas.sort(_cmp_by_program)
     print "Tempo final:", vetorProgramas[len(vetorProgramas)-1][1]
     print "Vetor de tempos:", vetorTempos
@@ -79,8 +76,8 @@ def calcularTempo(lista, quantum, trocaContexto):
     
 #listaProgramas = [int(i) for i in raw_input("Digite os tempos de processador dos programas separando por espaço: ").split(" ")]
 #quantum, trocaContexto = [int(i) for i in raw_input("Digite quantum e fator de troca de contexto separados por espaço: ").split(" ")]
-listaProgramas = [10, 14, 5, 7, 20]
-quantum = 2
-trocaContexto = 0
+listaProgramas = [12, 16, 7, 9]
+quantum = 6
+trocaContexto = 3
 calcularTempo(listaProgramas, quantum, trocaContexto)
 
