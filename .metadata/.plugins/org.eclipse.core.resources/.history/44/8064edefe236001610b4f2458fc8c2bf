@@ -1,0 +1,14 @@
+package test;
+
+import base.Cliente;
+import base.FidelidadeOuro;
+
+public class TesteVarejo {
+	public static void main(String[] args) {
+		
+		Cliente c = new Cliente(new FidelidadeOuro());
+		c.setPontos(1000);
+		
+		
+	}
+}

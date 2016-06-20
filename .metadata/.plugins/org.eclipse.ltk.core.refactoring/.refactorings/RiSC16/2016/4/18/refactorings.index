@@ -1,0 +1,23 @@
+1461514109914	Move file
+1461514551674	Rename type 'OperationCode'
+1461525234319	Rename resource 'multiplicacaonatural.txt'
+1461526294983	Encapsulate field 'next'
+1461526530988	Encapsulate field 'result'
+1461528790429	Rename type 'OperationCodeTYPE'
+1461528840894	Rename type 'OperationCodeFORMAT'
+1461529697339	Rename type 'OperationCodeINST'
+1461529729707	Rename type 'OperationCodeALU'
+1461529992626	Rename method 'FromOctal'
+1461530003091	Rename method 'FromOctal'
+1461530018005	Rename method 'ToString'
+1461532919454	Encapsulate field 'mRAM'
+1461533044067	Encapsulate field 'mRAM'
+1461533150345	Encapsulate field 'inst'
+1461533186360	Encapsulate field 'value'
+1461535229227	Encapsulate field 'mRUU'
+1461535471807	Encapsulate field 'mMemoryController'
+1461538753123	Encapsulate field 'mRF'
+1461547685441	Delete element
+1461587035352	Delete element
+1461587058588	Rename method 'getBitValue'
+1461587067483	Rename method 'getBitValue'

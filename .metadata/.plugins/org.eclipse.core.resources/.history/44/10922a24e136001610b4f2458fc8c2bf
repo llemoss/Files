@@ -1,0 +1,13 @@
+package base;
+
+public class Cliente {
+	private int qtdPontos;
+
+	public int getPontos() {
+		return this.qtdPontos;
+	}
+	
+	public void setPontos(int pontos){
+		this.qtdPontos = pontos;
+	}
+}

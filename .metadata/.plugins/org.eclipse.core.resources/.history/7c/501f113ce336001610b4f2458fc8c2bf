@@ -1,0 +1,31 @@
+package test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import base.Cliente;
+import base.Compra;
+import base.DescontoPorPreco;
+import base.DescontoPorQuantidade;
+import base.FidelidadeOuro;
+import base.Item;
+import base.Promocao;
+
+public class TesteVarejo {
+	public static void main(String[] args) {
+		
+		Cliente c = new Cliente(new FidelidadeOuro());
+		c.setPontos(1000);
+		
+		List<Item> compras = new ArrayList<>();
+		compras.add(new Item("Biscoito", 5));
+		compras.add(new Item("Celular", 995));
+		
+		List<Promocao> promocoesPadrao = new ArrayList<>();
+		promocoesPadrao.add(new DescontoPorPreco());
+		promocoesPadrao.add(new DescontoPorQuantidade());
+		
+		Compra compra = new Compra(compras, promocoesPadrao, c);
+		System.out.println(compra.calcularValorTotal());
+	}
+}

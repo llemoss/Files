@@ -1,0 +1,11 @@
+package base;
+
+public class FidelidadeOuro implements TipoDeFidelidade {
+
+	@Override
+	public double resgatarPontosEmDesconto() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

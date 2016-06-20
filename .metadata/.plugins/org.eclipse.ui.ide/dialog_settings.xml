@@ -5,30 +5,18 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
-			<item value="C:\Users\Gildásio\Google Drive\Documents\RiSC16Erick"/>
-			<item value="C:\Users\Gildásio\Google Drive\Documents\RiSC16"/>
-			<item value="C:\Users\Gildásio\Google Drive\GitHub\Risk16OutOfOrder"/>
+			<item value="C:\Users\Gildaswise\Google Drive\GitHub\Files\ProvaArquitetura2015A"/>
+			<item value="C:\Users\Gildaswise\Desktop\ProvaArquitetura2015A"/>
+			<item value="C:\Users\Gildaswise\Google Drive\GitHub\RiSC16"/>
+			<item value="C:\Users\Gildaswise\Google Drive\Documents\SimulatorRiSC16-Complete"/>
+			<item value="C:\Users\Gildaswise\Google Drive"/>
+			<item value="C:\Users\Gildaswise\Google Drive\Documents\RiSC16-SimuladorAlpha002\SimuladorRiSC16"/>
+			<item value="C:\Users\Gildaswise\Google Drive\GitHub\Eclipse"/>
+			<item value="C:\Users\Gildaswise\Google Drive\Documents\RiSC16Erick"/>
+			<item value="C:\Users\Gildaswise\Google Drive\Documents\AssociApp"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>
 		</list>
-	</section>
-	<section name="ResourceNavigator">
-		<item value="" key="ResourceWorkingSetFilter.STORE_WORKING_SET"/>
-		<item value="1" key="ResourceViewer.STORE_SORT_TYPE"/>
-	</section>
-	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
-		<item value="false" key="FilterByLocation"/>
-		<item value="true" key="ShowStatusLine"/>
-		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode/&gt;&#x0D;&#x0A;&lt;/History&gt;" key="History"/>
-		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
-		<item value="false" key="ShowDerived"/>
-		<section name="DialogBoundsSettings">
-			<item value="600" key="DIALOG_WIDTH"/>
-			<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
-			<item value="500" key="DIALOG_HEIGHT"/>
-			<item value="391" key="DIALOG_X_ORIGIN"/>
-			<item value="39" key="DIALOG_Y_ORIGIN"/>
-		</section>
 	</section>
 </section>

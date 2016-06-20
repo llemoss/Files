@@ -33,6 +33,10 @@ class Pilha{
 			}
 		}
 		
+		char nomeTopo(){
+			return topo->nome;
+		}
+		
 		char pop(){
 			No *temp;
 			char popped;
@@ -68,24 +72,42 @@ void verify(string str){
 	Pilha *pilha = new Pilha();	
 	
 	for(int i = 0; i < str.length(); i++){
-		if(str[i] == par[0][0]){ //(
+		if(str[i] == par[0][0]){
 			pilha->push(str[i]);
-		}else if(str[i] == par[1][0]){
-			pilha->push(str[i]);
-		}else if(str[i] == par[2][0]){
-			pilha->push(str[i]);
+			cout << "Inseriu " << str[i] << endl;
 		}
-		
-		if(str[i] == par[0][1]){
-			pilha->pop();
-		}else if(str[i] == par[1][1]){
-			pilha->pop();
-		}else if(str[i] == par[2][1]){
-			pilha->pop();
+		if(str[i] == par[1][0]){
+			pilha->push(str[i]);
+			cout << "Inseriu " << str[i] << endl;
+		}
+		if(str[i] == par[2][0]){
+			pilha->push(str[i]);
+			cout << "Inseriu " << str[i] << endl;
 		}
 	}
 	
-	if(pilha->isEmpty() == 1){
+	for(int i = 0; i < str.length(); i++){
+		if(str[i] == par[0][1]){ // )
+			if(pilha->isEmpty() != 1 && pilha->nomeTopo() == par[0][0]){
+				cout << "Retirou " << pilha->nomeTopo() << endl;
+				pilha->pop();
+			}
+		}
+		if(str[i] == par[1][1]){ // ]
+			if(pilha->isEmpty() != 1 && pilha->nomeTopo() == par[1][0]){}{
+				cout << "Retirou " << pilha->nomeTopo() << endl;
+				pilha->pop();
+			}
+		}
+		if(str[i] == par[2][1]){ // }
+			if(pilha->isEmpty() != 1 && pilha->nomeTopo() == par[2][0]){
+				cout << "Retirou " << pilha->nomeTopo() << endl;
+			   	pilha->pop();
+			}
+		}
+	}
+	
+	if(pilha->isEmpty() == 1 && erro == 0){
 		cout << "Sua equacao esta correta!" << endl;
 	}else{
 		cout << "Existe algum erro na sua equacao!" << endl;

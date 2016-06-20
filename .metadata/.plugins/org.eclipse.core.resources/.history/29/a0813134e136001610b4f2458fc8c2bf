@@ -1,0 +1,10 @@
+package base;
+
+public class FidelidadeOuro implements TipoDeFidelidade {
+
+	@Override
+	public double resgatarPontosEmDesconto(Cliente cliente) {
+		return (cliente.getPontos() > 1000) ? 0.05 : 0;
+	}
+
+}

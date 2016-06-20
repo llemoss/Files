@@ -1,0 +1,25 @@
+package base;
+
+import java.util.List;
+
+public class Compra {
+	
+	private List<Item> itensDaCompra;
+	private Promocao promocao;
+	private Cliente cliente;
+	
+	public Compra(List<Item> itensDaCompra, Promocao promocao, Cliente cliente) {
+		this.itensDaCompra = itensDaCompra;
+		this.promocao = promocao;
+		this.cliente = cliente;
+	}
+	
+	public double calcularValorDaCompra(){
+		double valorTotal = 0.0;
+		for (Item item : itensDaCompra) {
+			valorTotal += item.getValor();
+		}
+		valorTotal += promocao.obterDesconto() + cliente.obterDesconto();
+	}
+	
+}

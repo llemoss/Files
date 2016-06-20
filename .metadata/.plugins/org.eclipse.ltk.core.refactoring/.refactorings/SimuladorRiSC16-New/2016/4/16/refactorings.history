@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;BitOperations.java&apos; to &apos;SimulatorRiSC16-Complete/src/br.edu.ifpi.ads.arq&apos;&#x0D;&#x0A;- Original project: &apos;SimuladorRiSC16-New&apos;&#x0D;&#x0A;- Destination element: &apos;SimulatorRiSC16-Complete/src/br.edu.ifpi.ads.arq&apos;&#x0D;&#x0A;- Original element: &apos;br.edu.ifpi.ads.arquitetura.BitOperations.java&apos;" description="Copy compilation unit" destination="=SimulatorRiSC16-Complete/src&lt;br.edu.ifpi.ads.arq" element1="/src&lt;br.edu.ifpi.ads.arquitetura{BitOperations.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1460393817004" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,11 @@
+package base;
+
+public class DescontoPorPreco implements Promocao {
+
+	@Override
+	public double obterDesconto(Compra compra) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

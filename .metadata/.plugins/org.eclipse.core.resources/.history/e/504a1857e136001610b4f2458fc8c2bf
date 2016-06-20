@@ -1,0 +1,24 @@
+package base;
+
+public class Cliente {
+	
+	private int qtdPontos;
+	private TipoDeFidelidade tipoDeFidelidade;
+
+	public int getPontos() {
+		return this.qtdPontos;
+	}
+	
+	public void setPontos(int pontos){
+		this.qtdPontos = pontos;
+	}
+
+	public TipoDeFidelidade getTipoDeFidelidade() {
+		return tipoDeFidelidade;
+	}
+
+	public void setTipoDeFidelidade(TipoDeFidelidade tipoDeFidelidade) {
+		this.tipoDeFidelidade = tipoDeFidelidade;
+	}
+	
+}

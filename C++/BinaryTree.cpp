@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
-#include <exception>
+#include <math.h>
 
 using namespace std;
 
@@ -24,14 +24,89 @@ class Tree{
 		No *resultadoPai;
 		No *resultado;
 		
+		int h;
+		int qtd;
+		
 		Tree(){
 			root = NULL;
 			resultado = NULL;
 			resultadoPai = NULL;
+			h = -1;
+			qtd = 0;
+		}
+		
+		int isComplete(){
+			getHeight();
+			return (getQtd() == maxQtd());
 		}
 		
 		int isEmpty(){
 			return (root == NULL);
+		}
+		
+		int maxQtd(){
+			return (pow(2, h+1) - 1);
+		}
+		
+		int getQtd(){
+			if(isEmpty() != 1){
+				qtd++;
+				calculateQtd(this->root);
+			}
+			return qtd;
+		}
+		
+		void calculateQtd(No *no){
+			if(no != NULL){
+				if(no->left != NULL){
+					qtd++;
+					calculateQtd(no->left);
+				}
+				if(no->right != NULL){
+					qtd++;
+					calculateQtd(no->right);
+				}
+			}
+		}
+		
+		int getHeight(){
+			if(isEmpty() != 1){
+				h = calHeight(this->root);
+			}
+			return h;
+			
+		}
+		
+		int greater(int a, int b){
+			return (a > b ? a : b);
+		}
+		
+		int calHeight(No *no){
+			if(no == NULL || (no->left == NULL && no->right == NULL)){
+				return 0;	
+			}else{
+				return 1 + greater(calHeight(no->left), calHeight(no->right));
+			}
+		}
+		
+		void calculateHeight(No *no){
+			if(no != NULL){
+				if((no->left != NULL) && (no->right != NULL)){
+					h++;
+					calculateHeight(no->left);
+					calculateHeight(no->right);
+				}else{
+					if(no->right != NULL){
+						h++;
+						calculateHeight(no->right);
+					}
+					if(no->left != NULL){
+						h++;
+						calculateHeight(no->left);
+					}	
+				}
+				
+			}
 		}
 		
 		void newBranch(int n, int side, int where){
@@ -68,13 +143,13 @@ class Tree{
 			}
 		}
 		
-		void freeOrd(No *parent, int info){
+		No *freeOrd(No *parent, int info){
 			No *temp;
 			if(isEmpty() != 1){
 				if(root->info == info){
 					freeBranch(root);
 				}else{
-					if(parent->info > info){
+					if(info < parent->info){
 						temp = parent->left; 
 						cout << "Trying to free: " << parent->left->info << endl;
 						parent->left = NULL;
@@ -119,7 +194,7 @@ class Tree{
 		void newInsert(No *parent, No *input){
 			if(isEmpty() == 1){
 				root = input;
-			}else{
+			}else{;
 				if(parent != NULL){ 
 					
 					if(parent->info < input->info){
@@ -173,6 +248,7 @@ class Tree{
 			if(root == NULL){
 				cout << "\nEmpty" << endl;
 			}else{
+				cout << endl;
 				showBranch("<", root);
 				cout << endl;
 			}
@@ -180,12 +256,40 @@ class Tree{
 		
 		void showBranch(char msg[30], No *tree){
 			if(tree != NULL){
-				showBranch("<", tree->left);
 				cout << msg << tree->info;
+				showBranch("<", tree->left);
 				showBranch("<", tree->right);
 				cout << ">";
 			}else{
 				cout << "<>";
+			}
+		}
+		
+		No *searchParent(No *r, int info){ //procuraPai
+			No *parent = NULL; //No *pai
+			if(r != NULL){
+				if(r->left != NULL && r->left->info == info){
+					return r;
+				}else if(r->right != NULL && r->right->info == info){
+					return r;
+				}else{
+					if(info > r->info){
+						return searchParent(r->right, info);
+					}else{
+						return searchParent(r->left, info);
+					}
+				}
+			}
+		}
+		
+		No *searchFilho(No *r, int branch){
+			No *result = NULL;
+			if(r != NULL){
+				if(r->left != NULL && r->left->info == branch){
+					return r->left;
+				} else if (r->right != NULL && r->right->info == branch){
+					return r->right;
+				} 
 			}
 		}
 		
@@ -225,38 +329,38 @@ int main(){
 	// tree->newBranch(3, 2, 1);
 	// tree->newBranch(4, 1, 2);
 	// tree->newBranch(5, 2, 2);
-	
-	tree->newInsert(tree->root, new No(5));
+	// 
+	tree->newInsert(tree->root, new No(6));
 	tree->newInsert(tree->root, new No(2));
+    tree->newInsert(tree->root, new No(8));
     tree->newInsert(tree->root, new No(1));
-    tree->newInsert(tree->root, new No(0));
-    tree->newInsert(tree->root, new No(3));
-    tree->newInsert(tree->root, new No(6));
     tree->newInsert(tree->root, new No(4));
+    tree->newInsert(tree->root, new No(3));
 	tree->showTree();
 	
 	cout << "\n";
 	
-	tree->search(tree->root, 3);
-	//resultado = 4
-	//resultadopai = 2
+	cout << "Altura: " << tree->calHeight(tree->root) << endl << endl;
 	
-	tree->freeSon(tree->resultadoPai, 3);
-	tree->showTree();
+	No *pai = tree->searchParent(tree->root, 2);
 	
-	tree->search(tree->root, 2);
-	//resultado = 4
-	//resultadopai = 2
+	cout << "Pai: " << pai->info << endl;
+	cout << "Filho: " << tree->searchFilho(pai, 2)->info << endl;
 	
-	tree->freeSon(tree->resultadoPai, 2);
-	tree->showTree();
-	
-	tree->search(tree->root, 5);
-	//resultado = 4
-	//resultadopai = 2
-	
-	tree->freeSon(tree->resultadoPai, 5);
-	tree->showTree();
+	// tree->search(tree->root, 3);
+	// tree->freeSon(tree->resultadoPai, 3);
+	// 
+	// tree->showTree();
+	// 
+	// tree->search(tree->root, 2);
+	// tree->freeSon(tree->resultadoPai, 2);
+	// 
+	// tree->showTree();
+	// 
+	// tree->search(tree->root, 5);
+	// tree->freeSon(tree->resultadoPai, 5);
+	// 
+	// tree->showTree();
 	
 	return 0;
 }

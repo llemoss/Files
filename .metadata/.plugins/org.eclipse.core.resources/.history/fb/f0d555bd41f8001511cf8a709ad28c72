@@ -1,0 +1,63 @@
+package br.edu.ifpi.ads;
+
+public class RegisterFile {
+	
+	boolean[] value = new boolean[16];
+	boolean[] src1 = new boolean[3];
+	boolean[] src2 = new boolean[3];
+	boolean[] tgt = new boolean[3];
+	boolean we = false;
+	
+	public RegisterFile(){
+		for (int i = 0; i < value.length; i++) {
+			value[i] = false;
+		}
+	}
+
+	public void setSrc1(boolean[] src1) {
+		this.src1 = src1;
+	}
+	
+	public void setSrc2(boolean[] src2) {
+		this.src2 = src2;
+	}
+	
+	public void setTgt(boolean[] tgt) {
+		this.tgt = tgt;
+	}
+	
+	// arrays de 16 elementos (valores de 16bits)
+	public boolean[] getSource1() {
+		
+		int i = Conversores.convertFromOctal(src1);
+		
+		if(RegisterFiles.RFs[i] == null){
+			RegisterFiles.RFs[i] = new RegisterFile();
+		}
+		
+		return RegisterFiles.RFs[i].value;
+	}
+	
+	public boolean[] getSource2() {
+			
+		int i = Conversores.convertFromOctal(src2);
+		
+		if(RegisterFiles.RFs[i] == null){
+			RegisterFiles.RFs[i] = new RegisterFile();
+		}
+		
+		return RegisterFiles.RFs[i].value;
+	}
+	
+	// array de 16 elementos (dado de 16 bits pra ser gravado)
+	public void setValue(boolean[] value) {
+		int i = Conversores.convertFromOctal(tgt);
+		if(we && i != 0){RegisterFiles.RFs[i].value = value;}
+	}
+	
+	// define se o valor enviado em setValue deve substituir o valor em tgt
+	public void setWriteEnable(boolean we) {
+		this.we = we;
+	}
+
+}

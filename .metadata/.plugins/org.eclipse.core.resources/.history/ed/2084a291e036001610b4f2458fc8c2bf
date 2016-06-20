@@ -1,0 +1,15 @@
+package base;
+
+import java.util.List;
+
+public class Compra {
+	
+	private List<Item> itensDaCompra;
+	private Promocao promocao;
+	
+	public Compra(List<Item> itensDaCompra, Promocao promocao) {
+		this.itensDaCompra = itensDaCompra;
+		this.promocao = promocao;
+	}
+	
+}

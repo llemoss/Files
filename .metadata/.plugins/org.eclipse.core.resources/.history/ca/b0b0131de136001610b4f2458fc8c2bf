@@ -1,0 +1,10 @@
+package base;
+
+public class FidelidadeOuro implements TipoDeFidelidade {
+
+	@Override
+	public double resgatarPontosEmDesconto(Cliente cliente) {
+		return 0;
+	}
+
+}

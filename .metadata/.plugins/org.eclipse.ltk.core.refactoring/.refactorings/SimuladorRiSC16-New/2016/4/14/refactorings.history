@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;br.edu.ifpi.ads.arquitetura.BitOperations.sumBinary(...)&apos; to &apos;sumBooleanArray&apos;&#x0D;&#x0A;- Original project: &apos;SimuladorRiSC16-New&apos;&#x0D;&#x0A;- Original element: &apos;br.edu.ifpi.ads.arquitetura.BitOperations.sumBinary(...)&apos;&#x0D;&#x0A;- Renamed element: &apos;br.edu.ifpi.ads.arquitetura.BitOperations.sumBooleanArray(...)&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;sumBinary&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;br.edu.ifpi.ads.arquitetura{BitOperations.java[BitOperations~sumBinary~\[Z~\[Z" name="sumBooleanArray" references="true" stamp="1459548243329" version="1.0"/>
+</session>
